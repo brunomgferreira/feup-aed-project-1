@@ -1,0 +1,156 @@
+\hypertarget{class_class_schedule}{}\doxysection{Class\+Schedule Class Reference}
+\label{class_class_schedule}\index{ClassSchedule@{ClassSchedule}}
+
+
+\mbox{\hyperlink{class_class}{Class}} that stores a class schedule for a given class.  
+
+
+
+
+{\ttfamily \#include $<$Class\+Schedule.\+h$>$}
+
+
+
+Collaboration diagram for Class\+Schedule\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_class_schedule_ae791efccb246bf2b68021eef7fe390cb}{Class\+Schedule}} (const string \&weekday, const \mbox{\hyperlink{struct_time_interval}{Time\+Interval}} \&time, const string \&type)
+\begin{DoxyCompactList}\small\item\em Constructor of the class \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}}. weekday, time\+Interval and type are set to the given values. \end{DoxyCompactList}\item 
+const string \& \mbox{\hyperlink{class_class_schedule_a209d4a1affabd0a60ceb494a66054711}{get\+Weekday}} () const
+\begin{DoxyCompactList}\small\item\em Returns the weekday of the class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_time_interval}{Time\+Interval}} \mbox{\hyperlink{class_class_schedule_af5410f3bba5b8cf7835f07beba042cef}{get\+Time\+Interval}} () const
+\begin{DoxyCompactList}\small\item\em Returns the time interval of the class. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_class_schedule_a6e1d83461f5afe5010b9719960360d76}{get\+Start\+Hour}} () const
+\begin{DoxyCompactList}\small\item\em Returns the start hour of the class. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_class_schedule_a7eaf73b940856f30ba7d12591f1eeadb}{get\+Duration}} () const
+\begin{DoxyCompactList}\small\item\em Returns the duration of the class. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_class_schedule_a368e1564b8a2c875471b27c21395fe5e}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Returns the type of the class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_class_schedule_a3b05a1fbd54558c9f731024aca28405a}{set\+Type}} (const string \&new\+Type)
+\begin{DoxyCompactList}\small\item\em Returns the type of the class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_class_schedule_ada96c09b9ac8eb8032f7168921980b37}\label{class_class_schedule_ada96c09b9ac8eb8032f7168921980b37}} 
+string {\bfseries weekday}
+\item 
+\mbox{\Hypertarget{class_class_schedule_a0a7100c58a9e95e1dac4461b7c817b62}\label{class_class_schedule_a0a7100c58a9e95e1dac4461b7c817b62}} 
+\mbox{\hyperlink{struct_time_interval}{Time\+Interval}} {\bfseries time\+Interval}
+\item 
+\mbox{\Hypertarget{class_class_schedule_a3404e5e41dfd5460c5171ca91ec43df3}\label{class_class_schedule_a3404e5e41dfd5460c5171ca91ec43df3}} 
+string {\bfseries type}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_class}{Class}} that stores a class schedule for a given class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_class_schedule_ae791efccb246bf2b68021eef7fe390cb}\label{class_class_schedule_ae791efccb246bf2b68021eef7fe390cb}} 
+\index{ClassSchedule@{ClassSchedule}!ClassSchedule@{ClassSchedule}}
+\index{ClassSchedule@{ClassSchedule}!ClassSchedule@{ClassSchedule}}
+\doxysubsubsection{\texorpdfstring{ClassSchedule()}{ClassSchedule()}}
+{\footnotesize\ttfamily Class\+Schedule\+::\+Class\+Schedule (\begin{DoxyParamCaption}\item[{const string \&}]{weekday,  }\item[{const \mbox{\hyperlink{struct_time_interval}{Time\+Interval}} \&}]{time\+Interval,  }\item[{const string \&}]{type }\end{DoxyParamCaption})}
+
+
+
+Constructor of the class \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}}. weekday, time\+Interval and type are set to the given values. 
+
+Time complexity\+: O(1) 
+\begin{DoxyParams}{Parameters}
+{\em weekday} & weekday of the class \\
+\hline
+{\em time\+Interval} & start time and end time of the class \\
+\hline
+{\em type} & type of the class \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_class_schedule_a7eaf73b940856f30ba7d12591f1eeadb}\label{class_class_schedule_a7eaf73b940856f30ba7d12591f1eeadb}} 
+\index{ClassSchedule@{ClassSchedule}!getDuration@{getDuration}}
+\index{getDuration@{getDuration}!ClassSchedule@{ClassSchedule}}
+\doxysubsubsection{\texorpdfstring{getDuration()}{getDuration()}}
+{\footnotesize\ttfamily double Class\+Schedule\+::get\+Duration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the duration of the class. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+duration of the class 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_class_schedule_a6e1d83461f5afe5010b9719960360d76}\label{class_class_schedule_a6e1d83461f5afe5010b9719960360d76}} 
+\index{ClassSchedule@{ClassSchedule}!getStartHour@{getStartHour}}
+\index{getStartHour@{getStartHour}!ClassSchedule@{ClassSchedule}}
+\doxysubsubsection{\texorpdfstring{getStartHour()}{getStartHour()}}
+{\footnotesize\ttfamily double Class\+Schedule\+::get\+Start\+Hour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the start hour of the class. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+start hour of the class 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_class_schedule_af5410f3bba5b8cf7835f07beba042cef}\label{class_class_schedule_af5410f3bba5b8cf7835f07beba042cef}} 
+\index{ClassSchedule@{ClassSchedule}!getTimeInterval@{getTimeInterval}}
+\index{getTimeInterval@{getTimeInterval}!ClassSchedule@{ClassSchedule}}
+\doxysubsubsection{\texorpdfstring{getTimeInterval()}{getTimeInterval()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_time_interval}{Time\+Interval}} Class\+Schedule\+::get\+Time\+Interval (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the time interval of the class. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+time\+Interval of the class 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_class_schedule_a368e1564b8a2c875471b27c21395fe5e}\label{class_class_schedule_a368e1564b8a2c875471b27c21395fe5e}} 
+\index{ClassSchedule@{ClassSchedule}!getType@{getType}}
+\index{getType@{getType}!ClassSchedule@{ClassSchedule}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily string Class\+Schedule\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the type of the class. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+start\+Hour of the class 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_class_schedule_a209d4a1affabd0a60ceb494a66054711}\label{class_class_schedule_a209d4a1affabd0a60ceb494a66054711}} 
+\index{ClassSchedule@{ClassSchedule}!getWeekday@{getWeekday}}
+\index{getWeekday@{getWeekday}!ClassSchedule@{ClassSchedule}}
+\doxysubsubsection{\texorpdfstring{getWeekday()}{getWeekday()}}
+{\footnotesize\ttfamily const string \& Class\+Schedule\+::get\+Weekday (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the weekday of the class. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+weekday of the class 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_class_schedule_a3b05a1fbd54558c9f731024aca28405a}\label{class_class_schedule_a3b05a1fbd54558c9f731024aca28405a}} 
+\index{ClassSchedule@{ClassSchedule}!setType@{setType}}
+\index{setType@{setType}!ClassSchedule@{ClassSchedule}}
+\doxysubsubsection{\texorpdfstring{setType()}{setType()}}
+{\footnotesize\ttfamily void Class\+Schedule\+::set\+Type (\begin{DoxyParamCaption}\item[{const string \&}]{new\+Type }\end{DoxyParamCaption})}
+
+
+
+Returns the type of the class. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+type of the class 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Class\+Schedule.\+h\item 
+Class\+Schedule.\+cpp\end{DoxyCompactItemize}

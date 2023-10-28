@@ -1,0 +1,222 @@
+\hypertarget{class_data}{}\doxysection{Data Class Reference}
+\label{class_data}\index{Data@{Data}}
+
+
+\mbox{\hyperlink{class_class}{Class}} that saves all the program data.  
+
+
+
+
+{\ttfamily \#include $<$Data.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_data_af11f741cb7f587e2e495452a8905a22a}{Data}} ()
+\begin{DoxyCompactList}\small\item\em Standard constructor of the class \mbox{\hyperlink{class_data}{Data}}. \end{DoxyCompactList}\item 
+map$<$ string, \mbox{\hyperlink{class_uc}{Uc}} $>$ \mbox{\hyperlink{class_data_a4e96b6224747b93dc4f4857acf9e1677}{get\+All\+Ucs}} () const
+\begin{DoxyCompactList}\small\item\em Returns all the UCs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_uc}{Uc}} \& \mbox{\hyperlink{class_data_a72d2cc9af55922c5a8b1d2a3f54d6943}{get\+Uc}} (const string \&uc\+Code)
+\begin{DoxyCompactList}\small\item\em Returns a UC given a UC code. \end{DoxyCompactList}\item 
+map$<$ int, \mbox{\hyperlink{class_student}{Student}} $>$ \mbox{\hyperlink{class_data_a31b84fe22dc6bb3424952c3f458c867c}{get\+All\+Students}} () const
+\begin{DoxyCompactList}\small\item\em Returns all the students. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_student}{Student}} \& \mbox{\hyperlink{class_data_a300bb01bf9a11e829afced5bf39f95b3}{get\+Student}} (int student\+Code)
+\begin{DoxyCompactList}\small\item\em Returns a student given a student code. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a728261d109d627482d80cfdb6fade54f}{read\+Classes\+Per\+Uc\+File}} (ifstream \&file)
+\begin{DoxyCompactList}\small\item\em Reads the classes\+\_\+per\+\_\+uc.\+csv file. ucs is set to the read values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a13b1e8b719d4f89178bd651bdc796f54}{write\+Classes\+Per\+Uc\+File}} (ofstream \&file)
+\begin{DoxyCompactList}\small\item\em Updates the classes\+\_\+per\+\_\+uc.\+csv file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a6b426a4a5736e1b447dc5f4df9b47a49}{read\+Classes\+File}} (ifstream \&file)
+\begin{DoxyCompactList}\small\item\em Reads the classes.\+csv file. the class\+Schedules inside their corresponding class and uc are set to the read values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a6e34aefc8f65bae28f606e680b1307af}{write\+Classes\+File}} (ofstream \&file)
+\begin{DoxyCompactList}\small\item\em Updates the classes.\+csv file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a078d66476ac6ae25ee59e6c05411cc27}{read\+Students\+Classes\+File}} (ifstream \&file)
+\begin{DoxyCompactList}\small\item\em Reads the students\+\_\+classes.\+csv file. the students is set to the read values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a4a4473628691df3943e1fff0b46d5eff}{write\+Students\+Classes\+File}} (ofstream \&file)
+\begin{DoxyCompactList}\small\item\em Updates the students\+\_\+classes.\+csv file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_data_a9f229820566c00d553c47ece64323c82}\label{class_data_a9f229820566c00d553c47ece64323c82}} 
+map$<$ string, \mbox{\hyperlink{class_uc}{Uc}} $>$ {\bfseries ucs}
+\item 
+\mbox{\Hypertarget{class_data_a4e56774fda4e5f41b62859c1e9445f51}\label{class_data_a4e56774fda4e5f41b62859c1e9445f51}} 
+map$<$ int, \mbox{\hyperlink{class_student}{Student}} $>$ {\bfseries students}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_class}{Class}} that saves all the program data. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_data_af11f741cb7f587e2e495452a8905a22a}\label{class_data_af11f741cb7f587e2e495452a8905a22a}} 
+\index{Data@{Data}!Data@{Data}}
+\index{Data@{Data}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}}
+{\footnotesize\ttfamily Data\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Standard constructor of the class \mbox{\hyperlink{class_data}{Data}}. 
+
+Time complexity\+: O(1) 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_data_a31b84fe22dc6bb3424952c3f458c867c}\label{class_data_a31b84fe22dc6bb3424952c3f458c867c}} 
+\index{Data@{Data}!getAllStudents@{getAllStudents}}
+\index{getAllStudents@{getAllStudents}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{getAllStudents()}{getAllStudents()}}
+{\footnotesize\ttfamily map$<$ int, \mbox{\hyperlink{class_student}{Student}} $>$ Data\+::get\+All\+Students (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns all the students. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+students of data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_data_a4e96b6224747b93dc4f4857acf9e1677}\label{class_data_a4e96b6224747b93dc4f4857acf9e1677}} 
+\index{Data@{Data}!getAllUcs@{getAllUcs}}
+\index{getAllUcs@{getAllUcs}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{getAllUcs()}{getAllUcs()}}
+{\footnotesize\ttfamily map$<$ string, \mbox{\hyperlink{class_uc}{Uc}} $>$ Data\+::get\+All\+Ucs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns all the UCs. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+ucs of data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_data_a300bb01bf9a11e829afced5bf39f95b3}\label{class_data_a300bb01bf9a11e829afced5bf39f95b3}} 
+\index{Data@{Data}!getStudent@{getStudent}}
+\index{getStudent@{getStudent}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{getStudent()}{getStudent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_student}{Student}} \& Data\+::get\+Student (\begin{DoxyParamCaption}\item[{int}]{student\+Code }\end{DoxyParamCaption})}
+
+
+
+Returns a student given a student code. 
+
+Time complexity\+: O(log(n)) 
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & student code of the student to be returned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+student with code == student\+Code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_data_a72d2cc9af55922c5a8b1d2a3f54d6943}\label{class_data_a72d2cc9af55922c5a8b1d2a3f54d6943}} 
+\index{Data@{Data}!getUc@{getUc}}
+\index{getUc@{getUc}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{getUc()}{getUc()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_uc}{Uc}} \& Data\+::get\+Uc (\begin{DoxyParamCaption}\item[{const string \&}]{uc\+Code }\end{DoxyParamCaption})}
+
+
+
+Returns a UC given a UC code. 
+
+Time complexity\+: O(log(n)) 
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & UC code of the UC to be returned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+UC with code == uc\+Code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_data_a6b426a4a5736e1b447dc5f4df9b47a49}\label{class_data_a6b426a4a5736e1b447dc5f4df9b47a49}} 
+\index{Data@{Data}!readClassesFile@{readClassesFile}}
+\index{readClassesFile@{readClassesFile}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{readClassesFile()}{readClassesFile()}}
+{\footnotesize\ttfamily void Data\+::read\+Classes\+File (\begin{DoxyParamCaption}\item[{ifstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Reads the classes.\+csv file. the class\+Schedules inside their corresponding class and uc are set to the read values. 
+
+Time complexity\+: O(n ( 2m + log(k) + log(v) ) where n is the number of lines in the file, m is the length of the line, k is the number of UCs, and v is the number of classes of a given UC 
+\begin{DoxyParams}{Parameters}
+{\em file} & classes.\+csv file as ifstream \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_a728261d109d627482d80cfdb6fade54f}\label{class_data_a728261d109d627482d80cfdb6fade54f}} 
+\index{Data@{Data}!readClassesPerUcFile@{readClassesPerUcFile}}
+\index{readClassesPerUcFile@{readClassesPerUcFile}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{readClassesPerUcFile()}{readClassesPerUcFile()}}
+{\footnotesize\ttfamily void Data\+::read\+Classes\+Per\+Uc\+File (\begin{DoxyParamCaption}\item[{ifstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Reads the classes\+\_\+per\+\_\+uc.\+csv file. ucs is set to the read values. 
+
+Time complexity\+: O(n ( log(m) + log(k) ) where n is the number of lines in the file, m is the number of UCs, and k is the number of classes of a given UC 
+\begin{DoxyParams}{Parameters}
+{\em file} & classes\+\_\+per\+\_\+uc.\+csv file as ifstream \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_a078d66476ac6ae25ee59e6c05411cc27}\label{class_data_a078d66476ac6ae25ee59e6c05411cc27}} 
+\index{Data@{Data}!readStudentsClassesFile@{readStudentsClassesFile}}
+\index{readStudentsClassesFile@{readStudentsClassesFile}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{readStudentsClassesFile()}{readStudentsClassesFile()}}
+{\footnotesize\ttfamily void Data\+::read\+Students\+Classes\+File (\begin{DoxyParamCaption}\item[{ifstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Reads the students\+\_\+classes.\+csv file. the students is set to the read values. 
+
+Time complexity\+: O(n ( 3m + r + log(k) + log(v) + log(s) + 2log(u) + log(p) ) where n is the number of lines in the file, m is the length of the line, r is ts the length of the name, k is the number of UCs, v is the number of classes of a given UC, s is the number of students in a given class, u is the total number of students, and p is the number of UCs of a given student 
+\begin{DoxyParams}{Parameters}
+{\em file} & classes.\+csv file as ifstream \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_a6e34aefc8f65bae28f606e680b1307af}\label{class_data_a6e34aefc8f65bae28f606e680b1307af}} 
+\index{Data@{Data}!writeClassesFile@{writeClassesFile}}
+\index{writeClassesFile@{writeClassesFile}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{writeClassesFile()}{writeClassesFile()}}
+{\footnotesize\ttfamily void Data\+::write\+Classes\+File (\begin{DoxyParamCaption}\item[{ofstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Updates the classes.\+csv file. 
+
+Time complexity\+: O(n $\ast$ m $\ast$ k) where n is the number of UCs, m is the number of classes of a given UC, and k is the number of classes of a given class 
+\begin{DoxyParams}{Parameters}
+{\em file} & classes.\+csv file as ofstream \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_a13b1e8b719d4f89178bd651bdc796f54}\label{class_data_a13b1e8b719d4f89178bd651bdc796f54}} 
+\index{Data@{Data}!writeClassesPerUcFile@{writeClassesPerUcFile}}
+\index{writeClassesPerUcFile@{writeClassesPerUcFile}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{writeClassesPerUcFile()}{writeClassesPerUcFile()}}
+{\footnotesize\ttfamily void Data\+::write\+Classes\+Per\+Uc\+File (\begin{DoxyParamCaption}\item[{ofstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Updates the classes\+\_\+per\+\_\+uc.\+csv file. 
+
+Time complexity\+: O(n $\ast$ m) where n is the number of UCs, and m is the number of classes of a given UC 
+\begin{DoxyParams}{Parameters}
+{\em file} & classes\+\_\+per\+\_\+uc.\+csv file as ofstream \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_a4a4473628691df3943e1fff0b46d5eff}\label{class_data_a4a4473628691df3943e1fff0b46d5eff}} 
+\index{Data@{Data}!writeStudentsClassesFile@{writeStudentsClassesFile}}
+\index{writeStudentsClassesFile@{writeStudentsClassesFile}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{writeStudentsClassesFile()}{writeStudentsClassesFile()}}
+{\footnotesize\ttfamily void Data\+::write\+Students\+Classes\+File (\begin{DoxyParamCaption}\item[{ofstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Updates the students\+\_\+classes.\+csv file. 
+
+Time complexity\+: O(n $\ast$ m) where n is the number of students, and m is the number of UCs of a given student 
+\begin{DoxyParams}{Parameters}
+{\em file} & students\+\_\+classes.\+csv file as ofstream \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Data.\+h\item 
+Data.\+cpp\end{DoxyCompactItemize}

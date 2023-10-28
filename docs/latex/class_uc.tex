@@ -1,0 +1,134 @@
+\hypertarget{class_uc}{}\doxysection{Uc Class Reference}
+\label{class_uc}\index{Uc@{Uc}}
+
+
+\mbox{\hyperlink{class_class}{Class}} that represents a UC. It saves all corresponding classes of a given UC.  
+
+
+
+
+{\ttfamily \#include $<$Uc.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_uc_a80ef0956e158a516d36be2a27e0d1281}{Uc}} ()
+\begin{DoxyCompactList}\small\item\em Standard constructor of the class \mbox{\hyperlink{class_uc}{Uc}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_uc_a88c7486b7bf43f34a643b05f7832a1d8}{Uc}} (const string \&uc\+Code)
+\begin{DoxyCompactList}\small\item\em Constructor of the class \mbox{\hyperlink{class_uc}{Uc}}. uc\+Code is set to the given value. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_uc_a2b9fa6366a08ddf30f0d03342e89a01a}{get\+Uc\+Code}} () const
+\begin{DoxyCompactList}\small\item\em Returns the uc\+Code of the UC. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_uc_a45992776875a61d4cbf99ac6d2184e16}{add\+Class}} (const \mbox{\hyperlink{class_class}{Class}} \&new\+Class)
+\begin{DoxyCompactList}\small\item\em Adds a new class to the classes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_class}{Class}} \& \mbox{\hyperlink{class_uc_ae9f6f99f663b78fc0803bffca03ccd88}{get\+Class}} (const string \&class\+Code)
+\begin{DoxyCompactList}\small\item\em Returns a class given a class code. \end{DoxyCompactList}\item 
+const map$<$ string, \mbox{\hyperlink{class_class}{Class}} $>$ \& \mbox{\hyperlink{class_uc_a73aea08ba8b537316bd65988663edf69}{get\+All\+Classes}} () const
+\begin{DoxyCompactList}\small\item\em Returns all the classes of UC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_uc_a40ba15cd82f592f21964d2719a3f8ef0}\label{class_uc_a40ba15cd82f592f21964d2719a3f8ef0}} 
+string {\bfseries uc\+Code}
+\item 
+\mbox{\Hypertarget{class_uc_a974337737cd9d00ff18f6cfa3e2104f4}\label{class_uc_a974337737cd9d00ff18f6cfa3e2104f4}} 
+map$<$ string, \mbox{\hyperlink{class_class}{Class}} $>$ {\bfseries classes}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_class}{Class}} that represents a UC. It saves all corresponding classes of a given UC. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_uc_a80ef0956e158a516d36be2a27e0d1281}\label{class_uc_a80ef0956e158a516d36be2a27e0d1281}} 
+\index{Uc@{Uc}!Uc@{Uc}}
+\index{Uc@{Uc}!Uc@{Uc}}
+\doxysubsubsection{\texorpdfstring{Uc()}{Uc()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Uc\+::\+Uc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Standard constructor of the class \mbox{\hyperlink{class_uc}{Uc}}. 
+
+Time complexity\+: O(1) \mbox{\Hypertarget{class_uc_a88c7486b7bf43f34a643b05f7832a1d8}\label{class_uc_a88c7486b7bf43f34a643b05f7832a1d8}} 
+\index{Uc@{Uc}!Uc@{Uc}}
+\index{Uc@{Uc}!Uc@{Uc}}
+\doxysubsubsection{\texorpdfstring{Uc()}{Uc()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Uc\+::\+Uc (\begin{DoxyParamCaption}\item[{const string \&}]{uc\+Code }\end{DoxyParamCaption})}
+
+
+
+Constructor of the class \mbox{\hyperlink{class_uc}{Uc}}. uc\+Code is set to the given value. 
+
+Time complexity\+: O(1) 
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & code of the UC \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_uc_a45992776875a61d4cbf99ac6d2184e16}\label{class_uc_a45992776875a61d4cbf99ac6d2184e16}} 
+\index{Uc@{Uc}!addClass@{addClass}}
+\index{addClass@{addClass}!Uc@{Uc}}
+\doxysubsubsection{\texorpdfstring{addClass()}{addClass()}}
+{\footnotesize\ttfamily void Uc\+::add\+Class (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_class}{Class}} \&}]{new\+Class }\end{DoxyParamCaption})}
+
+
+
+Adds a new class to the classes. 
+
+Time complexity\+: O(log(n)) 
+\begin{DoxyParams}{Parameters}
+{\em new\+Class} & new class of the UC \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_uc_a73aea08ba8b537316bd65988663edf69}\label{class_uc_a73aea08ba8b537316bd65988663edf69}} 
+\index{Uc@{Uc}!getAllClasses@{getAllClasses}}
+\index{getAllClasses@{getAllClasses}!Uc@{Uc}}
+\doxysubsubsection{\texorpdfstring{getAllClasses()}{getAllClasses()}}
+{\footnotesize\ttfamily const map$<$ string, \mbox{\hyperlink{class_class}{Class}} $>$ \& Uc\+::get\+All\+Classes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns all the classes of UC. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+all the classes of the UC 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_uc_ae9f6f99f663b78fc0803bffca03ccd88}\label{class_uc_ae9f6f99f663b78fc0803bffca03ccd88}} 
+\index{Uc@{Uc}!getClass@{getClass}}
+\index{getClass@{getClass}!Uc@{Uc}}
+\doxysubsubsection{\texorpdfstring{getClass()}{getClass()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_class}{Class}} \& Uc\+::get\+Class (\begin{DoxyParamCaption}\item[{const string \&}]{class\+Code }\end{DoxyParamCaption})}
+
+
+
+Returns a class given a class code. 
+
+Time complexity\+: O(log(n)) 
+\begin{DoxyParams}{Parameters}
+{\em class\+Code} & class code of the class to be returned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+class with code == class\+Code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_uc_a2b9fa6366a08ddf30f0d03342e89a01a}\label{class_uc_a2b9fa6366a08ddf30f0d03342e89a01a}} 
+\index{Uc@{Uc}!getUcCode@{getUcCode}}
+\index{getUcCode@{getUcCode}!Uc@{Uc}}
+\doxysubsubsection{\texorpdfstring{getUcCode()}{getUcCode()}}
+{\footnotesize\ttfamily string Uc\+::get\+Uc\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the uc\+Code of the UC. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+uc\+Code code of the UC 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Uc.\+h\item 
+Uc.\+cpp\end{DoxyCompactItemize}

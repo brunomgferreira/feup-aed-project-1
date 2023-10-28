@@ -1,0 +1,3 @@
+/home/bruno/Documents/AED/projeto/build/CMakeFiles/projeto.dir
+/home/bruno/Documents/AED/projeto/build/CMakeFiles/edit_cache.dir
+/home/bruno/Documents/AED/projeto/build/CMakeFiles/rebuild_cache.dir

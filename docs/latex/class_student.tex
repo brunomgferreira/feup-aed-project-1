@@ -1,0 +1,151 @@
+\hypertarget{class_student}{}\doxysection{Student Class Reference}
+\label{class_student}\index{Student@{Student}}
+
+
+\mbox{\hyperlink{class_class}{Class}} that represents a student.  
+
+
+
+
+{\ttfamily \#include $<$Student.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}{Student}} ()
+\begin{DoxyCompactList}\small\item\em Standard constructor of the class \mbox{\hyperlink{class_student}{Student}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_student_a39e07abd63fdec1a29f3281afafcfa67}{Student}} (int student\+Code, const string \&student\+Name)
+\begin{DoxyCompactList}\small\item\em Constructor of the class \mbox{\hyperlink{class_student}{Student}}. student\+Code and student\+Name are set to the given values. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_student_aed820901f4c0ccba519b5cf4e0007cfc}{get\+Student\+Code}} () const
+\begin{DoxyCompactList}\small\item\em Returns the student\+Code of the student. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_student_af2fdac1ce7d10b271cf7103f675d9c17}{get\+Student\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Returns the student\+Name of the student. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_student_aef488a47e45e45b7f1a74bf5d939b297}{add\+Class}} (const \mbox{\hyperlink{class_class}{Class}} \&new\+Class)
+\begin{DoxyCompactList}\small\item\em Adds a new class to the classes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_student_abb28dace7901da4944f78dc1ff4b4647}{remove\+Class}} (const string \&class\+Code)
+\begin{DoxyCompactList}\small\item\em Removes a class from the classes in student. \end{DoxyCompactList}\item 
+map$<$ string, \mbox{\hyperlink{class_class}{Class}} $>$ \mbox{\hyperlink{class_student_a9fd4681ca9127fad8b59e61109b0a319}{get\+All\+Classes}} () const
+\begin{DoxyCompactList}\small\item\em Returns all the classes of student. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_student_ac29320b3c75bf04e2c1acaad1a3da7cb}\label{class_student_ac29320b3c75bf04e2c1acaad1a3da7cb}} 
+int {\bfseries student\+Code}
+\item 
+\mbox{\Hypertarget{class_student_a3bf330f221e8cdfb5f1d9273c92119e1}\label{class_student_a3bf330f221e8cdfb5f1d9273c92119e1}} 
+string {\bfseries student\+Name}
+\item 
+\mbox{\Hypertarget{class_student_a0ac6a4286c3cfa5a38c88fec260b7aa4}\label{class_student_a0ac6a4286c3cfa5a38c88fec260b7aa4}} 
+map$<$ string, \mbox{\hyperlink{class_class}{Class}} $>$ {\bfseries classes}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_class}{Class}} that represents a student. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}\label{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}} 
+\index{Student@{Student}!Student@{Student}}
+\index{Student@{Student}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{Student()}{Student()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Student\+::\+Student (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Standard constructor of the class \mbox{\hyperlink{class_student}{Student}}. 
+
+Time complexity\+: O(1) \mbox{\Hypertarget{class_student_a39e07abd63fdec1a29f3281afafcfa67}\label{class_student_a39e07abd63fdec1a29f3281afafcfa67}} 
+\index{Student@{Student}!Student@{Student}}
+\index{Student@{Student}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{Student()}{Student()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Student\+::\+Student (\begin{DoxyParamCaption}\item[{int}]{student\+Code,  }\item[{const string \&}]{student\+Name }\end{DoxyParamCaption})}
+
+
+
+Constructor of the class \mbox{\hyperlink{class_student}{Student}}. student\+Code and student\+Name are set to the given values. 
+
+Time complexity\+: O(1) 
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & code of the student \\
+\hline
+{\em student\+Name} & name of the student \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_student_aef488a47e45e45b7f1a74bf5d939b297}\label{class_student_aef488a47e45e45b7f1a74bf5d939b297}} 
+\index{Student@{Student}!addClass@{addClass}}
+\index{addClass@{addClass}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{addClass()}{addClass()}}
+{\footnotesize\ttfamily void Student\+::add\+Class (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_class}{Class}} \&}]{new\+Class }\end{DoxyParamCaption})}
+
+
+
+Adds a new class to the classes. 
+
+Time complexity\+: O(log(n)) 
+\begin{DoxyParams}{Parameters}
+{\em new\+Class} & new class of the student \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_student_a9fd4681ca9127fad8b59e61109b0a319}\label{class_student_a9fd4681ca9127fad8b59e61109b0a319}} 
+\index{Student@{Student}!getAllClasses@{getAllClasses}}
+\index{getAllClasses@{getAllClasses}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{getAllClasses()}{getAllClasses()}}
+{\footnotesize\ttfamily map$<$ string, \mbox{\hyperlink{class_class}{Class}} $>$ Student\+::get\+All\+Classes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns all the classes of student. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+classes all the classes of the student 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_student_aed820901f4c0ccba519b5cf4e0007cfc}\label{class_student_aed820901f4c0ccba519b5cf4e0007cfc}} 
+\index{Student@{Student}!getStudentCode@{getStudentCode}}
+\index{getStudentCode@{getStudentCode}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{getStudentCode()}{getStudentCode()}}
+{\footnotesize\ttfamily int Student\+::get\+Student\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the student\+Code of the student. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+student\+Code code of the student 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_student_af2fdac1ce7d10b271cf7103f675d9c17}\label{class_student_af2fdac1ce7d10b271cf7103f675d9c17}} 
+\index{Student@{Student}!getStudentName@{getStudentName}}
+\index{getStudentName@{getStudentName}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{getStudentName()}{getStudentName()}}
+{\footnotesize\ttfamily string Student\+::get\+Student\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the student\+Name of the student. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+student\+Name name of the student 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_student_abb28dace7901da4944f78dc1ff4b4647}\label{class_student_abb28dace7901da4944f78dc1ff4b4647}} 
+\index{Student@{Student}!removeClass@{removeClass}}
+\index{removeClass@{removeClass}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{removeClass()}{removeClass()}}
+{\footnotesize\ttfamily void Student\+::remove\+Class (\begin{DoxyParamCaption}\item[{const string \&}]{class\+Code }\end{DoxyParamCaption})}
+
+
+
+Removes a class from the classes in student. 
+
+Time complexity\+: TODO 
+\begin{DoxyParams}{Parameters}
+{\em class\+Code} & class code of the class to be removed \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Student.\+h\item 
+Student.\+cpp\end{DoxyCompactItemize}

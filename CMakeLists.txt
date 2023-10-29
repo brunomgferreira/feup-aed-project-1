@@ -10,6 +10,8 @@ set(SOURCES
     TimeInterval.cpp
     Uc.cpp
     Class.cpp
-    Data.cpp)
+    Data.cpp
+    App.cpp
+    UserInterface.cpp)
 
 add_executable(projeto ${SOURCES})

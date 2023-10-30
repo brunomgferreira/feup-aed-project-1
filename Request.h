@@ -5,6 +5,8 @@
 
 #include <string>
 
+using namespace std;
+
 struct Request {
    private:
     std::string type;
@@ -13,8 +15,8 @@ struct Request {
     int studentCode;
 
    public:
-    Request(int studentCode, std::string type, std::string originCode,
-            std::string destinyCode);
+    Request(int studentCode, const string& type, const string& originCode,
+            const string& destinyCode);
 };
 
 #endif

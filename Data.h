@@ -23,7 +23,7 @@ class Data {
    private:
     map<string, Uc> ucs;
     map<int, Student> students;
-    queue<Request> pedentRequests;
+    queue<Request> pendentRequests;
     forward_list<Request> requestHistory;
 
    public:
@@ -33,17 +33,19 @@ class Data {
     // ucs related methods
     map<string, Uc> getAllUcs() const;
     Uc &getUc(const string &ucCode);
+    bool classExists(const string &classCode);
 
     // students related methods
     map<int, Student> getAllStudents() const;
     Student &getStudent(int studentCode);
+    bool studentExists(int studentCode);
 
     // requests related methods
-    void createRequest(int studentCode, std::string type,
-                       std::string originCode, std::string destinyCode);
+    void createRequest(int studentCode, const string &type,
+                       const string &originCode, const string &destinyCode);
     void processRequests();
 
-    bool verifyRequest(Request request);
+    bool verifyRequest(const Request &request);
 
     queue<Request> &getPendentRequests();
     forward_list<Request> &getRequestHistory();

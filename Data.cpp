@@ -1,5 +1,11 @@
 #include "Data.h"
 
+#include <fstream>
+#include <stdexcept>
+
+#include "Request.h"
+#include "Student.h"
+
 using namespace std;
 
 /**
@@ -71,6 +77,125 @@ Student &Data::getStudent(int studentCode) {
 
 bool Data::studentExists(int studentCode) {
     return (this->students.find(studentCode) != this->students.end());
+}
+
+/*
+ *@brief Adds a new request of type Add to the pendent requests list
+ *@details Time complexity: O(1)
+ *@param studentCode The first parameter: Code of the student whose schedule
+ *changes
+ *@param destinyClassCode The second parameter: The code of the class the
+ *student wants to join
+ */
+
+void Data::createAddRequest(int studentCode, const string &ucCode,
+                            const string &destinyclassCode) {
+    Request newRequest(studentCode, 'A', ucCode, "", destinyclassCode);
+    this->pendentRequests.push(newRequest);
+}
+/*
+ *@brief Adds a new request of type Switch to the pendent requests list
+ *@details Time complexity: O(1)
+ *@param studentCode The first parameter: Code of the student whose schedule
+ *changes
+ *@param originClassCode The second parameter: The code of the class the student
+ *wants to leave
+ *@param destinyClassCode The third parameter: The code of the class the student
+ *wants to join
+ */
+
+void Data::createSwitchRequest(int studentCode, const string &ucCode,
+                               const string &originClassCode,
+                               const string &destinyClassCode) {
+    Request newRequest(studentCode, 'S', ucCode, originClassCode,
+                       destinyClassCode);
+    this->pendentRequests.push(newRequest);
+}
+
+/*
+ *@brief Adds a new request of type Add to the pendent requests list
+ *@details Time complexity: O(1)
+ *@param studentCode The first parameter: Code of the student whose schedule
+ *changes
+ *@param originClassCode The second parameter: The code of the class the student
+ *wants to leave
+ */
+
+void Data::createRemoveRequest(int studentCode, const string &ucCode) {
+    string originClassCode = students.at(studentCode).getUcClassCode(ucCode);
+    Request newRequest(studentCode, 'R', ucCode, originClassCode, "");
+    this->pendentRequests.push(newRequest);
+}
+
+void Data::processRequests() {
+    while (!this->pendentRequests.empty()) {
+        Request &request = this->pendentRequests.front();
+        if (validRequest(request)) {
+            applyRequest(request);
+        }
+        this->pendentRequests.pop();
+    }
+}
+
+bool Data::validRequest(const Request &request) const {
+    const Student &student = students.at(request.studentCode);
+    const Uc &uc = ucs.at(request.ucCode);
+
+    if (!uc.balancedClasses(request.originClassCode,
+                            request.destinyClassCode)) {
+        return false;
+    }
+    if (request.type != 'R') {
+        Class &destinyClass = uc.getClass(request.destinyClassCode);
+        if ((student.numberOfUcs() >= 7 && request.type == 'A') ||
+            !destinyClass.hasVacancies() || !student.hasUc(request.ucCode)) {
+            return false;
+        };
+        return student.verifyClass(request.originClassCode,
+                                   request.destinyClassCode);
+    }
+    return true;
+}
+
+// Não pode ser referencia porque depois ele é apagado???
+void Data::applyRequest(Request request) {
+    requestHistory.push_front(request);
+    Student &student = students.at(request.studentCode);
+    if (request.type != 'A') {
+        student.removeClass(request.originClassCode);
+    }
+    if (request.type != 'R') {
+        const Class &newClass =
+            ucs.at(request.ucCode).getClass(request.destinyClassCode);
+        student.addClass(newClass);
+    }
+}
+
+void Data::readRequestHistoryFile(ifstream &file) {
+    string line;
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string originClassCode, destinyClassCode, ucCode;
+        int studentCode;
+        char type;
+        ss >> studentCode >> type >> originClassCode >> destinyClassCode >>
+            ucCode;
+        Request request(studentCode, type, ucCode, originClassCode,
+                        destinyClassCode);
+        requestHistory.push_front(request);
+    }
+}
+
+void Data::writeClassesFile(ofstream &file) {
+    while (!requestHistory.empty()) {
+        const Request &request = requestHistory.front();
+        file << request.studentCode << " ";
+        file << request.type << " ";
+        file << request.ucCode << " ";
+        file << request.originClassCode << " ";
+        file << request.destinyClassCode << "\n";
+        requestHistory.pop_front();
+    }
 }
 
 /**

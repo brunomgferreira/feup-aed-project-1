@@ -2,9 +2,10 @@
 
 #include "Request.h"
 
-Request::Request(int studentCode, const string& type, const string& originCode,
-                 const string& destinyCode)
+Request::Request(int studentCode, char type, const string& ucCode,
+                 const string& originClassCode, const string& destinyClassCode)
     : studentCode(studentCode),
       type(type),
-      originClassCode(originCode),
-      destinyClassCode(destinyCode) {}
+      ucCode(ucCode),
+      originClassCode(originClassCode),
+      destinyClassCode(destinyClassCode) {}

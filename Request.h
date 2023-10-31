@@ -8,15 +8,15 @@
 using namespace std;
 
 struct Request {
-   private:
-    std::string type;
-    std::string originClassCode;
-    std::string destinyClassCode;
-    int studentCode;
+    char type;
+    string originClassCode;
+    string destinyClassCode;
+    string ucCode;
+    intstring studentCode;
 
    public:
-    Request(int studentCode, const string& type, const string& originCode,
-            const string& destinyCode);
+    Request(int studentCode, char type, const string& ucCode,
+            const string& originClassCode, const string& destinyClassCode);
 };
 
 #endif

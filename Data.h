@@ -33,6 +33,9 @@ class Data {
     // ucs related methods
     map<string, Uc> getAllUcs() const;
     Uc &getUc(const string &ucCode);
+    bool ucExists(const string &ucCode);
+
+    // Class related methods
     bool classExists(const string &classCode);
 
     // students related methods
@@ -41,11 +44,16 @@ class Data {
     bool studentExists(int studentCode);
 
     // requests related methods
-    void createRequest(int studentCode, const string &type,
-                       const string &originCode, const string &destinyCode);
+    void createAddRequest(int studentCode, const string &ucCode,
+                          const string &classCode);
+    void createSwitchRequest(int studentCode, const string &ucCode,
+                             const string &originClassCode,
+                             const string &destinyClassCode);
+    void createRemoveRequest(int studentCode, const string &ucCode);
     void processRequests();
 
-    bool verifyRequest(const Request &request);
+    bool validRequest(const Request &request) const;
+    void applyRequest(Request request);
 
     queue<Request> &getPendentRequests();
     forward_list<Request> &getRequestHistory();

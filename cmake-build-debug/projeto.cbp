@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="projeto"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="projeto">
+				<Option output="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/projeto" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 projeto"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="projeto/fast">
+				<Option output="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/projeto" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 projeto/fast"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/App.cpp">
+			<Option target="projeto"/>
+		</Unit>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/App.h">
+			<Option target="projeto"/>
+		</Unit>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/Class.cpp">
+			<Option target="projeto"/>
+		</Unit>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/Class.h">
+			<Option target="projeto"/>
+		</Unit>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/ClassSchedule.cpp">
+			<Option target="projeto"/>
+		</Unit>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/ClassSchedule.h">
+			<Option target="projeto"/>
+		</Unit>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/Data.cpp">
+			<Option target="projeto"/>
+		</Unit>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/Data.h">
+			<Option target="projeto"/>
+		</Unit>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/Student.cpp">
+			<Option target="projeto"/>
+		</Unit>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/Student.h">
+			<Option target="projeto"/>
+		</Unit>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/TimeInterval.cpp">
+			<Option target="projeto"/>
+		</Unit>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/TimeInterval.h">
+			<Option target="projeto"/>
+		</Unit>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/Uc.cpp">
+			<Option target="projeto"/>
+		</Unit>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/Uc.h">
+			<Option target="projeto"/>
+		</Unit>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/UserInterface.cpp">
+			<Option target="projeto"/>
+		</Unit>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/UserInterface.h">
+			<Option target="projeto"/>
+		</Unit>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/main.cpp">
+			<Option target="projeto"/>
+		</Unit>
+		<Unit filename="/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -9,13 +9,13 @@ using namespace std;
 
 int main()
 {
-    ifstream inputFile1("/home/bruno/Documents/AED/projeto/schedule/classes_per_uc.csv");
-    ifstream inputFile2("/home/bruno/Documents/AED/projeto/schedule/classes.csv");
-    ifstream inputFile3("/home/bruno/Documents/AED/projeto/schedule/students_classes.csv");
+    ifstream inputFile1("~/Desktop/AED/Projeto/feup-aed-project-1/schedule/classes_per_uc.csv");
+    ifstream inputFile2("~/Desktop/AED/Projeto/feup-aed-project-1/schedule/classes.csv");
+    ifstream inputFile3("~/Desktop/AED/Projeto/feup-aed-project-1schedule/students_classes.csv");
 
-    ofstream outputFile1("/home/bruno/Documents/AED/projeto/classes_per_uc.csv");
-    ofstream outputFile2("/home/bruno/Documents/AED/projeto/classes.csv");
-    ofstream outputFile3("/home/bruno/Documents/AED/projeto/students_classes.csv");
+    ofstream outputFile1("~/Desktop/AED/Projeto/feup-aed-project-1/classes_per_uc.csv");
+    ofstream outputFile2("~/Desktop/AED/Projeto/feup-aed-project-1/classes.csv");
+    ofstream outputFile3("~/Desktop/AED/Projeto/feup-aed-project-1/students_classes.csv");
 
     Data data;
 

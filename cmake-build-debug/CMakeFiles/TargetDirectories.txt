@@ -1,0 +1,3 @@
+/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/CMakeFiles/projeto.dir
+/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

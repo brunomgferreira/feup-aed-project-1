@@ -9,14 +9,14 @@ using namespace std;
 Student::Student() = default;
 
 /**
- * @brief Constructor of the class Student. studentCode and studentName are set to the given values.
+ * @brief Constructor of the class Student. studentCode and studentName are set
+ * to the given values.
  * @details Time complexity: O(1)
  * @param studentCode code of the student
  * @param studentName name of the student
  */
 
-Student::Student(int studentCode, const string &studentName)
-{
+Student::Student(int studentCode, const string& studentName) {
     this->studentCode = studentCode;
     this->studentName = studentName;
 }
@@ -27,10 +27,7 @@ Student::Student(int studentCode, const string &studentName)
  * @return studentCode code of the student
  */
 
-int Student::getStudentCode() const
-{
-    return this->studentCode;
-}
+int Student::getStudentCode() const { return this->studentCode; }
 
 /**
  * @brief Returns the studentName of the student.
@@ -38,10 +35,7 @@ int Student::getStudentCode() const
  * @return studentName name of the student
  */
 
-string Student::getStudentName() const
-{
-    return this->studentName;
-}
+string Student::getStudentName() const { return this->studentName; }
 
 /**
  * @brief Adds a new class to the classes
@@ -49,12 +43,12 @@ string Student::getStudentName() const
  * @param newClass new class of the student
  */
 
-void Student::addClass(const Class &newClass)
-{
+void Student::addClass(const Class& newClass) {
     this->classes[newClass.getUcCode()] = newClass;
 }
 
-// VAI SER PARA MUDAR ?????? -> É MELHOR FAZER A TROCA ENTRE DUAS CLASSES NUM MESMA UC (+ rapido)
+// VAI SER PARA MUDAR ?????? -> É MELHOR FAZER A TROCA ENTRE DUAS CLASSES NUM
+// MESMA UC (+ rapido)
 
 /**
  * @brief Removes a class from the classes in student
@@ -62,8 +56,7 @@ void Student::addClass(const Class &newClass)
  * @param classCode class code of the class to be removed
  */
 
-void Student::removeClass(const string &classCode)
-{
+void Student::removeClass(const string& classCode) {
     // TODO
 }
 
@@ -73,7 +66,49 @@ void Student::removeClass(const string &classCode)
  * @return classes all the classes of the student
  */
 
-map<string, Class> Student::getAllClasses() const
-{
-    return this->classes;
+map<string, Class> Student::getAllClasses() const { return this->classes; }
+
+bool Student::verifyClass(const string& originClassCode,
+                          const string& destinyClassCode) const {
+    const Class& destinyClass = classes.at(destinyClassCode);
+    for (const auto& [classCode, c] : classes) {
+        if (classCode != originClassCode && destinyClass.invalidOverlaps(c)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+string Student::getUcClassCode(const string& ucCode) const {
+    for (const auto& [classCode, c] : classes) {
+        if (c.getUcCode() == ucCode) {
+            return classCode;
+        }
+    }
+
+    // Maybe throw error because the program is not supposed to get here???
+    return "";
+}
+
+/*
+ *@brief Return the number of Ucs the student is in.
+ *@details Time complexity: O(1)
+ *@return the number of Ucs a student is in.
+ */
+
+int Student::numberOfUcs() const { return classes.size(); }
+
+/*
+ *@brief Checks if a students is enrolled in a UC
+ *@details Time complexity: O(n)
+ *@param ucCode Code of the UC to check
+ *@return True if the student enrolles in that UC, otherwise False
+ */
+bool Student::hasUc(const string& ucCode) const {
+    for (const auto [classCode, c] : classes) {
+        if (c.getUcCode() == ucCode) {
+            return true;
+        }
+    }
+    return false;
 }

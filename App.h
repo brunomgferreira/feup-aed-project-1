@@ -5,10 +5,10 @@
 #include "UserInterface.h"
 
 class App {
-private:
+   private:
     Data data;
 
-public:
+   public:
     App();
     void run();
     void mainMenu(); // prints menu and waits for user input and handles it.
@@ -36,5 +36,4 @@ public:
 
 };
 
-
-#endif //PROJETO_APP_H
+#endif  // PROJETO_APP_H

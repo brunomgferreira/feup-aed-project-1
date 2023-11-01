@@ -139,7 +139,7 @@ void Data::processRequests() {
 
 bool Data::validRequest(const Request &request) const {
     const Student &student = students.at(request.studentCode);
-    const Uc &uc = ucs.at(request.ucCode);
+    Uc uc = ucs.at(request.ucCode);
 
     if (!uc.balancedClasses(request.originClassCode,
                             request.destinyClassCode)) {
@@ -173,8 +173,12 @@ void Data::applyRequest(Request request) {
 
 void Data::readRequestHistoryFile(ifstream &file) {
     string line;
+    getline(file, line);
+
     while (getline(file, line)) {
+        replace(line.begin(), line.end(), ',', ' ');
         stringstream ss(line);
+
         string originClassCode, destinyClassCode, ucCode;
         int studentCode;
         char type;
@@ -186,13 +190,15 @@ void Data::readRequestHistoryFile(ifstream &file) {
     }
 }
 
-void Data::writeClassesFile(ofstream &file) {
+void Data::writeRequestHistoryFile(ofstream &file) {
+    file << "StudentCode,Type,UcCode,OriginClassCode,DestinyClassCode"
+         << "\n";
     while (!requestHistory.empty()) {
         const Request &request = requestHistory.front();
-        file << request.studentCode << " ";
-        file << request.type << " ";
-        file << request.ucCode << " ";
-        file << request.originClassCode << " ";
+        file << request.studentCode << ",";
+        file << request.type << ",";
+        file << request.ucCode << ",";
+        file << request.originClassCode << ",";
         file << request.destinyClassCode << "\n";
         requestHistory.pop_front();
     }

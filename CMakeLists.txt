@@ -12,6 +12,8 @@ set(SOURCES
     Class.cpp
     Data.cpp
     App.cpp
-    UserInterface.cpp)
+    UserInterface.cpp
+    Request.cpp
+        Request.cpp)
 
 add_executable(projeto ${SOURCES})

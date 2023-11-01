@@ -11,12 +11,13 @@ class App {
    public:
     App();
     void run();
+    void close();
     void mainMenu(); // prints menu and waits for user input and handles it.
-    void handleErrors(const string error); // prints error ( calls UserInteface::printError() ) and waits for user input to continue.
-    //etc...
-    void consult();
-    void newResquest();
-    void processRequest();
+    bool tryAgainMenu();
+    void handleErrors(const string& error); // prints error ( calls UserInteface::printError() ) and waits for user input to continue.
+    void consultMenu();
+    void newRequestMenu();
+    void processRequestMenu();
 
     void consultScheduleStudent();
     void consultScheduleClass();

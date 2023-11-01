@@ -18,7 +18,7 @@ class Class {
     string classCode;
     vector<ClassSchedule> classSchedules;
     set<int> students;
-    const static int MAX_STUDENTS;
+    const static int MAX_STUDENTS = 30;
 
    public:
     // Class constructor
@@ -44,7 +44,5 @@ class Class {
 
     bool hasVacancies() const;
 };
-
-const int Class::MAX_STUDENTS = 30;
 
 #endif

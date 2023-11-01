@@ -12,7 +12,7 @@ struct Request {
     string originClassCode;
     string destinyClassCode;
     string ucCode;
-    intstring studentCode;
+    int studentCode;
 
    public:
     Request(int studentCode, char type, const string& ucCode,

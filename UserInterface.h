@@ -10,12 +10,15 @@ class UserInterface
 {
 public:
     static void printMainMenu();
-    static char readInput(const string msg); // Returns the char that corresponds to the selected menu option
+    static char readOption(const string msg); // Returns the char that corresponds to the selected menu option
+    static string readCode(const string msg);
+    static int readNumber(const string msg);
     static void printError(const string error);
-    //etc...
-    static void printConsult();
-    static void printNewRequest();
-    static void printProcessRequest();
+    static void pressEnterToContinue();
+    static void printConsultMenu();
+    static void printTryAgainMenu();
+    static void printNewRequestMenu();
+    static void printProcessRequestMenu();
 
 };
 

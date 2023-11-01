@@ -103,6 +103,12 @@ build CMakeFiles/projeto.dir/UserInterface.cpp.o: CXX_COMPILER__projeto_unscanne
   OBJECT_DIR = CMakeFiles/projeto.dir
   OBJECT_FILE_DIR = CMakeFiles/projeto.dir
 
+build CMakeFiles/projeto.dir/Request.cpp.o: CXX_COMPILER__projeto_unscanned_Debug /home/bruno/Documents/AED/projeto/Request.cpp || cmake_object_order_depends_target_projeto
+  DEP_FILE = CMakeFiles/projeto.dir/Request.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/projeto.dir
+  OBJECT_FILE_DIR = CMakeFiles/projeto.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target projeto
@@ -111,7 +117,7 @@ build CMakeFiles/projeto.dir/UserInterface.cpp.o: CXX_COMPILER__projeto_unscanne
 #############################################
 # Link the executable projeto
 
-build projeto: CXX_EXECUTABLE_LINKER__projeto_Debug CMakeFiles/projeto.dir/main.cpp.o CMakeFiles/projeto.dir/ClassSchedule.cpp.o CMakeFiles/projeto.dir/Student.cpp.o CMakeFiles/projeto.dir/TimeInterval.cpp.o CMakeFiles/projeto.dir/Uc.cpp.o CMakeFiles/projeto.dir/Class.cpp.o CMakeFiles/projeto.dir/Data.cpp.o CMakeFiles/projeto.dir/App.cpp.o CMakeFiles/projeto.dir/UserInterface.cpp.o
+build projeto: CXX_EXECUTABLE_LINKER__projeto_Debug CMakeFiles/projeto.dir/main.cpp.o CMakeFiles/projeto.dir/ClassSchedule.cpp.o CMakeFiles/projeto.dir/Student.cpp.o CMakeFiles/projeto.dir/TimeInterval.cpp.o CMakeFiles/projeto.dir/Uc.cpp.o CMakeFiles/projeto.dir/Class.cpp.o CMakeFiles/projeto.dir/Data.cpp.o CMakeFiles/projeto.dir/App.cpp.o CMakeFiles/projeto.dir/UserInterface.cpp.o CMakeFiles/projeto.dir/Request.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/projeto.dir
   POST_BUILD = :

@@ -1,46 +1,83 @@
 #include "App.h"
-
+#include <iostream>
 
 App::App() {}
 
 void App::run() {
+    ifstream inputFile1("/home/bruno/Documents/AED/projeto/schedule/classes_per_uc.csv");
+    ifstream inputFile2("/home/bruno/Documents/AED/projeto/schedule/classes.csv");
+    ifstream inputFile3("/home/bruno/Documents/AED/projeto/schedule/students_classes.csv");
+    ifstream inputFile4("/home/bruno/Documents/AED/projeto/schedule/request_history.csv");
 
+    this->data.readClassesPerUcFile(inputFile1);
+    this->data.readClassesFile(inputFile2);
+    this->data.readStudentsClassesFile(inputFile3);
+    this->data.readRequestHistoryFile(inputFile4);
+
+    inputFile1.close();
+    inputFile2.close();
+    inputFile3.close();
+    inputFile4.close();
+
+    mainMenu();
 }
 
-void App::handleErrors(const string error) {
+void App::close() {
+    ofstream outputFile1("/home/bruno/Documents/AED/projeto/classes_per_uc.csv");
+    ofstream outputFile2("/home/bruno/Documents/AED/projeto/classes.csv");
+    ofstream outputFile3("/home/bruno/Documents/AED/projeto/students_classes.csv");
+    ofstream outputFile4("/home/bruno/Documents/AED/projeto/schedule/request_history.csv");
+
+    this->data.writeClassesPerUcFile(outputFile1);
+    this->data.writeClassesFile(outputFile2);
+    this->data.writeStudentsClassesFile(outputFile3);
+    this->data.writeRequestHistoryFile(outputFile4);
+
+    outputFile1.close();
+    outputFile2.close();
+    outputFile3.close();
+    outputFile4.close();
+}
+
+void App::handleErrors(const string &error) {
     UserInterface::printError(error);
 }
 
 void App::mainMenu() {
     UserInterface::printMainMenu();
-    bool inputerror;
+    bool shouldExit = false;
+    bool inputError;
     do {
-        inputerror= false;
-        switch (UserInterface::readInput("Select an option: ")) {
+        inputError= false;
+        switch (UserInterface::readOption("Select an option: ")) {
             case '1':
-                consult();
+                consultMenu();
                 break;
             case '2':
-                newResquest();
+                newRequestMenu();
                 break;
             case '3':
-                processRequest();
+                processRequestMenu();
+                break;
+            case 'q':
+                shouldExit = true;
                 break;
             default:
                 handleErrors("Invalid Input");
-                inputerror=true;
+                inputError=true;
                 break;
         }
-    } while (inputerror);
+    } while (inputError || !shouldExit);
 }
 
 
-void App::consult() {
-    UserInterface::printConsult();
-    bool inputerror;
+void App::consultMenu() {
+    UserInterface::printConsultMenu();
+    bool shouldExit = false;
+    bool inputError;
     do { //escape key??
-        inputerror= false;
-        switch (UserInterface::readInput("Select an option: ")) {
+        inputError= false;
+        switch (UserInterface::readOption("Select an option: ")) {
             case '1':
                 consultScheduleStudent();
                 break;
@@ -65,44 +102,91 @@ void App::consult() {
             case '8':
                 consultBiggestUc();
                 break;
-            case '9':
-                mainMenu();
+            case 'q':
+                shouldExit = true;
                 break;
             default:
                 handleErrors("Invalid Input");
-                inputerror=true;
+                inputError=true;
                 break;
         }
-    } while (inputerror);
+    } while (inputError || !shouldExit);
+
+    UserInterface::printMainMenu();
+}
+
+bool App::tryAgainMenu() {
+    bool shouldExit = false;
+    bool inputError;
+    do {
+        inputError= false;
+        UserInterface::printTryAgainMenu();
+        switch (UserInterface::readOption("Select an option: ")) {
+            case '1':
+                break;
+            case 'q':
+                shouldExit = true;
+                break;
+            default:
+                handleErrors("Invalid Input");
+                inputError=true;
+                break;
+        }
+    } while (inputError);
+
+    return shouldExit;
 }
 
 void App::consultScheduleStudent() {
-    char studentCode = UserInterface::readInput("Student Code: ");
-    //data.consultScheduleStudent
+    bool shouldExit = false;
+
+    while(!shouldExit) {
+        try {
+            int studentCode = stoi(UserInterface::readCode("Student Code: "));
+            Student student = data.getStudent(studentCode);
+
+            // TODO FAZER PRINT DO HORARIO
+
+            cout << student.getStudentCode() << student.getStudentName() << endl;
+
+            UserInterface::pressEnterToContinue();
+            UserInterface::printMainMenu();
+            break;
+        }
+        catch (const out_of_range& e) {
+            handleErrors("This student doesn't exist in the database.");
+            shouldExit = tryAgainMenu();
+        }
+        catch (const invalid_argument& e) {
+            handleErrors("Invalid student code. Please ensure the student code consists of numeric digits only.");
+            shouldExit = tryAgainMenu();
+        }
+    }
+    UserInterface::printConsultMenu();
 }
 
 void App::consultScheduleClass() {
-    char classCode = UserInterface::readInput("Class Code: ");
+    string classCode = UserInterface::readCode("Class Code: ");
     //data.consultSheduleClass
 }
 
 void App::consultStudentsClass() {
-    char classCode = UserInterface::readInput("Class Code: ");
+    string classCode = UserInterface::readCode("Class Code: ");
     //data.consultStudentsClass
 }
 
 void App::consultStudentsCourse() {
-    char courseCode = UserInterface::readInput("Course Code: ");
+    string courseCode = UserInterface::readCode("Course Code: ");
     //data.consultStudentsCourse
 }
 
 void App::consultStudentsYear() {
-    char year = UserInterface::readInput("Year: ");
+    int year = UserInterface::readNumber("Year: ");
     //data.consultStudentsYear()
 }
 
 void App::consultNumStudentsUcs() {
-    char nUcs = UserInterface::readInput("Número de Ucs: ");
+    int nUcs = UserInterface::readNumber("Número de Ucs: ");
     //data.consultNumStudentsUcs
 }
 
@@ -114,12 +198,13 @@ void App::consultBiggestUc() {
 }
 
 
-void App::newResquest() {
-    UserInterface::printNewRequest();
-    bool inputerror;
+void App::newRequestMenu() {
+    UserInterface::printNewRequestMenu();
+    bool shouldExit = false;
+    bool inputError;
     do {
-        inputerror= false;
-        switch (UserInterface::readInput("Select an option: ")) {
+        inputError= false;
+        switch (UserInterface::readOption("Select an option: ")) {
             case '1':
                 newRequestAdd();
                 break;
@@ -129,16 +214,17 @@ void App::newResquest() {
             case '3':
                 newRequestSwitch();
                 break;
-            case '4':
-                mainMenu();
+            case 'q':
+                shouldExit=true;
                 break;
             default:
                 handleErrors("Invalid Input");
-                inputerror=true;
+                inputError=true;
                 break;
         }
-    } while (inputerror);
+    } while (inputError || !shouldExit);
 
+    UserInterface::printMainMenu();
 }
 
 void App::newRequestAdd() {
@@ -155,27 +241,30 @@ void App::newRequestSwitch() {
 
 
 
-void App::processRequest() {
-    UserInterface::printProcessRequest();
-    bool inputerror;
+void App::processRequestMenu() {
+    UserInterface::printProcessRequestMenu();
+    bool shouldExit;
+    bool inputError;
     do {
-        inputerror= false;
-        switch (UserInterface::readInput("Select an option: ")) {
+        inputError= false;
+        switch (UserInterface::readOption("Select an option: ")) {
             case '1':
                 processPendingRequests();
                 break;
             case '2':
                 adminMenu();
                 break;
-            case '3':
-                mainMenu();
+            case 'q':
+                shouldExit=true;
                 break;
             default:
                 handleErrors("Invalid Input");
-                inputerror=true;
+                inputError=true;
                 break;
         }
-    } while (inputerror);
+    } while (inputError || !shouldExit);
+
+    UserInterface::printMainMenu();
 }
 
 void App::processPendingRequests() {

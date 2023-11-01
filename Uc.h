@@ -29,7 +29,7 @@ class Uc {
 
     // classes related methods
     void addClass(const Class &newClass);
-    Class &getClass(const string &classCode) const;
+    Class &getClass(const string &classCode);
     const map<string, Class> &getAllClasses() const;
     bool hasClass(const string &classCode) const;
     bool hasVacancies() const;

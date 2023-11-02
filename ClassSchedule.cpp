@@ -56,14 +56,6 @@ double ClassSchedule::getDuration() const {
             this->timeInterval.startMinute / 60.0);
 }
 
-/*
-string TimeInterval::getTimeIntervalAsString() const
-{
-    string res = to_string(this->startHour) + ":" + to_string(this->startMinute)
-+ " " + to_string(this->endHour) + ":" + to_string(this->endMinute); return res;
-}
-*/
-
 /**
  * @brief Returns the type of the class.
  * @details Time complexity: O(1)

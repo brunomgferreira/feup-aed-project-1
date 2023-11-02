@@ -4,11 +4,15 @@
 
 
 
-void UserInterface::printError(const string error) {
+void UserInterface::printError(const string& error) {
     cout << error << endl;
 }
 
-char UserInterface::readOption(const string msg) {
+void UserInterface::printMessage(const string& msg) {
+    cout << msg << endl;
+}
+
+char UserInterface::readOption(const string& msg) {
     char input;
     cout << endl << msg;
     cin >> input;
@@ -18,7 +22,7 @@ char UserInterface::readOption(const string msg) {
     //saltar linha depois cin
 }
 
-string UserInterface::readCode(const string msg) {
+string UserInterface::readCode(const string& msg) {
     string input;
     cout << endl << msg;
     cin >> input;
@@ -26,7 +30,7 @@ string UserInterface::readCode(const string msg) {
     //saltar linha depois cin
 }
 
-int UserInterface::readNumber(const string msg) {
+int UserInterface::readNumber(const string& msg) {
     int input;
     cout << endl << msg;
     cin >> input;
@@ -86,10 +90,10 @@ void UserInterface::printStudentSchedule(const Student& student) {
     for(auto [ucCode, c] : student.getAllClasses()) {
         cout << "[" << ucCode << "-" << c.getClassCode() << "]\t";
         for(const ClassSchedule &classSchedule : c.getAllClassSchedules()) {
-            string cena =  classSchedule.getTimeInterval().getTimeIntervalAsString() + " "
+            string ss =  classSchedule.getTimeInterval().getTimeIntervalAsString() + " "
                             + ucCode + "-" + c.getClassCode() + " (" + classSchedule.getType() + ")";
 
-            schedulesByDay[weekdayToWeekdayNumberMap.at(classSchedule.getWeekday())].insert(cena);
+            schedulesByDay[weekdayToWeekdayNumberMap.at(classSchedule.getWeekday())].insert(ss);
         }
     }
 
@@ -99,12 +103,42 @@ void UserInterface::printStudentSchedule(const Student& student) {
         cout << left << setw(10) << weekdayNumberToWeekdayMap.at(weekdayNumber) << ":\t";
 
         for (const string& schedule : schedules) {
-            cout << left << setw(35) << schedule << ",\t";
+            cout << left << setw(35) << schedule << " \t";
         }
         cout << endl;
     }
     cout << endl;
     cout << string(170, '#') << endl;
+}
+
+void UserInterface::printClassSchedule(const string& classCode, const set<string>& ucs, const map<int,set<string>>& schedulesByDay) {
+    unordered_map<int, string> weekdayNumberToWeekdayMap = {
+            {0, "Monday"},
+            {1, "Tuesday"},
+            {2, "Wednesday"},
+            {3, "Thursday"},
+            {4, "Friday"},
+    };
+
+    cout << endl << string(120, '#') << endl;
+    cout << "Class Code: " << classCode << endl;
+    cout << "UCs: ";
+    for(const string ucCode : ucs) {
+        cout << ucCode << "\t";
+    }
+
+    cout << endl << string(120, '#') << endl;
+    cout << endl;
+    for (auto [weekdayNumber, schedules] : schedulesByDay) {
+        cout << left << setw(10) << weekdayNumberToWeekdayMap.at(weekdayNumber) << ":\t";
+
+        for (const auto& schedule : schedules) {
+            cout << left << setw(30) << schedule << " \t";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    cout << string(120, '#') << endl;
 }
 
 void UserInterface::printTryAgainMenu() {

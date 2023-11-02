@@ -26,7 +26,7 @@ TimeInterval::TimeInterval(double startTime, double duration)
 
 string TimeInterval::getTimeIntervalAsString() const {
     stringstream res;
-    res << "[" << std::setfill('0') << std::setw(2) << startHour << ":" << std::setfill('0') << std::setw(2) << startMinute
-        << "-" << std::setfill('0') << std::setw(2) << endHour << ":" << std::setfill('0') << std::setw(2) << endMinute << "]";
+    res << "[" << setfill('0') << setw(2) << startHour << ":" << setfill('0') << setw(2) << startMinute
+        << "-" << setfill('0') << setw(2) << endHour << ":" << setfill('0') << setw(2) << endMinute << "]";
     return res.str();
 }

@@ -32,21 +32,8 @@ map<string, Uc> Data::getAllUcs() const { return this->ucs; }
 
 Uc &Data::getUc(const string &ucCode) { return this->ucs.at(ucCode); }
 
-/**
- * @brief checks if a class exists
- * @details Time complexity: O(nlog(n))
- * @param classCode Code of the class to check if exists
- * @return true if a class with classCode exists, otherwise false
- */
-
-bool Data::classExists(const string &classCode) {
-    for (const auto &[ucCode, uc] : this->ucs) {  // n
-        auto allClasses = uc.getAllClasses();
-        if (allClasses.find(classCode) != allClasses.end()) {  // log(n)
-            return true;
-        }
-    }
-    return false;
+set<string> Data::getUcsByClassCode(const string& classCode) const {
+    return this->ucsCodesByClassCode.at(classCode);
 }
 
 /**
@@ -204,6 +191,7 @@ void Data::writeRequestHistoryFile(ofstream &file) {
     }
 }
 
+// TODO - TIME COMPLEXITY
 /**
  * @brief Reads the classes_per_uc.csv file. ucs is set to the read values.
  * @details Time complexity: O(n ( log(m) + log(k) ) where n is the number of
@@ -226,7 +214,6 @@ void Data::readClassesPerUcFile(ifstream &file) {
 
         ss >> ucCode >> classCode;
         auto it = this->ucs.find(ucCode);  // log(m)
-
         if (it == this->ucs.end()) {
             Uc newUc(ucCode);
             Class newClass(ucCode, classCode);
@@ -236,6 +223,13 @@ void Data::readClassesPerUcFile(ifstream &file) {
         } else {
             Class newClass(ucCode, classCode);
             this->ucs.at(ucCode).addClass(newClass);  // log(m) + log(k)
+        }
+
+        auto it2 = this->ucsCodesByClassCode.find(classCode); // O(1)
+        if (it2 == this->ucsCodesByClassCode.end()) {
+            ucsCodesByClassCode[classCode] = {ucCode};  // O(1)
+        } else {
+            this->ucsCodesByClassCode.at(classCode).insert(ucCode);  // O(1)
         }
     }
 }

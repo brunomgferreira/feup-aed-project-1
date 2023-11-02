@@ -1,3 +1,5 @@
+#include <sstream>
+#include <iomanip>
 #include "Student.h"
 using namespace std;
 
@@ -111,4 +113,13 @@ bool Student::hasUc(const string& ucCode) const {
         }
     }
     return false;
+}
+
+string Student::getStudentAsString() const {
+    stringstream res;
+    res << studentCode << " - " << left << setw(25) << studentName + " : ";
+    for(const auto& [ucCode, c] : classes) {
+        res << left << setw(20) << "[" + ucCode + "-" + c.getClassCode() + "] ";
+    }
+    return res.str();
 }

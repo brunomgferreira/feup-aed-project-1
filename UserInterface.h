@@ -12,11 +12,13 @@ class UserInterface
 {
 public:
     static void printMainMenu();
-    static char readOption(const string msg); // Returns the char that corresponds to the selected menu option
-    static string readCode(const string msg);
-    static int readNumber(const string msg);
-    static void printError(const string error);
+    static char readOption(const string& msg); // Returns the char that corresponds to the selected menu option
+    static string readCode(const string& msg);
+    static int readNumber(const string& msg);
+    static void printError(const string& error);
+    static void printMessage(const string& msg);
     static void printStudentSchedule(const Student& student);
+    static void printClassSchedule(const string& classCode, const set<string>& ucs, const map<int,set<string>>& schedulesByDay);
     static void pressEnterToContinue();
     static void printConsultMenu();
     static void printTryAgainMenu();

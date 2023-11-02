@@ -22,6 +22,7 @@
 class Data {
    private:
     map<string, Uc> ucs;
+    unordered_map<string, set<string>> ucsCodesByClassCode;
     map<int, Student> students;
     queue<Request> pendentRequests;
     forward_list<Request> requestHistory;
@@ -33,10 +34,8 @@ class Data {
     // ucs related methods
     map<string, Uc> getAllUcs() const;
     Uc &getUc(const string &ucCode);
-    bool ucExists(const string &ucCode);
 
-    // Class related methods
-    bool classExists(const string &classCode);
+    set<string> getUcsByClassCode(const string& classCode) const;
 
     // students related methods
     map<int, Student> getAllStudents() const;

@@ -19,9 +19,11 @@ class App {
     void newRequestMenu();
     void processRequestMenu();
 
-    void consultScheduleStudent();
-    void consultScheduleClass();
-    void consultStudentsClass();
+    void consultStudentSchedule();
+    void consultClassSchedule();
+    void consultClassStudentsGetUcCode();
+    void consultClassStudentsGetClassCode(const Uc& uc);
+    void consultClassStudents(const Class& c);
     void consultStudentsCourse();
     void consultStudentsYear();
     void consultNumStudentsUcs();

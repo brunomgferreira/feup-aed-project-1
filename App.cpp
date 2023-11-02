@@ -79,13 +79,13 @@ void App::consultMenu() {
         inputError= false;
         switch (UserInterface::readOption("Select an option: ")) {
             case '1':
-                consultScheduleStudent();
+                consultStudentSchedule();
                 break;
             case '2':
-                consultScheduleClass();
+                consultClassSchedule();
                 break;
             case '3':
-                consultStudentsClass();
+                consultClassStudentsGetUcCode();
                 break;
             case '4':
                 consultStudentsCourse();
@@ -137,12 +137,12 @@ bool App::tryAgainMenu() {
     return shouldExit;
 }
 
-void App::consultScheduleStudent() {
+void App::consultStudentSchedule() {
     bool shouldExit = false;
 
     while(!shouldExit) {
         try {
-            int studentCode = stoi(UserInterface::readCode("Student Code: "));
+            int studentCode = stoi(UserInterface::readCode("Student Code (i.e.: 123456789): "));
             Student student = data.getStudent(studentCode);
             UserInterface::printStudentSchedule(student);
             UserInterface::pressEnterToContinue();
@@ -160,14 +160,90 @@ void App::consultScheduleStudent() {
     UserInterface::printConsultMenu();
 }
 
-void App::consultScheduleClass() {
-    string classCode = UserInterface::readCode("Class Code: ");
-    //data.consultSheduleClass
+void App::consultClassSchedule() {
+    bool shouldExit = false;
+
+    while(!shouldExit) {
+        try {
+            string classCode = UserInterface::readCode("Insert the Class Code (i.e.: 1LEIC01): ");
+            set<string> ucs = data.getUcsByClassCode(classCode);
+
+            unordered_map<string, int> weekdayToWeekdayNumberMap = {
+                    {"Monday", 0},
+                    {"Tuesday", 1},
+                    {"Wednesday", 2},
+                    {"Thursday", 3},
+                    {"Friday", 4}
+            };
+
+            map<int,set<string>> schedulesByDay;
+            for(const string& ucCode : ucs) {
+                Class c = data.getAllUcs().at(ucCode).getClass(classCode);
+                for(const ClassSchedule &classSchedule : c.getAllClassSchedules()) {
+                    string ss =  classSchedule.getTimeInterval().getTimeIntervalAsString() + " "
+                                 + c.getUcCode() + " (" + classSchedule.getType() + ")";
+
+                    schedulesByDay[weekdayToWeekdayNumberMap.at(classSchedule.getWeekday())].insert(ss);
+                }
+            }
+            UserInterface::printClassSchedule(classCode, ucs, schedulesByDay);
+            UserInterface::pressEnterToContinue();
+            break;
+        }
+        catch (const out_of_range& e) {
+            handleErrors("This class doesn't exist in the database.");
+            shouldExit = tryAgainMenu();
+        }
+    }
+    UserInterface::printConsultMenu();
 }
 
-void App::consultStudentsClass() {
-    string classCode = UserInterface::readCode("Class Code: ");
-    //data.consultStudentsClass
+void App::consultClassStudentsGetUcCode() {
+    bool shouldExit = false;
+
+    while(!shouldExit) {
+        try {
+            string ucCode = UserInterface::readCode("Insert the UC code (i.e.: L.EIC001): ");
+            Uc uc = data.getAllUcs().at(ucCode);
+            consultClassStudentsGetClassCode(uc);
+            UserInterface::pressEnterToContinue();
+            break;
+        }
+        catch (const out_of_range& e) {
+            handleErrors("This UC doesn't exist in the database.");
+            shouldExit = tryAgainMenu();
+        }
+    }
+    UserInterface::printConsultMenu();
+}
+
+void App::consultClassStudentsGetClassCode(const Uc& uc) {
+    bool shouldExit = false;
+
+    while(!shouldExit) {
+        try {
+            string classCode = UserInterface::readCode("Insert the Class Code (i.e.: 1LEIC01): ");
+            Class c = uc.getAllClasses().at(classCode);
+            consultClassStudents(c);
+            break;
+        }
+        catch (const out_of_range& e) {
+            handleErrors("This class doesn't exist in the database for the given UC.");
+            shouldExit = tryAgainMenu();
+        }
+    }
+}
+
+void App::consultClassStudents(const Class& c) {
+    set<int> studentCodes = c.getAllStudents();
+    stringstream res;
+    res << string(170, '#') << endl << endl;
+    for(const int studentCode : studentCodes) {
+        Student student = data.getStudent(studentCode);
+        res << student.getStudentAsString() << endl;
+    }
+    res << endl << string(170, '#') << endl << endl;
+    UserInterface::printMessage(res.str());
 }
 
 void App::consultStudentsCourse() {

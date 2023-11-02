@@ -39,6 +39,8 @@ class Student {
     // Ucs
     int numberOfUcs() const;
     bool hasUc(const string &ucCode) const;
+
+    string getStudentAsString() const;
 };
 
 #endif

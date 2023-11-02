@@ -32,7 +32,7 @@ map<string, Uc> Data::getAllUcs() const { return this->ucs; }
 
 Uc &Data::getUc(const string &ucCode) { return this->ucs.at(ucCode); }
 
-set<string> Data::getUcsByClassCode(const string& classCode) const {
+set<string> Data::getUcsByClassCode(const string &classCode) const {
     return this->ucsCodesByClassCode.at(classCode);
 }
 
@@ -144,8 +144,7 @@ bool Data::validRequest(const Request &request) const {
     return true;
 }
 
-// Não pode ser referencia porque depois ele é apagado???
-void Data::applyRequest(Request request) {
+void Data::applyRequest(const Request &request) {
     requestHistory.push_front(request);
     Student &student = students.at(request.studentCode);
     if (request.type != 'A') {
@@ -158,7 +157,22 @@ void Data::applyRequest(Request request) {
     }
 }
 
-void Data::readRequestHistoryFile(ifstream &file) {
+void Data::loadData() {
+    readRequestHistoryFile();
+    readClassesFile();
+    readClassesPerUcFile();
+    readStudentsClassesFile();
+}
+
+void Data::saveData() {
+    writeClassesFile();
+    writeClassesPerUcFile();
+    writeRequestHistoryFile();
+    writeStudentsClassesFile();
+}
+
+void Data::readRequestHistoryFile() {
+    ifstream file(DIRECTORY_PATH + REQUESTS_FILENAME);
     string line;
     getline(file, line);
 
@@ -175,9 +189,11 @@ void Data::readRequestHistoryFile(ifstream &file) {
                         destinyClassCode);
         requestHistory.push_front(request);
     }
+    file.close();
 }
 
-void Data::writeRequestHistoryFile(ofstream &file) {
+void Data::writeRequestHistoryFile() {
+    ofstream file(DIRECTORY_PATH + REQUESTS_FILENAME);
     file << "StudentCode,Type,UcCode,OriginClassCode,DestinyClassCode"
          << "\n";
     while (!requestHistory.empty()) {
@@ -189,6 +205,7 @@ void Data::writeRequestHistoryFile(ofstream &file) {
         file << request.destinyClassCode << "\n";
         requestHistory.pop_front();
     }
+    file.close();
 }
 
 // TODO - TIME COMPLEXITY
@@ -200,7 +217,8 @@ void Data::writeRequestHistoryFile(ofstream &file) {
  * @param file classes_per_uc.csv file as ifstream
  */
 
-void Data::readClassesPerUcFile(ifstream &file) {
+void Data::readClassesPerUcFile() {
+    ifstream file(DIRECTORY_PATH + CLASSES_PER_UC_FILENAME);
     string line;
     getline(file, line);
 
@@ -225,13 +243,14 @@ void Data::readClassesPerUcFile(ifstream &file) {
             this->ucs.at(ucCode).addClass(newClass);  // log(m) + log(k)
         }
 
-        auto it2 = this->ucsCodesByClassCode.find(classCode); // O(1)
+        auto it2 = this->ucsCodesByClassCode.find(classCode);  // O(1)
         if (it2 == this->ucsCodesByClassCode.end()) {
             ucsCodesByClassCode[classCode] = {ucCode};  // O(1)
         } else {
             this->ucsCodesByClassCode.at(classCode).insert(ucCode);  // O(1)
         }
     }
+    file.close();
 }
 
 /**
@@ -241,7 +260,8 @@ void Data::readClassesPerUcFile(ifstream &file) {
  * @param file classes_per_uc.csv file as ofstream
  */
 
-void Data::writeClassesPerUcFile(ofstream &file) {
+void Data::writeClassesPerUcFile() {
+    ofstream file(DIRECTORY_PATH + CLASSES_PER_UC_FILENAME);
     file << "UcCode,ClassCode"
          << "\n";
 
@@ -252,6 +272,7 @@ void Data::writeClassesPerUcFile(ofstream &file) {
             file << ucCode << "," << classCode << "\n";
         }
     }
+    file.close();
 }
 
 /**
@@ -263,7 +284,8 @@ void Data::writeClassesPerUcFile(ofstream &file) {
  * @param file classes.csv file as ifstream
  */
 
-void Data::readClassesFile(ifstream &file) {
+void Data::readClassesFile() {
+    ifstream file(DIRECTORY_PATH + CLASSES_FILENAME);
     string line;
     getline(file, line);
 
@@ -287,6 +309,7 @@ void Data::readClassesFile(ifstream &file) {
 
         currentClass.addClassSchedule(newSchedule);  // 1
     }
+    file.close();
 }
 
 /**
@@ -297,7 +320,8 @@ void Data::readClassesFile(ifstream &file) {
  * @param file classes.csv file as ofstream
  */
 
-void Data::writeClassesFile(ofstream &file) {
+void Data::writeClassesFile() {
+    ofstream file(DIRECTORY_PATH + CLASSES_FILENAME);
     file << "ClassCode,UcCode,Weekday,StartHour,Duration,Type"
          << "\n";
 
@@ -314,6 +338,7 @@ void Data::writeClassesFile(ofstream &file) {
             }
         }
     }
+    file.close();
 }
 
 /**
@@ -327,7 +352,8 @@ void Data::writeClassesFile(ofstream &file) {
  * @param file classes.csv file as ifstream
  */
 
-void Data::readStudentsClassesFile(ifstream &file) {
+void Data::readStudentsClassesFile() {
+    ifstream file(DIRECTORY_PATH + STUDENTS_CLASS_FILENAME);
     string line;
     getline(file, line);
 
@@ -359,6 +385,7 @@ void Data::readStudentsClassesFile(ifstream &file) {
             it->second.addClass(currentClass);  // log(p)
         }
     }
+    file.close();
 }
 
 /**
@@ -368,7 +395,8 @@ void Data::readStudentsClassesFile(ifstream &file) {
  * @param file students_classes.csv file as ofstream
  */
 
-void Data::writeStudentsClassesFile(ofstream &file) {
+void Data::writeStudentsClassesFile() {
+    ofstream file(DIRECTORY_PATH + STUDENTS_CLASS_FILENAME);
     file << "StudentCode,StudentName,UcCode,ClassCode"
          << "\n";
 
@@ -380,4 +408,5 @@ void Data::writeStudentsClassesFile(ofstream &file) {
                  << ucCode << "," << c.getClassCode() << "\n";
         }
     }
+    file.close();
 }

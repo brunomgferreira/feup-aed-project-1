@@ -1,3 +1,4 @@
+#include <unordered_map>
 #include "ClassSchedule.h"
 
 /**
@@ -107,4 +108,27 @@ bool ClassSchedule::overlaps(const ClassSchedule &schedule) const {
  */
 bool ClassSchedule::invalidOverlaps(const ClassSchedule &schedule) const {
     return (type != "T" && schedule.type != "T" && overlaps(schedule));
+}
+
+
+bool ClassSchedule::operator<(const ClassSchedule &other) const {
+    unordered_map<string, int> weekdayMap = {
+            {"Monday", 0},
+            {"Tuesday", 1},
+            {"Wednesday", 2},
+            {"Thursday", 3},
+            {"Friday", 4},
+    };
+
+    int thisWeekday = weekdayMap[this->getWeekday()];
+    int otherWeekday = weekdayMap[other.getWeekday()];
+
+    // First, compare weekdays.
+    if (thisWeekday < otherWeekday)
+        return true;
+    else if (thisWeekday > otherWeekday)
+        return false;
+
+    // If weekdays are equal, compare start hours.
+    return this->getStartHour() < other.getStartHour();
 }

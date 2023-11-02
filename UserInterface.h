@@ -3,6 +3,8 @@
 
 #include <string>
 #include <iostream>
+#include <iomanip>
+#include "Student.h"
 
 using namespace std;
 
@@ -14,6 +16,7 @@ public:
     static string readCode(const string msg);
     static int readNumber(const string msg);
     static void printError(const string error);
+    static void printStudentSchedule(const Student& student);
     static void pressEnterToContinue();
     static void printConsultMenu();
     static void printTryAgainMenu();

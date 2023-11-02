@@ -144,13 +144,8 @@ void App::consultScheduleStudent() {
         try {
             int studentCode = stoi(UserInterface::readCode("Student Code: "));
             Student student = data.getStudent(studentCode);
-
-            // TODO FAZER PRINT DO HORARIO
-
-            cout << student.getStudentCode() << student.getStudentName() << endl;
-
+            UserInterface::printStudentSchedule(student);
             UserInterface::pressEnterToContinue();
-            UserInterface::printMainMenu();
             break;
         }
         catch (const out_of_range& e) {

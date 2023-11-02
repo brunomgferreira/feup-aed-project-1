@@ -1,5 +1,7 @@
 #include "TimeInterval.h"
 #include <string>
+#include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -20,4 +22,11 @@ TimeInterval::TimeInterval(double startTime, double duration)
 
     this->endHour = static_cast<int>(endTime);
     this->endMinute = (endTime - endHour) * 60;
+}
+
+string TimeInterval::getTimeIntervalAsString() const {
+    stringstream res;
+    res << "[" << std::setfill('0') << std::setw(2) << startHour << ":" << std::setfill('0') << std::setw(2) << startMinute
+        << "-" << std::setfill('0') << std::setw(2) << endHour << ":" << std::setfill('0') << std::setw(2) << endMinute << "]";
+    return res.str();
 }

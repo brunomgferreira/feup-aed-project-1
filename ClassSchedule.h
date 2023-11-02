@@ -36,6 +36,8 @@ class ClassSchedule {
     // Compare Schedules
     bool overlaps(const ClassSchedule &schedule) const;
     bool invalidOverlaps(const ClassSchedule &schedule) const;
+
+    bool operator<(const ClassSchedule &other) const;
 };
 
 #endif

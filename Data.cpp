@@ -1,5 +1,6 @@
 #include "Data.h"
 
+#include <exception>
 #include <fstream>
 #include <stdexcept>
 
@@ -176,23 +177,25 @@ void Data::saveData() {
 
 void Data::readPendentRequestsFile() {
     ifstream file(DIRECTORY_PATH + PENDENT_REQUESTS_FILENAME);
-    string line;
-    getline(file, line);
+    if (file.good()) {
+        string line;
+        getline(file, line);
 
-    while (getline(file, line)) {
-        replace(line.begin(), line.end(), ',', ' ');
-        stringstream ss(line);
+        while (getline(file, line)) {
+            replace(line.begin(), line.end(), ',', ' ');
+            stringstream ss(line);
 
-        string originClassCode, destinyClassCode, ucCode;
-        int studentCode;
-        char type;
-        ss >> studentCode >> type >> originClassCode >> destinyClassCode >>
-            ucCode;
-        Request request(studentCode, type, ucCode, originClassCode,
-                        destinyClassCode);
-        requestHistory.push_front(request);
+            string originClassCode, destinyClassCode, ucCode;
+            int studentCode;
+            char type;
+            ss >> studentCode >> type >> originClassCode >> destinyClassCode >>
+                ucCode;
+            Request request(studentCode, type, ucCode, originClassCode,
+                            destinyClassCode);
+            pendentRequests.push(request);
+        }
+        file.close();
     }
-    file.close();
 }
 
 void Data::writePendentRequestsFile() {
@@ -213,23 +216,25 @@ void Data::writePendentRequestsFile() {
 
 void Data::readRequestHistoryFile() {
     ifstream file(DIRECTORY_PATH + REQUESTS_HISTORY_FILENAME);
-    string line;
-    getline(file, line);
+    if (file.good()) {
+        string line;
+        getline(file, line);
 
-    while (getline(file, line)) {
-        replace(line.begin(), line.end(), ',', ' ');
-        stringstream ss(line);
+        while (getline(file, line)) {
+            replace(line.begin(), line.end(), ',', ' ');
+            stringstream ss(line);
 
-        string originClassCode, destinyClassCode, ucCode;
-        int studentCode;
-        char type;
-        ss >> studentCode >> type >> originClassCode >> destinyClassCode >>
-            ucCode;
-        Request request(studentCode, type, ucCode, originClassCode,
-                        destinyClassCode);
-        requestHistory.push_front(request);
+            string originClassCode, destinyClassCode, ucCode;
+            int studentCode;
+            char type;
+            ss >> studentCode >> type >> originClassCode >> destinyClassCode >>
+                ucCode;
+            Request request(studentCode, type, ucCode, originClassCode,
+                            destinyClassCode);
+            requestHistory.push_front(request);
+        }
+        file.close();
     }
-    file.close();
 }
 
 void Data::writeRequestHistoryFile() {
@@ -259,6 +264,10 @@ void Data::writeRequestHistoryFile() {
 
 void Data::readClassesPerUcFile() {
     ifstream file(DIRECTORY_PATH + CLASSES_PER_UC_FILENAME);
+    if (file.bad()) {
+        throw ios_base::failure("Unable to open file " +
+                                CLASSES_PER_UC_FILENAME);
+    }
     string line;
     getline(file, line);
 
@@ -326,6 +335,9 @@ void Data::writeClassesPerUcFile() {
 
 void Data::readClassesFile() {
     ifstream file(DIRECTORY_PATH + CLASSES_FILENAME);
+    if (file.bad()) {
+        throw ios_base::failure("Unable to open file " + CLASSES_FILENAME);
+    }
     string line;
     getline(file, line);
 
@@ -394,6 +406,10 @@ void Data::writeClassesFile() {
 
 void Data::readStudentsClassesFile() {
     ifstream file(DIRECTORY_PATH + STUDENTS_CLASS_FILENAME);
+    if (file.bad()) {
+        throw ios_base::failure("Unable to open file " +
+                                STUDENTS_CLASS_FILENAME);
+    }
     string line;
     getline(file, line);
 

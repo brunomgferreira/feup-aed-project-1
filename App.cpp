@@ -1,11 +1,17 @@
 #include "App.h"
 
+#include <ios>
 #include <iostream>
 
 App::App() {}
 
 void App::run() {
-    this->data.loadData();
+    try {
+        this->data.loadData();
+    } catch (const ios_base::failure& e) {
+        handleErrors(e.what());
+        close();
+    }
     mainMenu();
 }
 

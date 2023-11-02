@@ -25,7 +25,8 @@ class Data {
    private:
     const string CLASSES_FILENAME = "classes.csv";
     const string CLASSES_PER_UC_FILENAME = "classes_per_uc.csv";
-    const string REQUESTS_FILENAME = "request_history.csv";
+    const string REQUESTS_HISTORY_FILENAME = "request_history.csv";
+    const string PENDENT_REQUESTS_FILENAME = "pendent_requests.csv";
     const string STUDENTS_CLASS_FILENAME = "students_classes.csv";
     const string DIRECTORY_PATH = filesystem::current_path().string() + "/";
 
@@ -69,6 +70,10 @@ class Data {
     // Read and Write data
     void loadData();
     void saveData();
+
+    // requests Pendent files
+    void readPendentRequestsFile();
+    void writePendentRequestsFile();
 
     // requests history file
     void readRequestHistoryFile();

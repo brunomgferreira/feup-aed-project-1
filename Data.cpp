@@ -169,10 +169,50 @@ void Data::saveData() {
     writeClassesPerUcFile();
     writeRequestHistoryFile();
     writeStudentsClassesFile();
+    if (!pendentRequests.empty()) {
+        writePendentRequestsFile();
+    }
+}
+
+void Data::readPendentRequestsFile() {
+    ifstream file(DIRECTORY_PATH + PENDENT_REQUESTS_FILENAME);
+    string line;
+    getline(file, line);
+
+    while (getline(file, line)) {
+        replace(line.begin(), line.end(), ',', ' ');
+        stringstream ss(line);
+
+        string originClassCode, destinyClassCode, ucCode;
+        int studentCode;
+        char type;
+        ss >> studentCode >> type >> originClassCode >> destinyClassCode >>
+            ucCode;
+        Request request(studentCode, type, ucCode, originClassCode,
+                        destinyClassCode);
+        requestHistory.push_front(request);
+    }
+    file.close();
+}
+
+void Data::writePendentRequestsFile() {
+    ofstream file(DIRECTORY_PATH + PENDENT_REQUESTS_FILENAME);
+    file << "StudentCode,Type,UcCode,OriginClassCode,DestinyClassCode"
+         << "\n";
+    while (!pendentRequests.empty()) {
+        const Request &request = pendentRequests.front();
+        file << request.studentCode << ",";
+        file << request.type << ",";
+        file << request.ucCode << ",";
+        file << request.originClassCode << ",";
+        file << request.destinyClassCode << "\n";
+        pendentRequests.pop();
+    }
+    file.close();
 }
 
 void Data::readRequestHistoryFile() {
-    ifstream file(DIRECTORY_PATH + REQUESTS_FILENAME);
+    ifstream file(DIRECTORY_PATH + REQUESTS_HISTORY_FILENAME);
     string line;
     getline(file, line);
 
@@ -193,7 +233,7 @@ void Data::readRequestHistoryFile() {
 }
 
 void Data::writeRequestHistoryFile() {
-    ofstream file(DIRECTORY_PATH + REQUESTS_FILENAME);
+    ofstream file(DIRECTORY_PATH + REQUESTS_HISTORY_FILENAME);
     file << "StudentCode,Type,UcCode,OriginClassCode,DestinyClassCode"
          << "\n";
     while (!requestHistory.empty()) {

@@ -28,7 +28,8 @@ class Data {
     const string REQUESTS_HISTORY_FILENAME = "request_history.csv";
     const string PENDENT_REQUESTS_FILENAME = "pendent_requests.csv";
     const string STUDENTS_CLASS_FILENAME = "students_classes.csv";
-    const string DIRECTORY_PATH = "/home/soestilooo/Documents/Faculty/AED/project/schedule/";
+    const string DIRECTORY_PATH =
+        "/home/soestilooo/Documents/Faculty/AED/project/schedule/";
 
    private:
     map<string, Uc> ucs;
@@ -38,10 +39,8 @@ class Data {
     forward_list<Request> requestHistory;
 
    public:
-
     // Data constructor
     Data();
-
 
     // ucs related methods
     map<string, Uc> getAllUcs() const;
@@ -61,7 +60,7 @@ class Data {
                              const string &originClassCode,
                              const string &destinyClassCode);
     void createRemoveRequest(int studentCode, const string &ucCode);
-    void processRequests();
+    string processRequests();
 
     bool validRequest(const Request &request) const;
     void applyRequest(const Request &request);

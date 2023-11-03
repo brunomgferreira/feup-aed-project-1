@@ -2,7 +2,9 @@
 
 #include <exception>
 #include <fstream>
+#include <sstream>
 #include <stdexcept>
+#include <string>
 
 #include "Request.h"
 #include "Student.h"
@@ -118,14 +120,25 @@ void Data::createRemoveRequest(int studentCode, const string &ucCode) {
     this->pendentRequests.push(newRequest);
 }
 
-void Data::processRequests() {
+string Data::processRequests() {
+    int totalRequests = this->pendentRequests.size();
+    if (totalRequests == 0) {
+        return "No requests to process.\n";
+    }
+    int sucessfulRequests = 0;
     while (!this->pendentRequests.empty()) {
         Request &request = this->pendentRequests.front();
         if (validRequest(request)) {
             applyRequest(request);
+            sucessfulRequests++;
         }
         this->pendentRequests.pop();
     }
+    stringstream output;
+    output << "Process finished!\n";
+    output << totalRequests << " total requests processed. "
+           << sucessfulRequests << " sucessfully accepted!\n";
+    return (output.str());
 }
 
 bool Data::validRequest(const Request &request) const {
@@ -170,13 +183,13 @@ void Data::loadData() {
 }
 
 void Data::saveData() {
-        writeClassesFile();
-        writeClassesPerUcFile();
-        writeStudentsClassesFile();
-        writeRequestHistoryFile();
-        if (!pendentRequests.empty()) {
-            writePendentRequestsFile();
-        }
+    writeClassesFile();
+    writeClassesPerUcFile();
+    writeStudentsClassesFile();
+    writeRequestHistoryFile();
+    if (!pendentRequests.empty()) {
+        writePendentRequestsFile();
+    }
 }
 
 void Data::readPendentRequestsFile() {

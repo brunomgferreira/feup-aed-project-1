@@ -8,14 +8,16 @@ App::App() {}
 void App::run() {
     try {
         this->data.loadData();
+        mainMenu();
     } catch (const ios_base::failure& e) {
         handleErrors(e.what());
-        close();
+    }catch (const out_of_range& e){
+        handleErrors("Error reading the saves files. Invalid Data");
     }
-    mainMenu();
 }
 
-void App::close() { this->data.saveData(); }
+void App::close() {
+    this->data.saveData(); }
 
 void App::handleErrors(const string& error) {
     UserInterface::printError(error);

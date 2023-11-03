@@ -28,6 +28,9 @@ class Data {
     queue<Request> pendentRequests;
     forward_list<Request> requestHistory;
 
+    private:
+    bool isNumeric(const string& str);
+
    public:
     // Data constructor
     Data();
@@ -35,13 +38,16 @@ class Data {
     // ucs related methods
     map<string, Uc> getAllUcs() const;
     Uc &getUc(const string &ucCode);
+    bool ucExists(const string &ucCode);
     string consultStudentsClass(const string &ucCode, const string &classCode);
-    string consultStudentsCourse(const string &courseCode);
-    string consultStudentsYear(int year);
-    string consultNumStudentsUcs(int &nUcs);
+    string consultStudentsCourse(const string &ucCode);
+    string consultStudentsYear(const string &year);
+    string consultNumStudentsUcs(const string &nUcs);
     string consultBiggestUc();
 
-    set<string> getUcsByClassCode(const string& classCode) const;
+    set<string> getUcsByClassCode(const string &classCode) const;
+
+    bool classExists(const string &ucCode, const string &classCode);
 
     // students related methods
     map<int, Student> getAllStudents() const;
@@ -49,12 +55,10 @@ class Data {
     bool studentExists(int studentCode);
 
     // requests related methods
-    void createAddRequest(int studentCode, const string &ucCode,
-                          const string &classCode);
-    void createSwitchRequest(int studentCode, const string &ucCode,
-                             const string &originClassCode,
-                             const string &destinyClassCode);
-    void createRemoveRequest(int studentCode, const string &ucCode);
+    void createAddRequest(const string &studentCode, const string &ucCode,const string &destinyclassCode);
+    void createRemoveRequest(const string &studentCode, const string &ucCode);
+    void createSwitchRequest(const string &studentCode, const string &ucCode,const string &destinyClassCode);
+
     void processRequests();
 
     bool validRequest(const Request &request) const;

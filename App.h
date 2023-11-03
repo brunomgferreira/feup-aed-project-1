@@ -27,7 +27,6 @@ class App {
     void consultStudentsCourse();
     void consultStudentsYear();
     void consultNumStudentsUcs();
-    void consultClassYearUcOccupation();
     void consultBiggestUc();
 
     void newRequestAdd();
@@ -35,7 +34,8 @@ class App {
     void newRequestSwitch();
 
     void processPendingRequests();
-    void adminMenu();
+    void recentActions();
+    void undoRecentActions();
 
 };
 

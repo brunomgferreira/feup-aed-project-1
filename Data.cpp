@@ -135,8 +135,9 @@ bool Data::validRequest(const Request &request) const {
     }
     if (request.type != 'R') {
         Class &destinyClass = uc.getClass(request.destinyClassCode);
-        if ((student.numberOfUcs() >= 7 && request.type == 'A') ||
-            !destinyClass.hasVacancies() || !student.hasUc(request.ucCode)) {
+        if ((request.type == 'A' &&
+             (student.numberOfUcs() >= 7 || student.hasUc(request.ucCode))) ||
+            !destinyClass.hasVacancies()) {
             return false;
         };
         return student.verifyClass(request.originClassCode,

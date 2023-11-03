@@ -1,7 +1,10 @@
 #include "Data.h"
 
+#include <exception>
 #include <fstream>
+#include <sstream>
 #include <stdexcept>
+#include <string>
 
 #include "Request.h"
 #include "Student.h"
@@ -37,11 +40,13 @@ map<string, Uc> Data::getAllUcs() const { return this->ucs; }
  * @brief Returns a UC given a UC code.
  * @details Time complexity: O(log(n))
  * @param ucCode UC code of the UC to be returned
- * @return UC with code == ucCode
+ * @return UC with code == ucCod202025232
+Student Name:	Iara
+Enrolled in 1 UCs:	[L.EIC002-1LEIC05]
+##########################e
  */
 
 Uc &Data::getUc(const string &ucCode) { return this->ucs.at(ucCode); }
-
 
 
 bool Data::ucExists(const std::string &ucCode) {
@@ -254,14 +259,25 @@ void Data::createSwitchRequest(const string &studentCode, const string &ucCode,c
 }
 
 
-void Data::processRequests() {
+string Data::processRequests() {
+    int totalRequests = this->pendentRequests.size();
+    if (totalRequests == 0) {
+        return "No requests to process.\n";
+    }
+    int sucessfulRequests = 0;
     while (!this->pendentRequests.empty()) {
         Request &request = this->pendentRequests.front();
         if (validRequest(request)) {
             applyRequest(request);
+            sucessfulRequests++;
         }
         this->pendentRequests.pop();
     }
+    stringstream output;
+    output << "Process finished!\n";
+    output << totalRequests << " total requests processed. "
+           << sucessfulRequests << " sucessfully accepted!\n";
+    return (output.str());
 }
 
 bool Data::validRequest(const Request &request) const {
@@ -284,8 +300,7 @@ bool Data::validRequest(const Request &request) const {
     return true;
 }
 
-// Não pode ser referencia porque depois ele é apagado???
-void Data::applyRequest(Request request) {
+void Data::applyRequest(const Request &request) {
     requestHistory.push_front(request);
     Student &student = students.at(request.studentCode);
     if (request.type != 'A') {
@@ -298,26 +313,88 @@ void Data::applyRequest(Request request) {
     }
 }
 
-void Data::readRequestHistoryFile(ifstream &file) {
-    string line;
-    getline(file, line);
+void Data::loadData() {
+    readClassesPerUcFile();
+    readClassesFile();
+    readStudentsClassesFile();
+    readRequestHistoryFile();
+    readPendentRequestsFile();
+}
 
-    while (getline(file, line)) {
-        replace(line.begin(), line.end(), ',', ' ');
-        stringstream ss(line);
-
-        string originClassCode, destinyClassCode, ucCode;
-        int studentCode;
-        char type;
-        ss >> studentCode >> type >> originClassCode >> destinyClassCode >>
-            ucCode;
-        Request request(studentCode, type, ucCode, originClassCode,
-                        destinyClassCode);
-        requestHistory.push_front(request);
+void Data::saveData() {
+    writeClassesFile();
+    writeClassesPerUcFile();
+    writeStudentsClassesFile();
+    writeRequestHistoryFile();
+    if (!pendentRequests.empty()) {
+        writePendentRequestsFile();
     }
 }
 
-void Data::writeRequestHistoryFile(ofstream &file) {
+void Data::readPendentRequestsFile() {
+    ifstream file(DIRECTORY_PATH + PENDENT_REQUESTS_FILENAME);
+    if (file.is_open()) {
+        string line;
+        getline(file, line);
+
+        while (getline(file, line)) {
+            replace(line.begin(), line.end(), ',', ' ');
+            stringstream ss(line);
+
+            string originClassCode, destinyClassCode, ucCode;
+            int studentCode;
+            char type;
+            ss >> studentCode >> type >> originClassCode >> destinyClassCode >>
+                ucCode;
+            Request request(studentCode, type, ucCode, originClassCode,
+                            destinyClassCode);
+            pendentRequests.push(request);
+        }
+        file.close();
+    }
+}
+
+void Data::writePendentRequestsFile() {
+    ofstream file(DIRECTORY_PATH + PENDENT_REQUESTS_FILENAME);
+    file << "StudentCode,Type,UcCode,OriginClassCode,DestinyClassCode"
+         << "\n";
+    while (!pendentRequests.empty()) {
+        const Request &request = pendentRequests.front();
+        file << request.studentCode << ",";
+        file << request.type << ",";
+        file << request.ucCode << ",";
+        file << request.originClassCode << ",";
+        file << request.destinyClassCode << "\n";
+        pendentRequests.pop();
+    }
+    file.close();
+}
+
+void Data::readRequestHistoryFile() {
+    ifstream file(DIRECTORY_PATH + REQUESTS_HISTORY_FILENAME);
+    if (file.is_open()) {
+        string line;
+        getline(file, line);
+
+        while (getline(file, line)) {
+            replace(line.begin(), line.end(), ',', ' ');
+            stringstream ss(line);
+
+            string originClassCode, destinyClassCode, ucCode;
+            int studentCode;
+            char type;
+            ss >> studentCode >> type >> originClassCode >> destinyClassCode >>
+                ucCode;
+            Request request(studentCode, type, ucCode, originClassCode,
+                            destinyClassCode);
+            requestHistory.push_front(request);
+        }
+        file.close();
+    }
+}
+
+void Data::writeRequestHistoryFile() {
+    ofstream file(DIRECTORY_PATH + REQUESTS_HISTORY_FILENAME);
     file << "StudentCode,Type,UcCode,OriginClassCode,DestinyClassCode"
          << "\n";
     while (!requestHistory.empty()) {
@@ -329,6 +406,7 @@ void Data::writeRequestHistoryFile(ofstream &file) {
         file << request.destinyClassCode << "\n";
         requestHistory.pop_front();
     }
+    file.close();
 }
 
 // TODO - TIME COMPLEXITY
@@ -340,7 +418,12 @@ void Data::writeRequestHistoryFile(ofstream &file) {
  * @param file classes_per_uc.csv file as ifstream
  */
 
-void Data::readClassesPerUcFile(ifstream &file) {
+void Data::readClassesPerUcFile() {
+    ifstream file(DIRECTORY_PATH + CLASSES_PER_UC_FILENAME);
+    if (!file.is_open()) {
+        throw ios_base::failure("Unable to open file " +
+                                CLASSES_PER_UC_FILENAME);
+    }
     string line;
     getline(file, line);
 
@@ -365,13 +448,14 @@ void Data::readClassesPerUcFile(ifstream &file) {
             this->ucs.at(ucCode).addClass(newClass);  // log(m) + log(k)
         }
 
-        auto it2 = this->ucsCodesByClassCode.find(classCode); // O(1)
+        auto it2 = this->ucsCodesByClassCode.find(classCode);  // O(1)
         if (it2 == this->ucsCodesByClassCode.end()) {
             ucsCodesByClassCode[classCode] = {ucCode};  // O(1)
         } else {
             this->ucsCodesByClassCode.at(classCode).insert(ucCode);  // O(1)
         }
     }
+    file.close();
 }
 
 /**
@@ -381,7 +465,8 @@ void Data::readClassesPerUcFile(ifstream &file) {
  * @param file classes_per_uc.csv file as ofstream
  */
 
-void Data::writeClassesPerUcFile(ofstream &file) {
+void Data::writeClassesPerUcFile() {
+    ofstream file(DIRECTORY_PATH + CLASSES_PER_UC_FILENAME);
     file << "UcCode,ClassCode"
          << "\n";
 
@@ -392,6 +477,7 @@ void Data::writeClassesPerUcFile(ofstream &file) {
             file << ucCode << "," << classCode << "\n";
         }
     }
+    file.close();
 }
 
 /**
@@ -403,7 +489,11 @@ void Data::writeClassesPerUcFile(ofstream &file) {
  * @param file classes.csv file as ifstream
  */
 
-void Data::readClassesFile(ifstream &file) {
+void Data::readClassesFile() {
+    ifstream file(DIRECTORY_PATH + CLASSES_FILENAME);
+    if (!file.is_open()) {
+        throw ios_base::failure("Unable to open file " + CLASSES_FILENAME);
+    }
     string line;
     getline(file, line);
 
@@ -427,6 +517,7 @@ void Data::readClassesFile(ifstream &file) {
 
         currentClass.addClassSchedule(newSchedule);  // 1
     }
+    file.close();
 }
 
 /**
@@ -437,7 +528,8 @@ void Data::readClassesFile(ifstream &file) {
  * @param file classes.csv file as ofstream
  */
 
-void Data::writeClassesFile(ofstream &file) {
+void Data::writeClassesFile() {
+    ofstream file(DIRECTORY_PATH + CLASSES_FILENAME);
     file << "ClassCode,UcCode,Weekday,StartHour,Duration,Type"
          << "\n";
 
@@ -454,6 +546,7 @@ void Data::writeClassesFile(ofstream &file) {
             }
         }
     }
+    file.close();
 }
 
 /**
@@ -467,7 +560,12 @@ void Data::writeClassesFile(ofstream &file) {
  * @param file classes.csv file as ifstream
  */
 
-void Data::readStudentsClassesFile(ifstream &file) {
+void Data::readStudentsClassesFile() {
+    ifstream file(DIRECTORY_PATH + STUDENTS_CLASS_FILENAME);
+    if (!file.is_open()) {
+        throw ios_base::failure("Unable to open file " +
+                                STUDENTS_CLASS_FILENAME);
+    }
     string line;
     getline(file, line);
 
@@ -499,6 +597,7 @@ void Data::readStudentsClassesFile(ifstream &file) {
             it->second.addClass(currentClass);  // log(p)
         }
     }
+    file.close();
 }
 
 /**
@@ -508,7 +607,8 @@ void Data::readStudentsClassesFile(ifstream &file) {
  * @param file students_classes.csv file as ofstream
  */
 
-void Data::writeStudentsClassesFile(ofstream &file) {
+void Data::writeStudentsClassesFile() {
+    ofstream file(DIRECTORY_PATH + STUDENTS_CLASS_FILENAME);
     file << "StudentCode,StudentName,UcCode,ClassCode"
          << "\n";
 
@@ -520,6 +620,7 @@ void Data::writeStudentsClassesFile(ofstream &file) {
                  << ucCode << "," << c.getClassCode() << "\n";
         }
     }
+    file.close();
 }
 
 

@@ -1,45 +1,25 @@
 #include "App.h"
+
+#include <ios>
 #include <iostream>
 
 App::App() {}
 
 void App::run() {
-    ifstream inputFile1("/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule/classes_per_uc.csv");
-    ifstream inputFile2("/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule/classes.csv");
-    ifstream inputFile3("/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule/students_classes.csv");
-    ifstream inputFile4("/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule/request_history.csv");
-
-    this->data.readClassesPerUcFile(inputFile1);
-    this->data.readClassesFile(inputFile2);
-    this->data.readStudentsClassesFile(inputFile3);
-    this->data.readRequestHistoryFile(inputFile4);
-
-    inputFile1.close();
-    inputFile2.close();
-    inputFile3.close();
-    inputFile4.close();
-
-    mainMenu();
+    try {
+        this->data.loadData();
+        mainMenu();
+    } catch (const ios_base::failure& e) {
+        handleErrors(e.what());
+    }catch (const out_of_range& e){
+        handleErrors("Error reading the saves files. Invalid Data");
+    }
 }
 
 void App::close() {
-    ofstream outputFile1("/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/classes_per_uc.csv");
-    ofstream outputFile2("/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/classes.csv");
-    ofstream outputFile3("/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/students_classes.csv");
-    ofstream outputFile4("/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule/request_history.csv");
+    this->data.saveData(); }
 
-    this->data.writeClassesPerUcFile(outputFile1);
-    this->data.writeClassesFile(outputFile2);
-    this->data.writeStudentsClassesFile(outputFile3);
-    this->data.writeRequestHistoryFile(outputFile4);
-
-    outputFile1.close();
-    outputFile2.close();
-    outputFile3.close();
-    outputFile4.close();
-}
-
-void App::handleErrors(const string &error) {
+void App::handleErrors(const string& error) {
     UserInterface::printError(error);
 }
 
@@ -48,7 +28,7 @@ void App::mainMenu() {
     bool shouldExit = false;
     bool inputError;
     do {
-        inputError= false;
+        inputError = false;
         switch (UserInterface::readOption("Select an option: ")) {
             case '1':
                 consultMenu();
@@ -64,12 +44,11 @@ void App::mainMenu() {
                 break;
             default:
                 handleErrors("Invalid Input");
-                inputError=true;
+                inputError = true;
                 break;
         }
     } while (inputError || !shouldExit);
 }
-
 
 void App::consultMenu() {
     UserInterface::printConsultMenu();
@@ -77,6 +56,7 @@ void App::consultMenu() {
     bool inputError;
     do {
         inputError= false;
+
         switch (UserInterface::readOption("Select an option: ")) {
             case '1':
                 consultStudentSchedule();
@@ -104,7 +84,7 @@ void App::consultMenu() {
                 break;
             default:
                 handleErrors("Invalid Input");
-                inputError=true;
+                inputError = true;
                 break;
         }
     } while (inputError || !shouldExit);
@@ -116,7 +96,7 @@ bool App::tryAgainMenu() {
     bool shouldExit = false;
     bool inputError;
     do {
-        inputError= false;
+        inputError = false;
         UserInterface::printTryAgainMenu();
         switch (UserInterface::readOption("Select an option: ")) {
             case '1':
@@ -126,7 +106,7 @@ bool App::tryAgainMenu() {
                 break;
             default:
                 handleErrors("Invalid Input");
-                inputError=true;
+                inputError = true;
                 break;
         }
     } while (inputError);
@@ -137,20 +117,21 @@ bool App::tryAgainMenu() {
 void App::consultStudentSchedule() {
     bool shouldExit = false;
 
-    while(!shouldExit) {
+    while (!shouldExit) {
         try {
-            int studentCode = stoi(UserInterface::readCode("Student Code (i.e.: 123456789): "));
+            int studentCode = stoi(
+                UserInterface::readCode("Student Code (i.e.: 123456789): "));
             Student student = data.getStudent(studentCode);
             UserInterface::printStudentSchedule(student);
             UserInterface::pressEnterToContinue();
             break;
-        }
-        catch (const out_of_range& e) {
+        } catch (const out_of_range& e) {
             handleErrors("This student doesn't exist in the database.");
             shouldExit = tryAgainMenu();
-        }
-        catch (const invalid_argument& e) {
-            handleErrors("Invalid student code. Please ensure the student code consists of numeric digits only.");
+        } catch (const invalid_argument& e) {
+            handleErrors(
+                "Invalid student code. Please ensure the student code consists "
+                "of numeric digits only.");
             shouldExit = tryAgainMenu();
         }
     }
@@ -160,34 +141,38 @@ void App::consultStudentSchedule() {
 void App::consultClassSchedule() { //fazer aassimm ou mensagem com textos
     bool shouldExit = false;
 
-    while(!shouldExit) {
+    while (!shouldExit) {
         try {
-            string classCode = UserInterface::readCode("Insert the Class Code (i.e.: 1LEIC01): ");
+            string classCode = UserInterface::readCode(
+                "Insert the Class Code (i.e.: 1LEIC01): ");
             set<string> ucs = data.getUcsByClassCode(classCode);
 
             unordered_map<string, int> weekdayToWeekdayNumberMap = {
-                    {"Monday", 0},
-                    {"Tuesday", 1},
-                    {"Wednesday", 2},
-                    {"Thursday", 3},
-                    {"Friday", 4}
-            };
+                {"Monday", 0},
+                {"Tuesday", 1},
+                {"Wednesday", 2},
+                {"Thursday", 3},
+                {"Friday", 4}};
 
-            map<int,set<string>> schedulesByDay;
-            for(const string& ucCode : ucs) {
+            map<int, set<string>> schedulesByDay;
+            for (const string& ucCode : ucs) {
                 Class c = data.getAllUcs().at(ucCode).getClass(classCode);
-                for(const ClassSchedule &classSchedule : c.getAllClassSchedules()) {
-                    string ss =  classSchedule.getTimeInterval().getTimeIntervalAsString() + " "
-                                 + c.getUcCode() + " (" + classSchedule.getType() + ")";
+                for (const ClassSchedule& classSchedule :
+                     c.getAllClassSchedules()) {
+                    string ss = classSchedule.getTimeInterval()
+                                    .getTimeIntervalAsString() +
+                                " " + c.getUcCode() + " (" +
+                                classSchedule.getType() + ")";
 
-                    schedulesByDay[weekdayToWeekdayNumberMap.at(classSchedule.getWeekday())].insert(ss);
+                    schedulesByDay[weekdayToWeekdayNumberMap.at(
+                                       classSchedule.getWeekday())]
+                        .insert(ss);
                 }
             }
             UserInterface::printClassSchedule(classCode, ucs, schedulesByDay);
             UserInterface::pressEnterToContinue();
             break;
-        }
-        catch (const out_of_range& e) {
+        } catch (const out_of_range& e) {
             handleErrors("This class doesn't exist in the database.");
             shouldExit = tryAgainMenu();
         }
@@ -199,7 +184,7 @@ void App::consultClassSchedule() { //fazer aassimm ou mensagem com textos
 void App::consultStudentsClass() { //ordenar
     bool shouldExit = false;
 
-    while(!shouldExit) {
+    while (!shouldExit) {
         try {
             string ucCode = UserInterface::readCode("Insert the UC code (i.e.: L.EIC001): ");
             string classCode = UserInterface::readCode("Insert the Class Code (i.e.: 1LEIC01): ");
@@ -210,6 +195,7 @@ void App::consultStudentsClass() { //ordenar
         }
         catch (const invalid_argument& e) {
             handleErrors(e.what());
+
             shouldExit = tryAgainMenu();
         }
     }
@@ -219,7 +205,7 @@ void App::consultStudentsClass() { //ordenar
 void App::consultStudentsCourse() { //ordenar
     bool shouldExit = false;
 
-    while(!shouldExit) {
+    while (!shouldExit) {
         try {
             string ucCode = UserInterface::readCode("Insert the UC code (i.e.: L.EIC001): ");
             string msg = data.consultStudentsCourse(ucCode);
@@ -229,6 +215,7 @@ void App::consultStudentsCourse() { //ordenar
         }
         catch (const invalid_argument& e) {
             handleErrors(e.what());
+
             shouldExit = tryAgainMenu();
         }
     }
@@ -257,7 +244,8 @@ void App::consultStudentsYear() { //errors stoi
 
 
 
-void App::consultNumStudentsUcs() { //stoi
+
+void App::consultNumStudentsUcs() {
     bool shouldExit = false;
 
     while (!shouldExit) {
@@ -285,13 +273,12 @@ void App::consultBiggestUc() { //falta ordenar
     UserInterface::printConsultMenu();
 }
 
-
 void App::newRequestMenu() {
     UserInterface::printNewRequestMenu();
     bool shouldExit = false;
     bool inputError;
     do {
-        inputError= false;
+        inputError = false;
         switch (UserInterface::readOption("Select an option: ")) {
             case '1':
                 newRequestAdd();
@@ -303,11 +290,11 @@ void App::newRequestMenu() {
                 newRequestSwitch();
                 break;
             case 'q':
-                shouldExit=true;
+                shouldExit = true;
                 break;
             default:
                 handleErrors("Invalid Input");
-                inputError=true;
+                inputError = true;
                 break;
         }
     } while (inputError || !shouldExit);
@@ -315,7 +302,7 @@ void App::newRequestMenu() {
     UserInterface::printMainMenu();
 }
 
-void App::newRequestAdd() { //errors
+void App::newRequestAdd() {
 
     bool shouldExit = false;
 
@@ -337,7 +324,7 @@ void App::newRequestAdd() { //errors
     UserInterface::printNewRequestMenu();
 }
 
-void App::newRequestRemove() { //errors
+void App::newRequestRemove() {
     bool shouldExit = false;
 
     while(!shouldExit) {
@@ -357,7 +344,7 @@ void App::newRequestRemove() { //errors
     UserInterface::printNewRequestMenu();
 }
 
-void App::newRequestSwitch() { //errors
+void App::newRequestSwitch() {
     bool shouldExit = false;
 
     while(!shouldExit) {
@@ -384,7 +371,7 @@ void App::processRequestMenu() {
     bool shouldExit;
     bool inputError;
     do {
-        inputError= false;
+        inputError = false;
         switch (UserInterface::readOption("Select an option: ")) {
             case '1':
                 processPendingRequests();
@@ -396,15 +383,16 @@ void App::processRequestMenu() {
                 undoRecentActions();
                 break;
             case 'q':
-                shouldExit=true;
+                shouldExit = true;
                 break;
             default:
                 handleErrors("Invalid Input");
-                inputError=true;
+                inputError = true;
                 break;
         }
     } while (inputError || !shouldExit);
 }
+
 
 void App::processPendingRequests() { //??
 
@@ -425,5 +413,3 @@ void App::recentActions() { //??
 void App::undoRecentActions() { //??
     //falta implementat ligar edu
 }
-
-

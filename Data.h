@@ -11,16 +11,27 @@
 #include <queue>
 #include <sstream>
 #include <string>
+#include <unordered_map>
 
 #include "Data.h"
 #include "Request.h"
 #include "Student.h"
 #include "Uc.h"
+#include "filesystem"
 /**
  * @brief Class that saves all the program data.
  */
 
 class Data {
+   private:
+    const string CLASSES_FILENAME = "classes.csv";
+    const string CLASSES_PER_UC_FILENAME = "classes_per_uc.csv";
+    const string REQUESTS_HISTORY_FILENAME = "request_history.csv";
+    const string PENDENT_REQUESTS_FILENAME = "pendent_requests.csv";
+    const string STUDENTS_CLASS_FILENAME = "students_classes.csv";
+    const string DIRECTORY_PATH =
+        "/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule";
+
    private:
     map<string, Uc> ucs;
     unordered_map<string, set<string>> ucsCodesByClassCode;
@@ -55,6 +66,7 @@ class Data {
     bool studentExists(int studentCode);
 
     // requests related methods
+
     void createAddRequest(const string &studentCode, const string &ucCode,const string &destinyclassCode);
     void createRemoveRequest(const string &studentCode, const string &ucCode);
     void createSwitchRequest(const string &studentCode, const string &ucCode,const string &destinyClassCode);
@@ -62,26 +74,34 @@ class Data {
     void processRequests();
 
     bool validRequest(const Request &request) const;
-    void applyRequest(Request request);
+    void applyRequest(const Request &request);
 
     queue<Request> &getPendentRequests();
     forward_list<Request> &getRequestHistory();
 
+    // Read and Write data
+    void loadData();
+    void saveData();
+
+    // requests Pendent files
+    void readPendentRequestsFile();
+    void writePendentRequestsFile();
+
     // requests history file
-    void readRequestHistoryFile(ifstream &file);
-    void writeRequestHistoryFile(ofstream &file);
+    void readRequestHistoryFile();
+    void writeRequestHistoryFile();
 
     // classes_per_uc.csv
-    void readClassesPerUcFile(ifstream &file);
-    void writeClassesPerUcFile(ofstream &file);
+    void readClassesPerUcFile();
+    void writeClassesPerUcFile();
 
     // classes.csv
-    void readClassesFile(ifstream &file);
-    void writeClassesFile(ofstream &file);
+    void readClassesFile();
+    void writeClassesFile();
 
     // students_classes.csv
-    void readStudentsClassesFile(ifstream &file);
-    void writeStudentsClassesFile(ofstream &file);
+    void readStudentsClassesFile();
+    void writeStudentsClassesFile();
 };
 
 #endif

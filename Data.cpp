@@ -28,7 +28,10 @@ map<string, Uc> Data::getAllUcs() const { return this->ucs; }
  * @brief Returns a UC given a UC code.
  * @details Time complexity: O(log(n))
  * @param ucCode UC code of the UC to be returned
- * @return UC with code == ucCode
+ * @return UC with code == ucCod202025232
+Student Name:	Iara
+Enrolled in 1 UCs:	[L.EIC002-1LEIC05]
+##########################e
  */
 
 Uc &Data::getUc(const string &ucCode) { return this->ucs.at(ucCode); }
@@ -159,25 +162,26 @@ void Data::applyRequest(const Request &request) {
 }
 
 void Data::loadData() {
-    readRequestHistoryFile();
-    readClassesFile();
     readClassesPerUcFile();
+    readClassesFile();
     readStudentsClassesFile();
+    readRequestHistoryFile();
+    readPendentRequestsFile();
 }
 
 void Data::saveData() {
-    writeClassesFile();
-    writeClassesPerUcFile();
-    writeRequestHistoryFile();
-    writeStudentsClassesFile();
-    if (!pendentRequests.empty()) {
-        writePendentRequestsFile();
-    }
+        writeClassesFile();
+        writeClassesPerUcFile();
+        writeStudentsClassesFile();
+        writeRequestHistoryFile();
+        if (!pendentRequests.empty()) {
+            writePendentRequestsFile();
+        }
 }
 
 void Data::readPendentRequestsFile() {
     ifstream file(DIRECTORY_PATH + PENDENT_REQUESTS_FILENAME);
-    if (file.good()) {
+    if (file.is_open()) {
         string line;
         getline(file, line);
 
@@ -216,7 +220,7 @@ void Data::writePendentRequestsFile() {
 
 void Data::readRequestHistoryFile() {
     ifstream file(DIRECTORY_PATH + REQUESTS_HISTORY_FILENAME);
-    if (file.good()) {
+    if (file.is_open()) {
         string line;
         getline(file, line);
 
@@ -264,7 +268,7 @@ void Data::writeRequestHistoryFile() {
 
 void Data::readClassesPerUcFile() {
     ifstream file(DIRECTORY_PATH + CLASSES_PER_UC_FILENAME);
-    if (file.bad()) {
+    if (!file.is_open()) {
         throw ios_base::failure("Unable to open file " +
                                 CLASSES_PER_UC_FILENAME);
     }
@@ -335,7 +339,7 @@ void Data::writeClassesPerUcFile() {
 
 void Data::readClassesFile() {
     ifstream file(DIRECTORY_PATH + CLASSES_FILENAME);
-    if (file.bad()) {
+    if (!file.is_open()) {
         throw ios_base::failure("Unable to open file " + CLASSES_FILENAME);
     }
     string line;
@@ -406,7 +410,7 @@ void Data::writeClassesFile() {
 
 void Data::readStudentsClassesFile() {
     ifstream file(DIRECTORY_PATH + STUDENTS_CLASS_FILENAME);
-    if (file.bad()) {
+    if (!file.is_open()) {
         throw ios_base::failure("Unable to open file " +
                                 STUDENTS_CLASS_FILENAME);
     }

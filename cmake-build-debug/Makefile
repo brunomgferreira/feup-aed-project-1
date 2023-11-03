@@ -57,10 +57,10 @@ RM = /snap/clion/250/bin/cmake/linux/x64/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1
+CMAKE_SOURCE_DIR = /home/xavier/Desktop/AED/Projeto/feup-aed-project-1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug
+CMAKE_BINARY_DIR = /home/xavier/Desktop/AED/Projeto/feup-aed-project-1/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/CMakeFiles /home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xavier/Desktop/AED/Projeto/feup-aed-project-1/cmake-build-debug/CMakeFiles /home/xavier/Desktop/AED/Projeto/feup-aed-project-1/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xavier/Desktop/Prog/Lab/SO/AED/Projeto/feup-aed-project-1/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xavier/Desktop/AED/Projeto/feup-aed-project-1/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -224,6 +224,30 @@ Data.s: Data.cpp.s
 Data.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/projeto.dir/build.make CMakeFiles/projeto.dir/Data.cpp.s
 .PHONY : Data.cpp.s
+
+Request.o: Request.cpp.o
+.PHONY : Request.o
+
+# target to build an object file
+Request.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/projeto.dir/build.make CMakeFiles/projeto.dir/Request.cpp.o
+.PHONY : Request.cpp.o
+
+Request.i: Request.cpp.i
+.PHONY : Request.i
+
+# target to preprocess a source file
+Request.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/projeto.dir/build.make CMakeFiles/projeto.dir/Request.cpp.i
+.PHONY : Request.cpp.i
+
+Request.s: Request.cpp.s
+.PHONY : Request.s
+
+# target to generate assembly for a file
+Request.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/projeto.dir/build.make CMakeFiles/projeto.dir/Request.cpp.s
+.PHONY : Request.cpp.s
 
 Student.o: Student.cpp.o
 .PHONY : Student.o
@@ -366,6 +390,9 @@ help:
 	@echo "... Data.o"
 	@echo "... Data.i"
 	@echo "... Data.s"
+	@echo "... Request.o"
+	@echo "... Request.i"
+	@echo "... Request.s"
 	@echo "... Student.o"
 	@echo "... Student.i"
 	@echo "... Student.s"

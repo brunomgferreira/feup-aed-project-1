@@ -32,6 +32,97 @@ map<string, Uc> Data::getAllUcs() const { return this->ucs; }
 
 Uc &Data::getUc(const string &ucCode) { return this->ucs.at(ucCode); }
 
+/**
+ * @brief Returns the students within a given course in string format
+ * @details
+ * @param courseCode
+ * @return string of data
+ */
+
+
+string Data::consultStudentsClass(const string &ucCode, const string &classCode){
+    Uc uc = this->ucs.at(ucCode);
+    Class c = uc.getAllClasses().at(classCode);
+    set<int> studentCodes = c.getAllStudents();
+    stringstream res;
+    res << string(170, '#') << endl << endl;
+    for(const int studentCode : studentCodes) {
+        Student student = this->students.at(studentCode);
+        res << student.getStudentAsString() << endl;
+    }
+    res << endl << string(170, '#') << endl << endl;
+    return res.str();
+}
+
+string Data::consultStudentsCourse(const string &courseCode) {
+    Uc uc = this->ucs.at(courseCode);
+    stringstream res;
+    res << string(170, '#') << endl << endl;
+    for(auto [ucCode, c] : uc.getAllClasses()) {
+        res << "Class: " << c.getClassCode() << endl;
+        for(auto studentCode : c.getAllStudents()){
+            Student student = getStudent(studentCode);
+            res << student.getStudentAsString() << endl;
+        }
+        res << endl;
+    }
+    res << string(170, '#') << endl << endl;
+    return res.str();
+}
+
+string Data::consultStudentsYear(int year) {
+    stringstream res;
+    set<int> std;
+    res << string(170, '#') << endl << endl;
+    for(auto [uccode , uc]:this->ucs) {
+        for (auto [ucCode, c]: uc.getAllClasses()) {
+            if(c.getClassCode().substr(0,1) == to_string(year)){
+                for (const int& studentCode: c.getAllStudents()) {
+                    std.insert(studentCode);
+                }
+            }
+            break;
+        }
+    }
+
+    for(auto studentCode : std){
+        Student student = getStudent(studentCode);
+        res << student.getStudentAsString() << endl;
+    }
+    res << endl;
+    res << string(170, '#') << endl << endl;
+    return res.str();
+}
+
+
+string Data::consultNumStudentsUcs(int &nUcs) {
+    int n =0;
+    stringstream res;
+    res << string(170, '#') << endl << endl;
+    for (auto [studentCode,student] : this->students){
+        if(student.numberOfUcs() >= nUcs) n++;
+    }
+    res << "There is " << n << " students registered in at least " << nUcs << endl <<endl;
+    res << string(170, '#') << endl << endl;
+    return res.str();
+
+}
+
+string Data::consultBiggestUc(){
+    stringstream res;
+    for (auto [ucCode,uc] : this->ucs){
+        int n=0;
+        res << "UC code: " << ucCode << " -- ";
+        for (auto [ucCode2, c]: uc.getAllClasses()) {
+            n+= c.numberStudents();
+        }
+        res << n << " students" << endl;
+    }
+    res << endl;
+    return res.str();
+}
+
+
 set<string> Data::getUcsByClassCode(const string& classCode) const {
     return this->ucsCodesByClassCode.at(classCode);
 }
@@ -381,3 +472,5 @@ void Data::writeStudentsClassesFile(ofstream &file) {
         }
     }
 }
+
+

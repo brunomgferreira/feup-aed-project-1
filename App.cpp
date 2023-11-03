@@ -4,10 +4,10 @@
 App::App() {}
 
 void App::run() {
-    ifstream inputFile1("/home/bruno/Documents/AED/projeto/schedule/classes_per_uc.csv");
-    ifstream inputFile2("/home/bruno/Documents/AED/projeto/schedule/classes.csv");
-    ifstream inputFile3("/home/bruno/Documents/AED/projeto/schedule/students_classes.csv");
-    ifstream inputFile4("/home/bruno/Documents/AED/projeto/schedule/request_history.csv");
+    ifstream inputFile1("/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule/classes_per_uc.csv");
+    ifstream inputFile2("/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule/classes.csv");
+    ifstream inputFile3("/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule/students_classes.csv");
+    ifstream inputFile4("/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule/request_history.csv");
 
     this->data.readClassesPerUcFile(inputFile1);
     this->data.readClassesFile(inputFile2);
@@ -23,10 +23,10 @@ void App::run() {
 }
 
 void App::close() {
-    ofstream outputFile1("/home/bruno/Documents/AED/projeto/classes_per_uc.csv");
-    ofstream outputFile2("/home/bruno/Documents/AED/projeto/classes.csv");
-    ofstream outputFile3("/home/bruno/Documents/AED/projeto/students_classes.csv");
-    ofstream outputFile4("/home/bruno/Documents/AED/projeto/schedule/request_history.csv");
+    ofstream outputFile1("/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/classes_per_uc.csv");
+    ofstream outputFile2("/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/classes.csv");
+    ofstream outputFile3("/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/students_classes.csv");
+    ofstream outputFile4("/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule/request_history.csv");
 
     this->data.writeClassesPerUcFile(outputFile1);
     this->data.writeClassesFile(outputFile2);
@@ -85,7 +85,7 @@ void App::consultMenu() {
                 consultClassSchedule();
                 break;
             case '3':
-                consultClassStudentsGetUcCode();
+                consultStudentsClass();
                 break;
             case '4':
                 consultStudentsCourse();
@@ -160,7 +160,7 @@ void App::consultStudentSchedule() {
     UserInterface::printConsultMenu();
 }
 
-void App::consultClassSchedule() {
+void App::consultClassSchedule() { //fazer aassimm ou mensagem com textos
     bool shouldExit = false;
 
     while(!shouldExit) {
@@ -198,14 +198,36 @@ void App::consultClassSchedule() {
     UserInterface::printConsultMenu();
 }
 
-void App::consultClassStudentsGetUcCode() {
+
+void App::consultStudentsClass() { //errors
     bool shouldExit = false;
 
     while(!shouldExit) {
         try {
             string ucCode = UserInterface::readCode("Insert the UC code (i.e.: L.EIC001): ");
-            Uc uc = data.getAllUcs().at(ucCode);
-            consultClassStudentsGetClassCode(uc);
+            string classCode = UserInterface::readCode("Insert the Class Code (i.e.: 1LEIC01): ");
+            string msg = data.consultStudentsClass(ucCode,classCode);
+            UserInterface::printMessage(msg);
+            UserInterface::pressEnterToContinue();
+            break;
+        }
+        catch (const out_of_range& e) { //ver -- diviidri em data ?? ou problema dizer maneira genenrica
+            handleErrors("This UC doesn't exist in the database.");
+            handleErrors("This class doesn't exist in the database for the given UC.");
+            shouldExit = tryAgainMenu();
+        }
+    }
+    UserInterface::printConsultMenu();
+}
+
+void App::consultStudentsCourse() {
+    bool shouldExit = false;
+
+    while(!shouldExit) {
+        try {
+            string courseCode = UserInterface::readCode("Insert the UC code (i.e.: L.EIC001): ");
+            string msg = data.consultStudentsCourse(courseCode);
+            UserInterface::printMessage(msg);
             UserInterface::pressEnterToContinue();
             break;
         }
@@ -217,55 +239,68 @@ void App::consultClassStudentsGetUcCode() {
     UserInterface::printConsultMenu();
 }
 
-void App::consultClassStudentsGetClassCode(const Uc& uc) {
+
+void App::consultStudentsYear() { //errors
     bool shouldExit = false;
 
     while(!shouldExit) {
         try {
-            string classCode = UserInterface::readCode("Insert the Class Code (i.e.: 1LEIC01): ");
-            Class c = uc.getAllClasses().at(classCode);
-            consultClassStudents(c);
+            int year = stoi(UserInterface::readCode("Year: "));
+            string msg = data.consultStudentsYear(year); //consult n da bem
+            UserInterface::printMessage(msg);
+            UserInterface::pressEnterToContinue();
             break;
         }
+        catch (const invalid_argument& e) {  //situacao stoi
+            handleErrors("Invalid year.");
+            shouldExit = tryAgainMenu();
+        }
         catch (const out_of_range& e) {
-            handleErrors("This class doesn't exist in the database for the given UC.");
+            handleErrors("This year doesn't exist in the database.");
             shouldExit = tryAgainMenu();
         }
     }
+    UserInterface::printConsultMenu();
+
 }
 
-void App::consultClassStudents(const Class& c) {
-    set<int> studentCodes = c.getAllStudents();
-    stringstream res;
-    res << string(170, '#') << endl << endl;
-    for(const int studentCode : studentCodes) {
-        Student student = data.getStudent(studentCode);
-        res << student.getStudentAsString() << endl;
+
+
+void App::consultNumStudentsUcs() { //usei stoi
+    bool shouldExit = false;
+
+    while (!shouldExit) {
+        try {
+            int nUcs = stoi(UserInterface::readCode("How many Ucs: "));
+            if (nUcs > 7) throw out_of_range("Invalid number. The student cant be in more than 7 Ucs.");
+            string msg = data.consultNumStudentsUcs(nUcs);
+            UserInterface::printMessage(msg);
+            UserInterface::pressEnterToContinue();
+            break;
+        }
+        catch (const invalid_argument &e) {
+            handleErrors("Invalid number.");
+            shouldExit = tryAgainMenu();
+        }
+        catch (const out_of_range &e) {
+            handleErrors(e.what());
+            shouldExit = tryAgainMenu();
+        }
     }
-    res << endl << string(170, '#') << endl << endl;
-    UserInterface::printMessage(res.str());
+    UserInterface::printConsultMenu();
 }
 
-void App::consultStudentsCourse() {
-    string courseCode = UserInterface::readCode("Course Code: ");
-    //data.consultStudentsCourse
+void App::consultClassYearUcOccupation() {   //separo?
+
 }
 
-void App::consultStudentsYear() {
-    int year = UserInterface::readNumber("Year: ");
-    //data.consultStudentsYear()
-}
+void App::consultBiggestUc() { //falta ordenar
 
-void App::consultNumStudentsUcs() {
-    int nUcs = UserInterface::readNumber("Número de Ucs: ");
-    //data.consultNumStudentsUcs
-}
+    string msg = data.consultBiggestUc();
+    UserInterface::printMessage(msg);
+    UserInterface::pressEnterToContinue();
 
-void App::consultClassYearUcOccupation() {   //o que significa
-}
-
-void App::consultBiggestUc() {
-    //data.consultBiggestUc
+    UserInterface::printConsultMenu();
 }
 
 
@@ -298,18 +333,93 @@ void App::newRequestMenu() {
     UserInterface::printMainMenu();
 }
 
-void App::newRequestAdd() {
-    //falta implementar ligar edu
+void App::newRequestAdd() { //errros
+    bool shouldExit = false;
+
+    while(!shouldExit) {
+        try {
+            int studentCode = stoi(UserInterface::readCode("Student Code (i.e.: 123456789): ")); //invalid arg
+            string ucCode = UserInterface::readCode("Insert the UC code (i.e.: L.EIC001): ");
+            string classCode = UserInterface::readCode("Insert the Class Code (i.e.: 1LEIC01): ");
+            data.createAddRequest(studentCode,ucCode,classCode);
+            UserInterface::pressEnterToContinue();
+            break;
+        }
+        catch (const invalid_argument& e) {
+            handleErrors("Invalid student code. Please ensure the student code consists of numeric digits only.");
+            shouldExit = tryAgainMenu();
+        }
+        catch(const invalid_argument& e){ //??
+            handleErrors("This UC doesn't exist in the database.");
+            handleErrors("This class doesn't exist in the database for the given UC.");
+            shouldExit = tryAgainMenu();
+        }
+        catch (const out_of_range& e) {
+            handleErrors("This student doesn't exist in the database.");
+            shouldExit = tryAgainMenu();
+        }
+    }
+    UserInterface::printConsultMenu();
 }
 
-void App::newRequestRemove() {
-    //falta implementar ligar edu
+void App::newRequestRemove() { //errors
+    bool shouldExit = false;
+
+    while(!shouldExit) {
+        try {
+            int studentCode = stoi(UserInterface::readCode("Student Code (i.e.: 123456789): "));
+            string ucCode = UserInterface::readCode("Insert the UC code (i.e.: L.EIC001): ");
+            data.createRemoveRequest(studentCode,ucCode);
+            UserInterface::pressEnterToContinue();
+            break;
+        }
+        catch (const invalid_argument& e) {
+            handleErrors("Invalid student code. Please ensure the student code consists of numeric digits only.");
+            shouldExit = tryAgainMenu();
+        }
+        catch(const invalid_argument& e){ //??
+            handleErrors("This UC doesn't exist in the database.");
+            handleErrors("This class doesn't exist in the database for the given UC.");
+            shouldExit = tryAgainMenu();
+        }
+        catch (const out_of_range& e) {
+            handleErrors("This student doesn't exist in the database.");
+            shouldExit = tryAgainMenu();
+        }
+    }
+    UserInterface::printConsultMenu();
 }
 
-void App::newRequestSwitch() {
-    //falta implementar ligar edu
-}
+void App::newRequestSwitch() { //errors
+    bool shouldExit = false;
 
+    while(!shouldExit) {
+        try {
+            int studentCode = stoi(UserInterface::readCode("Student Code (i.e.: 123456789): "));
+            string ucCode = UserInterface::readCode("Insert the UC code (i.e.: L.EIC001): ");
+            string classCodeOrigin = UserInterface::readCode("Insert the Class Code Origin (i.e.: 1LEIC01): "); //??
+            string classCodeDestiny = UserInterface::readCode("Insert the Class Code Destiny (i.e.: 1LEIC01): ");
+            data.createSwitchRequest(studentCode,ucCode,classCodeOrigin,classCodeDestiny);
+            //recebr algum tipo de msg a dizer sobre a mudanca??
+            UserInterface::pressEnterToContinue();
+            break;
+        }
+        catch (const invalid_argument& e) {
+            handleErrors("Invalid student code. Please ensure the student code consists of numeric digits only.");
+            shouldExit = tryAgainMenu();
+        }
+        catch(const invalid_argument& e){ //??
+            handleErrors("This UC doesn't exist in the database.");
+            handleErrors("This class doesn't exist in the database for the given UC.");
+            shouldExit = tryAgainMenu();
+        }
+        catch (const out_of_range& e) {
+            handleErrors("This student doesn't exist in the database.");
+            shouldExit = tryAgainMenu();
+        }
+    }
+    UserInterface::printConsultMenu();
+}
 
 
 void App::processRequestMenu() {

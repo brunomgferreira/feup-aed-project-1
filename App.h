@@ -21,9 +21,9 @@ class App {
 
     void consultStudentSchedule();
     void consultClassSchedule();
-    void consultClassStudentsGetUcCode();
-    void consultClassStudentsGetClassCode(const Uc& uc);
-    void consultClassStudents(const Class& c);
+    //void consultClassStudentsGetUcCode();
+    //void consultClassStudentsGetClassCode(const Uc& uc);
+    void consultStudentsClass();
     void consultStudentsCourse();
     void consultStudentsYear();
     void consultNumStudentsUcs();

@@ -30,7 +30,7 @@ string UserInterface::readCode(const string& msg) {
     //saltar linha depois cin
 }
 
-int UserInterface::readNumber(const string& msg) {
+int UserInterface::readNumber(const string& msg) { //sem uso usei readcode
     int input;
     cout << endl << msg;
     cin >> input;

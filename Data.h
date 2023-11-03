@@ -5,6 +5,7 @@
 #include <forward_list>
 #include <fstream>
 #include <iostream>
+#include <iomanip>
 #include <list>
 #include <map>
 #include <queue>
@@ -34,6 +35,11 @@ class Data {
     // ucs related methods
     map<string, Uc> getAllUcs() const;
     Uc &getUc(const string &ucCode);
+    string consultStudentsClass(const string &ucCode, const string &classCode);
+    string consultStudentsCourse(const string &courseCode);
+    string consultStudentsYear(int year);
+    string consultNumStudentsUcs(int &nUcs);
+    string consultBiggestUc();
 
     set<string> getUcsByClassCode(const string& classCode) const;
 

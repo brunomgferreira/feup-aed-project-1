@@ -29,6 +29,7 @@ class Student {
     // Set & Getter -> studentName
     string getStudentName() const;
 
+
     // classes related methods
     void addClass(const Class &newClass);
     void removeClass(const string &classCode);

@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <fstream>
 #include <iostream>
+#include <iomanip>
 #include <list>
 #include <map>
 #include <queue>
@@ -28,7 +29,7 @@ class Data {
     const string PENDENT_REQUESTS_FILENAME = "pendent_requests.csv";
     const string STUDENTS_CLASS_FILENAME = "students_classes.csv";
     const string DIRECTORY_PATH =
-        "/home/soestilooo/Documents/Faculty/AED/project/schedule/";
+        "/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule";
 
    private:
     map<string, Uc> ucs;
@@ -37,6 +38,9 @@ class Data {
     queue<Request> pendentRequests;
     list<Request> requestHistory;
 
+    private:
+    bool isNumeric(const string& str);
+
    public:
     // Data constructor
     Data();
@@ -44,8 +48,16 @@ class Data {
     // ucs related methods
     map<string, Uc> getAllUcs() const;
     Uc &getUc(const string &ucCode);
+    bool ucExists(const string &ucCode);
+    string consultStudentsClass(const string &ucCode, const string &classCode);
+    string consultStudentsCourse(const string &ucCode);
+    string consultStudentsYear(const string &year);
+    string consultNumStudentsUcs(const string &nUcs);
+    string consultBiggestUc();
 
     set<string> getUcsByClassCode(const string &classCode) const;
+
+    bool classExists(const string &ucCode, const string &classCode);
 
     // students related methods
     map<int, Student> getAllStudents() const;
@@ -53,13 +65,12 @@ class Data {
     bool studentExists(int studentCode);
 
     // requests related methods
-    void createAddRequest(int studentCode, const string &ucCode,
-                          const string &classCode);
-    void createSwitchRequest(int studentCode, const string &ucCode,
-                             const string &originClassCode,
-                             const string &destinyClassCode);
-    void createRemoveRequest(int studentCode, const string &ucCode);
-    string processRequests();
+
+    void createAddRequest(const string &studentCode, const string &ucCode,const string &destinyclassCode);
+    void createRemoveRequest(const string &studentCode, const string &ucCode);
+    void createSwitchRequest(const string &studentCode, const string &ucCode,const string &destinyClassCode);
+
+    void processRequests();
 
     void undoRequest(int requestNumber);
 

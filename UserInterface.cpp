@@ -30,7 +30,7 @@ string UserInterface::readCode(const string& msg) {
     //saltar linha depois cin
 }
 
-int UserInterface::readNumber(const string& msg) {
+int UserInterface::readNumber(const string& msg) { //sem uso usei readcode
     int input;
     cout << endl << msg;
     cin >> input;
@@ -55,12 +55,11 @@ void UserInterface::printConsultMenu() {
     cout << "\n"
             "1 Consult the schedule of a given student\n"
             "2 Consult the schedule of a given class\n"
-            "3 Consult the students within a given class\n"
-            "4 Consult the students within a given course\n"
-            "5 Consult the students within a given year\n"
+            "3 Consult the students within a given class\n" //ordencaoa
+            "4 Consult the students within a given course\n" //ordencaoa
+            "5 Consult the students within a given year\n" //ordencaoa
             "6 Consult the number of students registered in at least n UCs\n"
-            "7 Consult the class/year/UC occupation (sorting by UC, ascending or descending order, …)\n"
-            "8 Consult the UCs with the greatest number of students\n"
+            "7 Consult the UCs with the greatest number of students\n"
             "q Back to Main Menu\n";
 }
 
@@ -168,8 +167,8 @@ void UserInterface::printProcessRequestMenu() {
     cout << "Process Request Menu" << endl;
     cout << "\n"
             "1 Process Pending Requests\n"
-            "3 See recent actions \n"
-            "2 Undo recent actions \n"
+            "2 See recent actions \n"
+            "3 Undo recent actions \n"
             "q Back to Main Menu\n";
 }
 

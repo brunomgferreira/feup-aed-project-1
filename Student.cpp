@@ -70,9 +70,8 @@ void Student::removeClass(const string& classCode) {
 
 map<string, Class> Student::getAllClasses() const { return this->classes; }
 
-bool Student::verifyClass(const string& originClassCode,
-                          const string& destinyClassCode) const {
-    const Class& destinyClass = classes.at(destinyClassCode);
+bool Student::verifyClass(const string& ucCode, const string& originClassCode,
+                          const Class& destinyClass) const {
     for (const auto& [classCode, c] : classes) {
         if (classCode != originClassCode && destinyClass.invalidOverlaps(c)) {
             return false;

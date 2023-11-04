@@ -3,8 +3,8 @@
 
 #include <algorithm>
 #include <fstream>
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 #include <list>
 #include <map>
 #include <queue>
@@ -29,7 +29,7 @@ class Data {
     const string PENDENT_REQUESTS_FILENAME = "pendent_requests.csv";
     const string STUDENTS_CLASS_FILENAME = "students_classes.csv";
     const string DIRECTORY_PATH =
-        "/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule";
+        "/home/soestilooo/Documents/Faculty/AED/project/schedule/";
 
    private:
     map<string, Uc> ucs;
@@ -38,8 +38,8 @@ class Data {
     queue<Request> pendentRequests;
     list<Request> requestHistory;
 
-    private:
-    bool isNumeric(const string& str);
+   private:
+    bool isNumeric(const string &str);
 
    public:
     // Data constructor
@@ -66,11 +66,13 @@ class Data {
 
     // requests related methods
 
-    void createAddRequest(const string &studentCode, const string &ucCode,const string &destinyclassCode);
+    void createAddRequest(const string &studentCode, const string &ucCode,
+                          const string &destinyclassCode);
     void createRemoveRequest(const string &studentCode, const string &ucCode);
-    void createSwitchRequest(const string &studentCode, const string &ucCode,const string &destinyClassCode);
+    void createSwitchRequest(const string &studentCode, const string &ucCode,
+                             const string &destinyClassCode);
 
-    void processRequests();
+    string processRequests();
 
     void undoRequest(int requestNumber);
 

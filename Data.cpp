@@ -141,6 +141,43 @@ string Data::processRequests() {
     return (output.str());
 }
 
+void Data::undoRequest(int requestNumber) {
+    if (requestNumber > requestHistory.size() || requestNumber <= 0)
+        throw invalid_argument("Not a valid request number");
+    auto requestIterator = requestHistory.begin();
+    for (size_t i = 1; i < requestNumber; i++) {
+        requestIterator++;
+    }
+    const Request &request = *requestIterator;
+    int studentCode = request.studentCode;
+    const string &ucCode = request.ucCode;
+    string destinyClassCode, originClassCode;
+    char type;
+
+    switch (request.type) {
+        case 'A':
+            type = 'R';
+            originClassCode = request.destinyClassCode;
+            break;
+        case 'R':
+            type = 'A';
+            destinyClassCode = request.originClassCode;
+            break;
+        case 'S':
+            destinyClassCode = request.originClassCode;
+            originClassCode = request.destinyClassCode;
+            break;
+    }
+
+    Request oppositeRequest(studentCode, type, ucCode, originClassCode,
+                            destinyClassCode);
+    if (validRequest(oppositeRequest)) {
+        applyRequest(oppositeRequest);
+    } else {
+        throw runtime_error("Impossible to undo Request");
+    }
+}
+
 bool Data::validRequest(const Request &request) const {
     const Student &student = students.at(request.studentCode);
     Uc uc = ucs.at(request.ucCode);

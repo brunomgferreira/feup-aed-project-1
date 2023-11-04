@@ -2,7 +2,6 @@
 #define DATA_H
 
 #include <algorithm>
-#include <forward_list>
 #include <fstream>
 #include <iostream>
 #include <list>
@@ -36,7 +35,7 @@ class Data {
     unordered_map<string, set<string>> ucsCodesByClassCode;
     map<int, Student> students;
     queue<Request> pendentRequests;
-    forward_list<Request> requestHistory;
+    list<Request> requestHistory;
 
    public:
     // Data constructor
@@ -62,11 +61,13 @@ class Data {
     void createRemoveRequest(int studentCode, const string &ucCode);
     string processRequests();
 
+    void undoRequest(int requestNumber);
+
     bool validRequest(const Request &request) const;
     void applyRequest(const Request &request);
 
     queue<Request> &getPendentRequests();
-    forward_list<Request> &getRequestHistory();
+    list<Request> &getRequestHistory();
 
     // Read and Write data
     void loadData();

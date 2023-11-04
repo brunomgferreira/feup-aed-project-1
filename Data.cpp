@@ -313,7 +313,7 @@ string Data::processRequests() {
     return (output.str());
 }
 
-void Data::undoRequest(int requestNumber) {
+string Data::undoRequest(int requestNumber) {
     if (requestNumber > requestHistory.size() || requestNumber <= 0)
         throw invalid_argument("Not a valid request number");
     auto requestIterator = requestHistory.begin();
@@ -343,7 +343,11 @@ void Data::undoRequest(int requestNumber) {
 
     Request oppositeRequest(studentCode, type, ucCode, originClassCode,
                             destinyClassCode);
+
+    stringstream output;
+    output << "Creating undo Request: \n";
     string validationResult = validRequest(oppositeRequest);
+    output << validationResult;
     if (validationResult == "Successful") {
         applyRequest(oppositeRequest);
     } else {

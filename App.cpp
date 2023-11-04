@@ -408,5 +408,18 @@ void App::recentActions() {
 }
 
 void App::undoRecentActions() {  //??
-    // falta implementat ligar edu
+    bool shouldExit = false;
+
+    while (!shouldExit) {
+        try {
+            const string& message = data.undoRequest(UserInterface::readNumber("Select a request to undo: "));
+            UserInterface::printMessage(message);
+            UserInterface::pressEnterToContinue();
+            break;
+        } catch (const invalid_argument& e) {
+            handleErrors(e.what());
+            shouldExit = tryAgainMenu();
+        }
+    }
+    UserInterface::printProcessRequestMenu();
 }

@@ -74,7 +74,7 @@ class Data {
 
     string processRequests();
 
-    void undoRequest(int requestNumber);
+    string undoRequest(int requestNumber);
 
     string validRequest(const Request &request) const;
     void applyRequest(const Request &request);

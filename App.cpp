@@ -391,6 +391,8 @@ void App::processRequestMenu() {
                 break;
         }
     } while (inputError || !shouldExit);
+
+    UserInterface::printMainMenu();
 }
 
 

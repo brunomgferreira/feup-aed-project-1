@@ -257,6 +257,18 @@ CMakeFiles/projeto.dir/App.cpp.o: /home/xavier/Desktop/AED/Projeto/feup-aed-proj
   /home/xavier/Desktop/AED/Projeto/feup-aed-project-1/TimeInterval.h \
   /home/xavier/Desktop/AED/Projeto/feup-aed-project-1/Uc.h \
   /usr/include/c++/11/limits \
+  /usr/include/c++/11/filesystem \
+  /usr/include/c++/11/bits/fs_fwd.h \
+  /usr/include/c++/11/chrono \
+  /usr/include/c++/11/ratio \
+  /usr/include/c++/11/bits/parse_numbers.h \
+  /usr/include/c++/11/bits/fs_path.h \
+  /usr/include/c++/11/codecvt \
+  /usr/include/c++/11/ext/concurrence.h \
+  /usr/include/c++/11/bits/shared_ptr.h \
+  /usr/include/c++/11/bits/shared_ptr_base.h \
+  /usr/include/c++/11/bits/fs_dir.h \
+  /usr/include/c++/11/bits/fs_ops.h \
   /home/xavier/Desktop/AED/Projeto/feup-aed-project-1/UserInterface.h
 
 CMakeFiles/projeto.dir/Class.cpp.o: /home/xavier/Desktop/AED/Projeto/feup-aed-project-1/Class.cpp \
@@ -877,7 +889,19 @@ CMakeFiles/projeto.dir/Data.cpp.o: /home/xavier/Desktop/AED/Projeto/feup-aed-pro
   /home/xavier/Desktop/AED/Projeto/feup-aed-project-1/ClassSchedule.h \
   /home/xavier/Desktop/AED/Projeto/feup-aed-project-1/TimeInterval.h \
   /home/xavier/Desktop/AED/Projeto/feup-aed-project-1/Uc.h \
-  /usr/include/c++/11/limits
+  /usr/include/c++/11/limits \
+  /usr/include/c++/11/filesystem \
+  /usr/include/c++/11/bits/fs_fwd.h \
+  /usr/include/c++/11/chrono \
+  /usr/include/c++/11/ratio \
+  /usr/include/c++/11/bits/parse_numbers.h \
+  /usr/include/c++/11/bits/fs_path.h \
+  /usr/include/c++/11/codecvt \
+  /usr/include/c++/11/ext/concurrence.h \
+  /usr/include/c++/11/bits/shared_ptr.h \
+  /usr/include/c++/11/bits/shared_ptr_base.h \
+  /usr/include/c++/11/bits/fs_dir.h \
+  /usr/include/c++/11/bits/fs_ops.h
 
 CMakeFiles/projeto.dir/Request.cpp.o: /home/xavier/Desktop/AED/Projeto/feup-aed-project-1/Request.cpp \
   /usr/include/stdc-predef.h \
@@ -2114,6 +2138,18 @@ CMakeFiles/projeto.dir/main.cpp.o: /home/xavier/Desktop/AED/Projeto/feup-aed-pro
   /home/xavier/Desktop/AED/Projeto/feup-aed-project-1/TimeInterval.h \
   /home/xavier/Desktop/AED/Projeto/feup-aed-project-1/Uc.h \
   /usr/include/c++/11/limits \
+  /usr/include/c++/11/filesystem \
+  /usr/include/c++/11/bits/fs_fwd.h \
+  /usr/include/c++/11/chrono \
+  /usr/include/c++/11/ratio \
+  /usr/include/c++/11/bits/parse_numbers.h \
+  /usr/include/c++/11/bits/fs_path.h \
+  /usr/include/c++/11/codecvt \
+  /usr/include/c++/11/ext/concurrence.h \
+  /usr/include/c++/11/bits/shared_ptr.h \
+  /usr/include/c++/11/bits/shared_ptr_base.h \
+  /usr/include/c++/11/bits/fs_dir.h \
+  /usr/include/c++/11/bits/fs_ops.h \
   /home/xavier/Desktop/AED/Projeto/feup-aed-project-1/UserInterface.h
 
 
@@ -2122,6 +2158,18 @@ CMakeFiles/projeto.dir/main.cpp.o: /home/xavier/Desktop/AED/Projeto/feup-aed-pro
 /home/xavier/Desktop/AED/Projeto/feup-aed-project-1/ClassSchedule.cpp:
 
 /home/xavier/Desktop/AED/Projeto/feup-aed-project-1/UserInterface.h:
+
+/usr/include/c++/11/bits/fs_dir.h:
+
+/usr/include/c++/11/bits/shared_ptr_base.h:
+
+/usr/include/c++/11/bits/shared_ptr.h:
+
+/usr/include/c++/11/ratio:
+
+/usr/include/c++/11/bits/fs_fwd.h:
+
+/usr/include/c++/11/filesystem:
 
 /usr/include/c++/11/limits:
 
@@ -2168,6 +2216,8 @@ CMakeFiles/projeto.dir/main.cpp.o: /home/xavier/Desktop/AED/Projeto/feup-aed-pro
 /usr/include/c++/11/iomanip:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
+
+/usr/include/c++/11/codecvt:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
 
@@ -2297,6 +2347,8 @@ CMakeFiles/projeto.dir/main.cpp.o: /home/xavier/Desktop/AED/Projeto/feup-aed-pro
 
 /usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
 
+/usr/include/c++/11/chrono:
+
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
 
 /usr/include/c++/11/bits/std_abs.h:
@@ -2409,6 +2461,8 @@ CMakeFiles/projeto.dir/main.cpp.o: /home/xavier/Desktop/AED/Projeto/feup-aed-pro
 
 /usr/include/c++/11/cstdlib:
 
+/usr/include/c++/11/bits/parse_numbers.h:
+
 /usr/include/c++/11/bits/stl_pair.h:
 
 /usr/include/c++/11/bits/std_function.h:
@@ -2430,6 +2484,8 @@ CMakeFiles/projeto.dir/main.cpp.o: /home/xavier/Desktop/AED/Projeto/feup-aed-pro
 /usr/include/c++/11/bits/stl_iterator_base_types.h:
 
 /usr/include/c++/11/bits/exception_ptr.h:
+
+/usr/include/c++/11/ext/concurrence.h:
 
 /usr/include/c++/11/initializer_list:
 
@@ -2577,6 +2633,8 @@ CMakeFiles/projeto.dir/main.cpp.o: /home/xavier/Desktop/AED/Projeto/feup-aed-pro
 
 /usr/include/c++/11/bits/unordered_map.h:
 
+/usr/include/c++/11/bits/fs_ops.h:
+
 /usr/include/c++/11/bits/erase_if.h:
 
 /usr/include/c++/11/algorithm:
@@ -2590,6 +2648,8 @@ CMakeFiles/projeto.dir/main.cpp.o: /home/xavier/Desktop/AED/Projeto/feup-aed-pro
 /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h:
 
 /usr/include/c++/11/fstream:
+
+/usr/include/c++/11/bits/fs_path.h:
 
 /usr/include/c++/11/cstdint:
 

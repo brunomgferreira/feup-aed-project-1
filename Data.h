@@ -30,7 +30,7 @@ class Data {
     const string PENDENT_REQUESTS_FILENAME = "pendent_requests.csv";
     const string STUDENTS_CLASS_FILENAME = "students_classes.csv";
     const string DIRECTORY_PATH =
-        "/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule";
+        "/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule/";
 
    private:
     map<string, Uc> ucs;
@@ -71,7 +71,7 @@ class Data {
     void createRemoveRequest(const string &studentCode, const string &ucCode);
     void createSwitchRequest(const string &studentCode, const string &ucCode,const string &destinyClassCode);
 
-    void processRequests();
+    string processRequests();
 
     bool validRequest(const Request &request) const;
     void applyRequest(const Request &request);

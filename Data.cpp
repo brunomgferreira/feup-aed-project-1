@@ -210,6 +210,7 @@ bool Data::studentExists(int studentCode) {
 void Data::createAddRequest(const string &studentCode, const string &ucCode,const string &destinyClassCode) {
     if(!isNumeric(studentCode)) throw invalid_argument("The Student Code should be numeric.");
     int intStudentCode = stoi(studentCode);
+    if(!studentExists(intStudentCode)) throw invalid_argument ("The student doesn't exist in the database.");
     if(!ucExists(ucCode)) throw invalid_argument ("This UC doesn't exist in the database.");
     if(!classExists(ucCode,destinyClassCode)) throw invalid_argument ("This Class doesn't exist in the database.");
     Request newRequest(intStudentCode, 'A', ucCode, "", destinyClassCode);
@@ -421,8 +422,7 @@ void Data::writeRequestHistoryFile() {
 void Data::readClassesPerUcFile() {
     ifstream file(DIRECTORY_PATH + CLASSES_PER_UC_FILENAME);
     if (!file.is_open()) {
-        throw ios_base::failure("Unable to open file " +
-                                CLASSES_PER_UC_FILENAME);
+        throw runtime_error("Unable to open file " + CLASSES_PER_UC_FILENAME);
     }
     string line;
     getline(file, line);
@@ -492,7 +492,7 @@ void Data::writeClassesPerUcFile() {
 void Data::readClassesFile() {
     ifstream file(DIRECTORY_PATH + CLASSES_FILENAME);
     if (!file.is_open()) {
-        throw ios_base::failure("Unable to open file " + CLASSES_FILENAME);
+        throw runtime_error("Unable to open file " + CLASSES_FILENAME);
     }
     string line;
     getline(file, line);
@@ -563,7 +563,7 @@ void Data::writeClassesFile() {
 void Data::readStudentsClassesFile() {
     ifstream file(DIRECTORY_PATH + STUDENTS_CLASS_FILENAME);
     if (!file.is_open()) {
-        throw ios_base::failure("Unable to open file " +
+        throw runtime_error("Unable to open file " +
                                 STUDENTS_CLASS_FILENAME);
     }
     string line;

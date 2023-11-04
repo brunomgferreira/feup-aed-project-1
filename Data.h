@@ -17,10 +17,10 @@
 #include "Student.h"
 #include "Uc.h"
 #include "filesystem"
+
 /**
  * @brief Class that saves all the program data.
  */
-
 class Data {
    private:
     const string CLASSES_FILENAME = "classes.csv";
@@ -29,7 +29,8 @@ class Data {
     const string PENDENT_REQUESTS_FILENAME = "pendent_requests.csv";
     const string STUDENTS_CLASS_FILENAME = "students_classes.csv";
     const string DIRECTORY_PATH =
-        "/home/soestilooo/Documents/Faculty/AED/project/schedule/";
+        "/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule/";
+
 
    private:
     map<string, Uc> ucs;
@@ -52,6 +53,9 @@ class Data {
     string consultStudentsClass(const string &ucCode, const string &classCode);
     string consultStudentsCourse(const string &ucCode);
     string consultStudentsYear(const string &year);
+    string consultOccupationClass(const string &ucCode, const string &classCode);
+    string consultOccupationCourse(const string &ucCode);
+    string consultOccupationYear(const string &year);
     string consultNumStudentsUcs(const string &nUcs);
     string consultBiggestUc();
 

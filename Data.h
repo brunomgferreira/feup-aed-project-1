@@ -76,7 +76,7 @@ class Data {
 
     void undoRequest(int requestNumber);
 
-    bool validRequest(const Request &request) const;
+    string validRequest(const Request &request) const;
     void applyRequest(const Request &request);
 
     queue<Request> &getPendentRequests();

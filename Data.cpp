@@ -289,10 +289,17 @@ string Data::processRequests() {
     if (totalRequests == 0) {
         return "No requests to process.\n";
     }
+    stringstream log;
     int sucessfulRequests = 0;
+    int requestNumber = 1;
     while (!this->pendentRequests.empty()) {
         Request &request = this->pendentRequests.front();
-        if (validRequest(request)) {
+        string validationResult = validRequest(request);
+
+        log << '\n' << requestNumber++ << "-  " << request.stringInfo();
+        log << ">>>" << validationResult;
+
+        if (validationResult == "Successful") {
             applyRequest(request);
             sucessfulRequests++;
         }
@@ -302,6 +309,7 @@ string Data::processRequests() {
     output << "Process finished!\n";
     output << totalRequests << " total requests processed. "
            << sucessfulRequests << " sucessfully accepted!\n";
+    output << log.str();
     return (output.str());
 }
 
@@ -335,31 +343,42 @@ void Data::undoRequest(int requestNumber) {
 
     Request oppositeRequest(studentCode, type, ucCode, originClassCode,
                             destinyClassCode);
-    if (validRequest(oppositeRequest)) {
+    string validationResult = validRequest(oppositeRequest);
+    if (validationResult == "Successful") {
         applyRequest(oppositeRequest);
     } else {
-        throw runtime_error("Impossible to undo Request");
+        throw runtime_error("Impossible to undo Request. ");
     }
 }
 
-bool Data::validRequest(const Request &request) const {
+string Data::validRequest(const Request &request) const {
+    string log = "NOT ACCEPTED.";
     const Student &student = students.at(request.studentCode);
     Uc uc = ucs.at(request.ucCode);
 
     if (!uc.balancedClasses(request.originClassCode,
                             request.destinyClassCode)) {
-        return false;
+        log += "Operation affects Class balance";
+        return log;
     }
     if (request.type != 'R') {
         Class &destinyClass = uc.getClass(request.destinyClassCode);
-        if ((student.numberOfUcs() >= 7 && request.type == 'A') ||
-            !destinyClass.hasVacancies()) {
-            return false;
+        if (!destinyClass.hasVacancies()){
+            log += "Class to enter does not have vacancies";
+            return log;
+        }
+        if (student.numberOfUcs() >= 7 && request.type == 'A'){
+            log += "Student is already enrolled in the maximum number of Ucs possible";
+            return log;
         };
-        return student.verifyClass(request.ucCode, request.originClassCode,
-                                   uc.getClass(request.destinyClassCode));
+        string conflictClass = student.findConflictClass(request.ucCode, request.originClassCode,
+                                                  uc.getClass(request.destinyClassCode));
+        if (!conflictClass.empty()){
+           log += "Class to enter conflits with student's current schedule. There is overlap with the class " + conflictClass;
+           return log;
+        }
     }
-    return true;
+    return "Successful";
 }
 
 void Data::applyRequest(const Request &request) {

@@ -70,14 +70,13 @@ void Student::removeClass(const string& classCode) {
 
 map<string, Class> Student::getAllClasses() const { return this->classes; }
 
-bool Student::verifyClass(const string& ucCode, const string& originClassCode,
-                          const Class& destinyClass) const {
+string Student::findConflictClass(const std::string& ucCode, const std::string& originClassCode, const Class& destinyClass) const {
     for (const auto& [classCode, c] : classes) {
         if (classCode != originClassCode && destinyClass.invalidOverlaps(c)) {
-            return false;
+            return classCode;
         }
     }
-    return true;
+    return "";
 }
 
 string Student::getUcClassCode(const string& ucCode) const {

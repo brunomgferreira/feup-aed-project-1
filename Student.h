@@ -34,7 +34,7 @@ class Student {
     void addClass(const Class &newClass);
     void removeClass(const string &classCode);
     map<string, Class> getAllClasses() const;
-    bool verifyClass(const string& ucCode, const string &originClassCode,
+    string findConflictClass(const string& ucCode, const string &originClassCode,
                      const Class& destinyClass) const;
     string getUcClassCode(const string &ucCode) const;
     // Ucs

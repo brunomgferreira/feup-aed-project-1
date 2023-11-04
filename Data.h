@@ -2,10 +2,9 @@
 #define DATA_H
 
 #include <algorithm>
-#include <forward_list>
 #include <fstream>
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 #include <list>
 #include <map>
 #include <queue>
@@ -30,17 +29,17 @@ class Data {
     const string PENDENT_REQUESTS_FILENAME = "pendent_requests.csv";
     const string STUDENTS_CLASS_FILENAME = "students_classes.csv";
     const string DIRECTORY_PATH =
-        "/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule";
+        "/home/soestilooo/Documents/Faculty/AED/project/schedule/";
 
    private:
     map<string, Uc> ucs;
     unordered_map<string, set<string>> ucsCodesByClassCode;
     map<int, Student> students;
     queue<Request> pendentRequests;
-    forward_list<Request> requestHistory;
+    list<Request> requestHistory;
 
-    private:
-    bool isNumeric(const string& str);
+   private:
+    bool isNumeric(const string &str);
 
    public:
     // Data constructor
@@ -67,17 +66,21 @@ class Data {
 
     // requests related methods
 
-    void createAddRequest(const string &studentCode, const string &ucCode,const string &destinyclassCode);
+    void createAddRequest(const string &studentCode, const string &ucCode,
+                          const string &destinyclassCode);
     void createRemoveRequest(const string &studentCode, const string &ucCode);
-    void createSwitchRequest(const string &studentCode, const string &ucCode,const string &destinyClassCode);
+    void createSwitchRequest(const string &studentCode, const string &ucCode,
+                             const string &destinyClassCode);
 
-    void processRequests();
+    string processRequests();
 
-    bool validRequest(const Request &request) const;
+    string undoRequest(int requestNumber);
+
+    string validRequest(const Request &request) const;
     void applyRequest(const Request &request);
 
     queue<Request> &getPendentRequests();
-    forward_list<Request> &getRequestHistory();
+    string getRequestHistory() const;
 
     // Read and Write data
     void loadData();

@@ -11,8 +11,7 @@
 
 using namespace std;
 
-
-bool Data::isNumeric(const string& str) {
+bool Data::isNumeric(const string &str) {
     for (char c : str) {
         if (!isdigit(c)) {
             return false;
@@ -48,10 +47,9 @@ Enrolled in 1 UCs:	[L.EIC002-1LEIC05]
 
 Uc &Data::getUc(const string &ucCode) { return this->ucs.at(ucCode); }
 
-
 bool Data::ucExists(const std::string &ucCode) {
-    for(const auto& [code, uc] : this->ucs){
-        if(code == ucCode) return true;
+    for (const auto &[code, uc] : this->ucs) {
+        if (code == ucCode) return true;
     }
     return false;
 }
@@ -62,95 +60,107 @@ bool Data::ucExists(const std::string &ucCode) {
  * @param courseCode
  * @return string of data
  */
-string Data::consultStudentsClass(const string &ucCode, const string &classCode){
-    if(!ucExists(ucCode)) throw invalid_argument ("This UC doesn't exist in the database.");
+string Data::consultStudentsClass(const string &ucCode,
+                                  const string &classCode) {
+    if (!ucExists(ucCode))
+        throw invalid_argument("This UC doesn't exist in the database.");
     Uc uc = this->ucs.at(ucCode);
-    if(!classExists(ucCode,classCode)) throw invalid_argument ("This Class doesn't exist in the database.");
+    if (!classExists(ucCode, classCode))
+        throw invalid_argument("This Class doesn't exist in the database.");
     Class c = uc.getAllClasses().at(classCode);
     set<int> studentCodes = c.getAllStudents();
     stringstream res;
     res << string(170, '#') << endl << endl;
-    for(const int studentCode : studentCodes) {
+    for (const int studentCode : studentCodes) {
         Student student = this->students.at(studentCode);
         res << student.getStudentAsString() << endl;
     }
-    res <<endl;
-    res << "The pretended class has "<< c.numberStudents() << " students" <<endl;
+    res << endl;
+    res << "The pretended class has " << c.numberStudents() << " students"
+        << endl;
     res << endl << string(170, '#') << endl << endl;
     return res.str();
 }
 
 string Data::consultStudentsCourse(const string &ucCode) {
-    if(!ucExists(ucCode)) throw invalid_argument ("This UC doesn't exist in the database.");
+    if (!ucExists(ucCode))
+        throw invalid_argument("This UC doesn't exist in the database.");
     Uc uc = this->ucs.at(ucCode);
     stringstream res;
-    int numberStudents =0;
+    int numberStudents = 0;
     res << string(170, '#') << endl << endl;
-    for(auto [ucCode, c] : uc.getAllClasses()) {
+    for (auto [ucCode, c] : uc.getAllClasses()) {
         res << "Class: " << c.getClassCode() << endl;
-        for(auto studentCode : c.getAllStudents()){
+        for (auto studentCode : c.getAllStudents()) {
             Student student = getStudent(studentCode);
             res << student.getStudentAsString() << endl;
         }
         res << endl;
         numberStudents += c.numberStudents();
     }
-    res << "The pretended Uc has "<< numberStudents<< " students" <<endl <<endl;
+    res << "The pretended Uc has " << numberStudents << " students" << endl
+        << endl;
     res << string(170, '#') << endl << endl;
     return res.str();
 }
 
 string Data::consultStudentsYear(const string &year) {
-    if(!isNumeric(year)) throw invalid_argument("The year should be a number.");
+    if (!isNumeric(year))
+        throw invalid_argument("The year should be a number.");
     int intYear = stoi(year);
-    if(intYear >3) throw invalid_argument("This year doesn't exist in the context of the database.");
+    if (intYear > 3)
+        throw invalid_argument(
+            "This year doesn't exist in the context of the database.");
     stringstream res;
     set<int> std;
     res << string(170, '#') << endl << endl;
-    for(auto [uccode , uc]:this->ucs) {
-        for (auto [ucCode, c]: uc.getAllClasses()) {
-            if(c.getClassCode().substr(0,1) == to_string(intYear)){
-                for (const int& studentCode: c.getAllStudents()) {
+    for (auto [uccode, uc] : this->ucs) {
+        for (auto [ucCode, c] : uc.getAllClasses()) {
+            if (c.getClassCode().substr(0, 1) == to_string(intYear)) {
+                for (const int &studentCode : c.getAllStudents()) {
                     std.insert(studentCode);
                 }
-            }
-            else break;
+            } else
+                break;
         }
     }
-    for(auto studentCode : std){
+    for (auto studentCode : std) {
         Student student = getStudent(studentCode);
         res << student.getStudentAsString() << endl;
     }
     res << endl;
-    res << "The pretended Year has "<< std.size() << " students" <<endl;
+    res << "The pretended Year has " << std.size() << " students" << endl;
     res << string(170, '#') << endl << endl;
     return res.str();
 }
-
 
 string Data::consultNumStudentsUcs(const string &nUcs) {
-    if(!isNumeric(nUcs)) throw invalid_argument("The year should be a number.");
+    if (!isNumeric(nUcs))
+        throw invalid_argument("The year should be a number.");
     int intNUcs = stoi(nUcs);
-    if (intNUcs > 7) throw invalid_argument("Invalid number. The student cant be in more than 7 Ucs.");
-    int n =0;
+    if (intNUcs > 7)
+        throw invalid_argument(
+            "Invalid number. The student cant be in more than 7 Ucs.");
+    int n = 0;
     stringstream res;
     res << string(170, '#') << endl << endl;
-    for (auto [studentCode,student] : this->students){
-        if(student.numberOfUcs() >= intNUcs) n++;
+    for (auto [studentCode, student] : this->students) {
+        if (student.numberOfUcs() >= intNUcs) n++;
     }
-    res << "There is " << n << " students registered in at least " << intNUcs << endl <<endl;
+    res << "There is " << n << " students registered in at least " << intNUcs
+        << endl
+        << endl;
     res << string(170, '#') << endl << endl;
     return res.str();
-
 }
 
-string Data::consultBiggestUc(){ //mudar por causa ordencao
+string Data::consultBiggestUc() {  // mudar por causa ordencao
     stringstream res;
-    for (auto [ucCode,uc] : this->ucs){
-        int n=0;
+    for (auto [ucCode, uc] : this->ucs) {
+        int n = 0;
         res << "UC code: " << ucCode << " -- ";
-        for (auto [ucCode2, c]: uc.getAllClasses()) {
-            n+= c.numberStudents();
+        for (auto [ucCode2, c] : uc.getAllClasses()) {
+            n += c.numberStudents();
         }
         res << n << " students" << endl;
     }
@@ -158,13 +168,12 @@ string Data::consultBiggestUc(){ //mudar por causa ordencao
     return res.str();
 }
 
-
-set<string> Data::getUcsByClassCode(const string& classCode) const {
+set<string> Data::getUcsByClassCode(const string &classCode) const {
     return this->ucsCodesByClassCode.at(classCode);
 }
 
-bool Data::classExists(const string &ucCode, const string &classCode){
-    Uc uc =this->ucs.at(ucCode);
+bool Data::classExists(const string &ucCode, const string &classCode) {
+    Uc uc = this->ucs.at(ucCode);
     return uc.hasClass(classCode);
 }
 
@@ -207,11 +216,19 @@ bool Data::studentExists(int studentCode) {
  *student wants to join
  */
 
-void Data::createAddRequest(const string &studentCode, const string &ucCode,const string &destinyClassCode) {
-    if(!isNumeric(studentCode)) throw invalid_argument("The Student Code should be numeric.");
+void Data::createAddRequest(const string &studentCode, const string &ucCode,
+                            const string &destinyClassCode) {
+    if (!isNumeric(studentCode))
+        throw invalid_argument("The Student Code should be numeric.");
     int intStudentCode = stoi(studentCode);
-    if(!ucExists(ucCode)) throw invalid_argument ("This UC doesn't exist in the database.");
-    if(!classExists(ucCode,destinyClassCode)) throw invalid_argument ("This Class doesn't exist in the database.");
+    if (!ucExists(ucCode))
+        throw invalid_argument("This UC doesn't exist in the database.");
+    if (this->students.at(intStudentCode).hasUc(ucCode)) {
+        throw invalid_argument(
+            "Student is already enrolled in that Unit Course");
+    }
+    if (!classExists(ucCode, destinyClassCode))
+        throw invalid_argument("This Class doesn't exist in the database.");
     Request newRequest(intStudentCode, 'A', ucCode, "", destinyClassCode);
     this->pendentRequests.push(newRequest);
 }
@@ -225,11 +242,15 @@ void Data::createAddRequest(const string &studentCode, const string &ucCode,cons
  *wants to leave
  */
 
-void Data::createRemoveRequest(const string &studentCode, const string &ucCode) {
-    if(!isNumeric(studentCode)) throw invalid_argument("The Student Code should be numeric.");
+void Data::createRemoveRequest(const string &studentCode,
+                               const string &ucCode) {
+    if (!isNumeric(studentCode))
+        throw invalid_argument("The Student Code should be numeric.");
     int intStudentCode = stoi(studentCode);
-    if(!studentExists(intStudentCode)) throw invalid_argument ("The student doesn't exist in the database.");
-    if(!ucExists(ucCode)) throw invalid_argument ("This UC doesn't exist in the database.");
+    if (!studentExists(intStudentCode))
+        throw invalid_argument("The student doesn't exist in the database.");
+    if (!ucExists(ucCode))
+        throw invalid_argument("This UC doesn't exist in the database.");
     string originClassCode = students.at(intStudentCode).getUcClassCode(ucCode);
     Request newRequest(intStudentCode, 'R', ucCode, originClassCode, "");
     this->pendentRequests.push(newRequest);
@@ -246,28 +267,39 @@ void Data::createRemoveRequest(const string &studentCode, const string &ucCode) 
  *wants to join
  */
 
-void Data::createSwitchRequest(const string &studentCode, const string &ucCode,const string &destinyClassCode) {
-    if(!isNumeric(studentCode)) throw invalid_argument("The Student Code should be numeric.");
+void Data::createSwitchRequest(const string &studentCode, const string &ucCode,
+                               const string &destinyClassCode) {
+    if (!isNumeric(studentCode))
+        throw invalid_argument("The Student Code should be numeric.");
     int intStudentCode = stoi(studentCode);
-    if(!studentExists(intStudentCode)) throw invalid_argument ("The student doesn't exist in the database.");
-    if(!ucExists(ucCode)) throw invalid_argument ("This UC doesn't exist in the database.");
-    if(!classExists(ucCode,destinyClassCode)) throw invalid_argument ("This Class doesn't exist in the database.");
+    if (!studentExists(intStudentCode))
+        throw invalid_argument("The student doesn't exist in the database.");
+    if (!ucExists(ucCode))
+        throw invalid_argument("This UC doesn't exist in the database.");
+    if (!classExists(ucCode, destinyClassCode))
+        throw invalid_argument("This Class doesn't exist in the database.");
     string originClassCode = students.at(intStudentCode).getUcClassCode(ucCode);
     Request newRequest(intStudentCode, 'S', ucCode, originClassCode,
                        destinyClassCode);
     this->pendentRequests.push(newRequest);
 }
 
-
 string Data::processRequests() {
     int totalRequests = this->pendentRequests.size();
     if (totalRequests == 0) {
         return "No requests to process.\n";
     }
+    stringstream log;
     int sucessfulRequests = 0;
+    int requestNumber = 1;
     while (!this->pendentRequests.empty()) {
         Request &request = this->pendentRequests.front();
-        if (validRequest(request)) {
+        string validationResult = validRequest(request);
+
+        log << '\n' << requestNumber++ << "-  " << request.stringInfo();
+        log << ">>>" << validationResult;
+
+        if (validationResult == "Successful") {
             applyRequest(request);
             sucessfulRequests++;
         }
@@ -277,27 +309,80 @@ string Data::processRequests() {
     output << "Process finished!\n";
     output << totalRequests << " total requests processed. "
            << sucessfulRequests << " sucessfully accepted!\n";
+    output << log.str();
     return (output.str());
 }
 
-bool Data::validRequest(const Request &request) const {
+string Data::undoRequest(int requestNumber) {
+    if (requestNumber > requestHistory.size() || requestNumber <= 0)
+        throw invalid_argument("Not a valid request number");
+    auto requestIterator = requestHistory.begin();
+    for (size_t i = 1; i < requestNumber; i++) {
+        requestIterator++;
+    }
+    const Request &request = *requestIterator;
+    int studentCode = request.studentCode;
+    const string &ucCode = request.ucCode;
+    string destinyClassCode, originClassCode;
+    char type;
+
+    switch (request.type) {
+        case 'A':
+            type = 'R';
+            originClassCode = request.destinyClassCode;
+            break;
+        case 'R':
+            type = 'A';
+            destinyClassCode = request.originClassCode;
+            break;
+        case 'S':
+            destinyClassCode = request.originClassCode;
+            originClassCode = request.destinyClassCode;
+            break;
+    }
+
+    Request oppositeRequest(studentCode, type, ucCode, originClassCode,
+                            destinyClassCode);
+
+    stringstream output;
+    output << "Creating undo Request: \n";
+    string validationResult = validRequest(oppositeRequest);
+    output << validationResult;
+    if (validationResult == "Successful") {
+        applyRequest(oppositeRequest);
+    } else {
+        throw runtime_error("Impossible to undo Request. ");
+    }
+}
+
+string Data::validRequest(const Request &request) const {
+    string log = "NOT ACCEPTED.";
     const Student &student = students.at(request.studentCode);
     Uc uc = ucs.at(request.ucCode);
 
     if (!uc.balancedClasses(request.originClassCode,
                             request.destinyClassCode)) {
-        return false;
+        log += "Operation affects Class balance";
+        return log;
     }
     if (request.type != 'R') {
         Class &destinyClass = uc.getClass(request.destinyClassCode);
-        if ((student.numberOfUcs() >= 7 && request.type == 'A') ||
-            !destinyClass.hasVacancies() || !student.hasUc(request.ucCode)) {
-            return false;
+        if (!destinyClass.hasVacancies()){
+            log += "Class to enter does not have vacancies";
+            return log;
+        }
+        if (student.numberOfUcs() >= 7 && request.type == 'A'){
+            log += "Student is already enrolled in the maximum number of Ucs possible";
+            return log;
         };
-        return student.verifyClass(request.originClassCode,
-                                   request.destinyClassCode);
+        string conflictClass = student.findConflictClass(request.ucCode, request.originClassCode,
+                                                  uc.getClass(request.destinyClassCode));
+        if (!conflictClass.empty()){
+           log += "Class to enter conflits with student's current schedule. There is overlap with the class " + conflictClass;
+           return log;
+        }
     }
-    return true;
+    return "Successful";
 }
 
 void Data::applyRequest(const Request &request) {
@@ -311,6 +396,15 @@ void Data::applyRequest(const Request &request) {
             ucs.at(request.ucCode).getClass(request.destinyClassCode);
         student.addClass(newClass);
     }
+}
+
+string Data::getRequestHistory() const {
+    stringstream history;
+    int requestNumber = 1;
+    for (const auto &request : this->requestHistory) {
+        history << '\n' << requestNumber++ << "-  " << request.stringInfo();
+    }
+    return history.str();
 }
 
 void Data::loadData() {
@@ -622,5 +716,3 @@ void Data::writeStudentsClassesFile() {
     }
     file.close();
 }
-
-

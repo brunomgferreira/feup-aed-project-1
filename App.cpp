@@ -11,13 +11,12 @@ void App::run() {
         mainMenu();
     } catch (const ios_base::failure& e) {
         handleErrors(e.what());
-    }catch (const out_of_range& e){
+    } catch (const out_of_range& e) {
         handleErrors("Error reading the saves files. Invalid Data");
     }
 }
 
-void App::close() {
-    this->data.saveData(); }
+void App::close() { this->data.saveData(); }
 
 void App::handleErrors(const string& error) {
     UserInterface::printError(error);
@@ -55,7 +54,7 @@ void App::consultMenu() {
     bool shouldExit = false;
     bool inputError;
     do {
-        inputError= false;
+        inputError = false;
 
         switch (UserInterface::readOption("Select an option: ")) {
             case '1':
@@ -138,7 +137,7 @@ void App::consultStudentSchedule() {
     UserInterface::printConsultMenu();
 }
 
-void App::consultClassSchedule() { //fazer aassimm ou mensagem com textos
+void App::consultClassSchedule() {  // fazer aassimm ou mensagem com textos
     bool shouldExit = false;
 
     while (!shouldExit) {
@@ -180,20 +179,20 @@ void App::consultClassSchedule() { //fazer aassimm ou mensagem com textos
     UserInterface::printConsultMenu();
 }
 
-
-void App::consultStudentsClass() { //ordenar
+void App::consultStudentsClass() {  // ordenar
     bool shouldExit = false;
 
     while (!shouldExit) {
         try {
-            string ucCode = UserInterface::readCode("Insert the UC code (i.e.: L.EIC001): ");
-            string classCode = UserInterface::readCode("Insert the Class Code (i.e.: 1LEIC01): ");
-            string msg = data.consultStudentsClass(ucCode,classCode);
+            string ucCode = UserInterface::readCode(
+                "Insert the UC code (i.e.: L.EIC001): ");
+            string classCode = UserInterface::readCode(
+                "Insert the Class Code (i.e.: 1LEIC01): ");
+            string msg = data.consultStudentsClass(ucCode, classCode);
             UserInterface::printMessage(msg);
             UserInterface::pressEnterToContinue();
             break;
-        }
-        catch (const invalid_argument& e) {
+        } catch (const invalid_argument& e) {
             handleErrors(e.what());
 
             shouldExit = tryAgainMenu();
@@ -202,18 +201,18 @@ void App::consultStudentsClass() { //ordenar
     UserInterface::printConsultMenu();
 }
 
-void App::consultStudentsCourse() { //ordenar
+void App::consultStudentsCourse() {  // ordenar
     bool shouldExit = false;
 
     while (!shouldExit) {
         try {
-            string ucCode = UserInterface::readCode("Insert the UC code (i.e.: L.EIC001): ");
+            string ucCode = UserInterface::readCode(
+                "Insert the UC code (i.e.: L.EIC001): ");
             string msg = data.consultStudentsCourse(ucCode);
             UserInterface::printMessage(msg);
             UserInterface::pressEnterToContinue();
             break;
-        }
-        catch (const invalid_argument& e) {
+        } catch (const invalid_argument& e) {
             handleErrors(e.what());
 
             shouldExit = tryAgainMenu();
@@ -222,28 +221,23 @@ void App::consultStudentsCourse() { //ordenar
     UserInterface::printConsultMenu();
 }
 
-
-void App::consultStudentsYear() { //errors stoi
+void App::consultStudentsYear() {  // errors stoi
     bool shouldExit = false;
 
-    while(!shouldExit) {
+    while (!shouldExit) {
         try {
             string year = UserInterface::readCode("Year: ");
             string msg = data.consultStudentsYear(year);
             UserInterface::printMessage(msg);
             UserInterface::pressEnterToContinue();
             break;
-        }
-        catch (const invalid_argument& e) {
+        } catch (const invalid_argument& e) {
             handleErrors(e.what());
             shouldExit = tryAgainMenu();
         }
     }
     UserInterface::printConsultMenu();
 }
-
-
-
 
 void App::consultNumStudentsUcs() {
     bool shouldExit = false;
@@ -255,8 +249,7 @@ void App::consultNumStudentsUcs() {
             UserInterface::printMessage(msg);
             UserInterface::pressEnterToContinue();
             break;
-        }
-        catch (const invalid_argument &e) {
+        } catch (const invalid_argument& e) {
             handleErrors(e.what());
             shouldExit = tryAgainMenu();
         }
@@ -264,7 +257,7 @@ void App::consultNumStudentsUcs() {
     UserInterface::printConsultMenu();
 }
 
-void App::consultBiggestUc() { //falta ordenar
+void App::consultBiggestUc() {  // falta ordenar
 
     string msg = data.consultBiggestUc();
     UserInterface::printMessage(msg);
@@ -303,20 +296,22 @@ void App::newRequestMenu() {
 }
 
 void App::newRequestAdd() {
-
     bool shouldExit = false;
 
-    while(!shouldExit) {
+    while (!shouldExit) {
         try {
-            string studentCode = UserInterface::readCode("Student Code (i.e.: 123456789): ");
-            string ucCode = UserInterface::readCode("Insert the UC code (i.e.: L.EIC001): ");
-            string classCode = UserInterface::readCode("Insert the Class Code (i.e.: 1LEIC01): ");
-            data.createAddRequest(studentCode,ucCode,classCode);
-            UserInterface::printMessage("Your request was saved in the pending request list.");
+            string studentCode =
+                UserInterface::readCode("Student Code (i.e.: 123456789): ");
+            string ucCode = UserInterface::readCode(
+                "Insert the UC code (i.e.: L.EIC001): ");
+            string classCode = UserInterface::readCode(
+                "Insert the Class Code (i.e.: 1LEIC01): ");
+            data.createAddRequest(studentCode, ucCode, classCode);
+            UserInterface::printMessage(
+                "Your request was saved in the pending request list.");
             UserInterface::pressEnterToContinue();
             break;
-        }
-        catch (const invalid_argument& e) {
+        } catch (const invalid_argument& e) {
             handleErrors(e.what());
             shouldExit = tryAgainMenu();
         }
@@ -327,16 +322,18 @@ void App::newRequestAdd() {
 void App::newRequestRemove() {
     bool shouldExit = false;
 
-    while(!shouldExit) {
+    while (!shouldExit) {
         try {
-            string studentCode = UserInterface::readCode("Student Code (i.e.: 123456789): ");
-            string ucCode = UserInterface::readCode("Insert the UC code (i.e.: L.EIC001): ");
-            data.createRemoveRequest(studentCode,ucCode);
-            UserInterface::printMessage("Your request was saved in the pending request list.");
+            string studentCode =
+                UserInterface::readCode("Student Code (i.e.: 123456789): ");
+            string ucCode = UserInterface::readCode(
+                "Insert the UC code (i.e.: L.EIC001): ");
+            data.createRemoveRequest(studentCode, ucCode);
+            UserInterface::printMessage(
+                "Your request was saved in the pending request list.");
             UserInterface::pressEnterToContinue();
             break;
-        }
-        catch (const invalid_argument& e) {
+        } catch (const invalid_argument& e) {
             handleErrors(e.what());
             shouldExit = tryAgainMenu();
         }
@@ -347,24 +344,26 @@ void App::newRequestRemove() {
 void App::newRequestSwitch() {
     bool shouldExit = false;
 
-    while(!shouldExit) {
+    while (!shouldExit) {
         try {
-            string studentCode = UserInterface::readCode("Student Code (i.e.: 123456789): ");
-            string ucCode = UserInterface::readCode("Insert the UC code (i.e.: L.EIC001): ");
-            string classCodeDestiny = UserInterface::readCode("Insert the Class Code Destiny (i.e.: 1LEIC01): ");
-            data.createSwitchRequest(studentCode,ucCode,classCodeDestiny);
-            UserInterface::printMessage("Your request was saved in the pending request list.");
+            string studentCode =
+                UserInterface::readCode("Student Code (i.e.: 123456789): ");
+            string ucCode = UserInterface::readCode(
+                "Insert the UC code (i.e.: L.EIC001): ");
+            string classCodeDestiny = UserInterface::readCode(
+                "Insert the Class Code Destiny (i.e.: 1LEIC01): ");
+            data.createSwitchRequest(studentCode, ucCode, classCodeDestiny);
+            UserInterface::printMessage(
+                "Your request was saved in the pending request list.");
             UserInterface::pressEnterToContinue();
             break;
-        }
-        catch (const invalid_argument& e) {
+        } catch (const invalid_argument& e) {
             handleErrors(e.what());
             shouldExit = tryAgainMenu();
         }
     }
     UserInterface::printNewRequestMenu();
 }
-
 
 void App::processRequestMenu() {
     UserInterface::printProcessRequestMenu();
@@ -393,23 +392,34 @@ void App::processRequestMenu() {
     } while (inputError || !shouldExit);
 }
 
+void App::processPendingRequests() {  //??
 
-void App::processPendingRequests() { //??
-
-    data.processRequests();
-    UserInterface::printMessage("Pending Requests Processed");
+    const string& message = data.processRequests();
+    UserInterface::printMessage(message);
     UserInterface::pressEnterToContinue();
     UserInterface::printProcessRequestMenu();
 }
 
-void App::recentActions() { //??
-    /*
-    data.getRequestHistory();
+void App::recentActions() {
+    const string& message = data.getRequestHistory();
+    UserInterface::printMessage(message);
     UserInterface::pressEnterToContinue();
     UserInterface::printProcessRequestMenu();
-     */
 }
 
-void App::undoRecentActions() { //??
-    //falta implementat ligar edu
+void App::undoRecentActions() {  //??
+    bool shouldExit = false;
+
+    while (!shouldExit) {
+        try {
+            const string& message = data.undoRequest(UserInterface::readNumber("Select a request to undo: "));
+            UserInterface::printMessage(message);
+            UserInterface::pressEnterToContinue();
+            break;
+        } catch (const invalid_argument& e) {
+            handleErrors(e.what());
+            shouldExit = tryAgainMenu();
+        }
+    }
+    UserInterface::printProcessRequestMenu();
 }

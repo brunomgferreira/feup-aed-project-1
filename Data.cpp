@@ -324,7 +324,6 @@ bool Data::studentExists(int studentCode) {
 }
 
 
-<<<<<<<
 /**
  * @brief Adds a new request of type Add to the pendent requests list
  * @details Time complexity: O(1)

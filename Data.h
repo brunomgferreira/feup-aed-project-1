@@ -29,7 +29,7 @@ class Data {
     const string PENDENT_REQUESTS_FILENAME = "pendent_requests.csv";
     const string STUDENTS_CLASS_FILENAME = "students_classes.csv";
     const string DIRECTORY_PATH =
-        "/home/xavier/Desktop/AED/Projeto/feup-aed-project-1/schedule/";
+        "/home/soestilooo/Documents/Faculty/AED/project/schedule/";
 
 
    private:

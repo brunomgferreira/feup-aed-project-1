@@ -80,14 +80,7 @@ string Student::findConflictClass(const std::string& ucCode, const std::string& 
 }
 
 string Student::getUcClassCode(const string& ucCode) const {
-    for (const auto& [classCode, c] : classes) {
-        if (c.getUcCode() == ucCode) {
-            return classCode;
-        }
-    }
-
-    // Maybe throw error because the program is not supposed to get here???
-    return "";
+    return classes.at(ucCode).getClassCode();
 }
 
 /*

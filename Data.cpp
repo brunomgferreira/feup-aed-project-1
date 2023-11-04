@@ -223,6 +223,9 @@ void Data::createAddRequest(const string &studentCode, const string &ucCode,
     int intStudentCode = stoi(studentCode);
     if (!ucExists(ucCode))
         throw invalid_argument("This UC doesn't exist in the database.");
+    if (this->students.at(intStudentCode).hasUc(ucCode)){
+        throw invalid_argument("Student is already enrolled in that Unit Course");
+    }
     if (!classExists(ucCode, destinyClassCode))
         throw invalid_argument("This Class doesn't exist in the database.");
     Request newRequest(intStudentCode, 'A', ucCode, "", destinyClassCode);
@@ -370,6 +373,30 @@ void Data::applyRequest(const Request &request) {
         student.addClass(newClass);
     }
 }
+
+string Data::getRequestHistory() const {
+    stringstream history;
+    int requestNumber=1;
+    for (const auto& request : this->requestHistory){
+        history << '\n' << requestNumber << "-  ";
+        switch (request.type) {
+            case 'A':
+                history << "Add Request - Student: " << request.studentCode << '\n';
+                history << "Joined Uc: " << request.ucCode << ". In class: " << request.destinyClassCode << '\n';
+                break;
+            case 'R':
+                history << "Remove Request - Student: " << request.studentCode << '\n';
+                history << "Exited Uc: " << request.ucCode << ". Leaving the class: " << request.originClassCode << '\n';
+                break;
+            case 'S':
+                history << "Switch Request - Student: " << request.studentCode << '\n';
+                history << "In Uc: " << request.ucCode << ". Exited: " << request.originClassCode  << ". Joined: " << request.destinyClassCode<< '\n';
+                break;
+        }
+    }
+    return history.str();
+}
+
 
 void Data::loadData() {
     readClassesPerUcFile();

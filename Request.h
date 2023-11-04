@@ -3,6 +3,7 @@
 #ifndef REQUEST_H
 #define REQUEST_H
 
+#include <sstream>
 #include <string>
 
 using namespace std;
@@ -15,8 +16,9 @@ struct Request {
     int studentCode;
 
    public:
-    Request(int studentCode, char type, const string& ucCode,
-            const string& originClassCode, const string& destinyClassCode);
+    Request(int studentCode, char type, string ucCode, string originClassCode,
+            string destinyClassCode);
+    string stringInfo() const;
 };
 
 #endif

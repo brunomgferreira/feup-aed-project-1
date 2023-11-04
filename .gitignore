@@ -2,4 +2,4 @@
 
 .clang-format
 .idea
-cmake-build-debug
+cmake-build-debug/

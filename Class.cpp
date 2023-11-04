@@ -111,3 +111,6 @@ int Class::numberStudents() const { return this->students.size(); }
  *@return True if the class has vacancy, otherwise False
  */
 bool Class::hasVacancies() const { return (numberStudents() < MAX_STUDENTS); }
+
+
+int Class::numberVacancies() const { return MAX_STUDENTS - numberStudents();}

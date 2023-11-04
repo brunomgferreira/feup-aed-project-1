@@ -14,7 +14,7 @@ public:
     static void printMainMenu();
     static char readOption(const string& msg); // Returns the char that corresponds to the selected menu option
     static string readCode(const string& msg);
-    static int readNumber(const string& msg);
+    static int readNumber(const string& msg); //apagar?
     static void printError(const string& error);
     static void printMessage(const string& msg);
     static void printStudentSchedule(const Student& student);

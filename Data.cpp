@@ -11,7 +11,12 @@
 
 using namespace std;
 
-
+/**
+ * @brief Verify if a string is numeric
+ * @details
+ * @param str String to test
+ * @return Boolean value, according to veracity of the test
+ */
 bool Data::isNumeric(const string& str) {
     for (char c : str) {
         if (!isdigit(c)) {
@@ -49,6 +54,12 @@ Enrolled in 1 UCs:	[L.EIC002-1LEIC05]
 Uc &Data::getUc(const string &ucCode) { return this->ucs.at(ucCode); }
 
 
+/**
+ * @brief Verify if a uc exists.
+ * @details
+ * @param ucCode Uc code of the uc to test
+ * @return Boolean value, according to the existence of the uc.
+ */
 bool Data::ucExists(const std::string &ucCode) {
     for(const auto& [code, uc] : this->ucs){
         if(code == ucCode) return true;
@@ -56,11 +67,13 @@ bool Data::ucExists(const std::string &ucCode) {
     return false;
 }
 
+
 /**
- * @brief Returns the students within a given course in string format
+ * @brief Returns the students within a given class in string format
  * @details
- * @param courseCode
- * @return string of data
+ * @param ucCode Uc code of the pretended class
+ * @param classCode Class code of the pretended class
+ * @return String of data
  */
 string Data::consultStudentsClass(const string &ucCode, const string &classCode){
     if(!ucExists(ucCode)) throw invalid_argument ("This UC doesn't exist in the database.");
@@ -74,17 +87,21 @@ string Data::consultStudentsClass(const string &ucCode, const string &classCode)
         Student student = this->students.at(studentCode);
         res << student.getStudentAsString() << endl;
     }
-    res <<endl;
-    res << "The pretended class has "<< c.numberStudents() << " students" <<endl;
     res << endl << string(170, '#') << endl << endl;
     return res.str();
 }
 
+
+/**
+ * @brief Returns the students within a given course in string format
+ * @details
+ * @param ucCode Uc code of the pretended course
+ * @return string of data
+ */
 string Data::consultStudentsCourse(const string &ucCode) {
     if(!ucExists(ucCode)) throw invalid_argument ("This UC doesn't exist in the database.");
     Uc uc = this->ucs.at(ucCode);
     stringstream res;
-    int numberStudents =0;
     res << string(170, '#') << endl << endl;
     for(auto [ucCode, c] : uc.getAllClasses()) {
         res << "Class: " << c.getClassCode() << endl;
@@ -93,13 +110,18 @@ string Data::consultStudentsCourse(const string &ucCode) {
             res << student.getStudentAsString() << endl;
         }
         res << endl;
-        numberStudents += c.numberStudents();
     }
-    res << "The pretended Uc has "<< numberStudents<< " students" <<endl <<endl;
     res << string(170, '#') << endl << endl;
     return res.str();
 }
 
+
+/**
+ * @brief Returns the students within a given year in string format
+ * @details
+ * @param year Year to consult
+ * @return string of data
+ */
 string Data::consultStudentsYear(const string &year) {
     if(!isNumeric(year)) throw invalid_argument("The year should be a number.");
     int intYear = stoi(year);
@@ -122,33 +144,113 @@ string Data::consultStudentsYear(const string &year) {
         res << student.getStudentAsString() << endl;
     }
     res << endl;
-    res << "The pretended Year has "<< std.size() << " students" <<endl;
     res << string(170, '#') << endl << endl;
     return res.str();
 }
 
 
-string Data::consultNumStudentsUcs(const string &nUcs) {
+/**
+ * @brief Returns the occupation within a given class in string format
+ * @details
+ * @param ucCode Uc code of the pretended class
+ * @param classCode Class code of the pretended class
+ * @return String of data
+ */
+string Data::consultOccupationClass(const string &ucCode, const string &classCode){
+    if(!ucExists(ucCode)) throw invalid_argument ("This UC doesn't exist in the database.");
+    Uc uc = this->ucs.at(ucCode);
+    if(!classExists(ucCode,classCode)) throw invalid_argument ("This Class doesn't exist in the database.");
+    Class c = uc.getAllClasses().at(classCode);
+    stringstream res;
+    res << endl << "Uc: " << ucCode << "   Class: " << classCode << endl;
+    res << "Number of students: "<< c.numberStudents() << endl;
+    res << "Number of vacancies: " << c.numberVacancies() << endl << endl;
+    return res.str();
+}
+
+
+/**
+ * @brief Returns the occupation within a given course in string format
+ * @details
+ * @param ucCode Uc code of the pretended course
+ * @return string of data
+ */
+string Data::consultOccupationCourse(const string &ucCode){
+    if(!ucExists(ucCode)) throw invalid_argument ("This UC doesn't exist in the database.");
+    Uc uc = this->ucs.at(ucCode);
+    stringstream res;
+    int numberStudents =0;
+    int numberVacancies =0;
+    for(auto [ucCode, c] : uc.getAllClasses()) {
+        numberStudents += c.numberStudents();
+        numberVacancies += c.numberVacancies();
+    }
+    res << endl << "Uc: " << ucCode << endl;
+    res << "Number of students: "<< numberStudents << endl;
+    res << "Number of vacancies: " << numberVacancies << endl << endl;
+    return res.str();
+}
+
+
+/**
+ * @brief Returns the occupation within a given year in string format
+ * @details
+ * @param year Year to consult
+ * @return string of data
+ */
+string Data::consultOccupationYear(const string &year){
+    if(!isNumeric(year)) throw invalid_argument("The year should be a number.");
+    int intYear = stoi(year);
+    if(intYear >3) throw invalid_argument("This year doesn't exist in the context of the database.");
+    stringstream res;
+    set<int> std;
+    for(auto [uccode , uc]:this->ucs) {
+        for (auto [ucCode, c]: uc.getAllClasses()) {
+            if(c.getClassCode().substr(0,1) == to_string(intYear)){
+                for (const int& studentCode: c.getAllStudents()) {
+                    std.insert(studentCode);
+                }
+            }
+            else break;
+        }
+    }
+    res << endl << "Year: " << year << endl;
+    res << "Number of students: "<< std.size() << endl << endl;
+    return res.str();
+}
+
+
+/**
+* @brief Returns the number of students registered in at least n ucs, in string format
+* @details
+* @param nUcs Minimum number of ucs
+* @return string of data
+*/
+ string Data::consultNumStudentsUcs(const string &nUcs) {
     if(!isNumeric(nUcs)) throw invalid_argument("The year should be a number.");
     int intNUcs = stoi(nUcs);
     if (intNUcs > 7) throw invalid_argument("Invalid number. The student cant be in more than 7 Ucs.");
     int n =0;
     stringstream res;
-    res << string(170, '#') << endl << endl;
     for (auto [studentCode,student] : this->students){
         if(student.numberOfUcs() >= intNUcs) n++;
     }
-    res << "There is " << n << " students registered in at least " << intNUcs << endl <<endl;
-    res << string(170, '#') << endl << endl;
+    res << endl << "There is " << n << " students registered in at least " << intNUcs << endl <<endl;
     return res.str();
 
 }
 
+
+/**
+ * @brief Returns the number of students of each uc in string format
+ * @details
+ * @return string of data
+ */
 string Data::consultBiggestUc(){ //mudar por causa ordencao
     stringstream res;
     for (auto [ucCode,uc] : this->ucs){
         int n=0;
-        res << "UC code: " << ucCode << " -- ";
+        res << endl << "UC: " << ucCode << " -- ";
         for (auto [ucCode2, c]: uc.getAllClasses()) {
             n+= c.numberStudents();
         }
@@ -158,23 +260,37 @@ string Data::consultBiggestUc(){ //mudar por causa ordencao
     return res.str();
 }
 
-
+/**
+ * @brief
+ * @details
+ * @param classCode
+ * @return
+ */
 set<string> Data::getUcsByClassCode(const string& classCode) const {
     return this->ucsCodesByClassCode.at(classCode);
 }
 
+
+/**
+ * @brief Verify if a class exists.
+ * @details
+ * @param ucCode Uc code of the uc to test
+ * @param classCode Class code of the class to test
+ * @return Boolean value, according to the existence of the class.
+ */
 bool Data::classExists(const string &ucCode, const string &classCode){
     Uc uc =this->ucs.at(ucCode);
     return uc.hasClass(classCode);
 }
+
 
 /**
  * @brief Returns all the students.
  * @details Time complexity: O(1)
  * @return students of data
  */
-
 map<int, Student> Data::getAllStudents() const { return this->students; }
+
 
 /**
  * @brief Returns a student given a student code.
@@ -182,10 +298,10 @@ map<int, Student> Data::getAllStudents() const { return this->students; }
  * @param studentCode student code of the student to be returned
  * @return student with code == studentCode
  */
-
 Student &Data::getStudent(int studentCode) {
     return this->students.at(studentCode);
 }
+
 
 /**
  * @brief Checks if a student exists
@@ -193,20 +309,18 @@ Student &Data::getStudent(int studentCode) {
  * @param studentCode code of the student to check if exists
  * @return true if student exists, otherwise false
  */
-
 bool Data::studentExists(int studentCode) {
     return (this->students.find(studentCode) != this->students.end());
 }
 
-/*
- *@brief Adds a new request of type Add to the pendent requests list
- *@details Time complexity: O(1)
- *@param studentCode The first parameter: Code of the student whose schedule
- *changes
- *@param destinyClassCode The second parameter: The code of the class the
- *student wants to join
- */
 
+/**
+ * @brief Adds a new request of type Add to the pendent requests list
+ * @details Time complexity: O(1)
+ * @param studentCode The first parameter: Code of the student whose schedule changes
+ * @param ucCode The second parameter: The code of the uc the student wants to join
+ * @param destinyClassCode The third parameter: The code of the class the student wants to join
+ */
 void Data::createAddRequest(const string &studentCode, const string &ucCode,const string &destinyClassCode) {
     if(!isNumeric(studentCode)) throw invalid_argument("The Student Code should be numeric.");
     int intStudentCode = stoi(studentCode);
@@ -217,15 +331,13 @@ void Data::createAddRequest(const string &studentCode, const string &ucCode,cons
     this->pendentRequests.push(newRequest);
 }
 
-/*
- *@brief Adds a new request of type Remove to the pendent requests list
- *@details Time complexity: O(1)
- *@param studentCode The first parameter: Code of the student whose schedule
- *changes
- *@param originClassCode The second parameter: The code of the class the student
- *wants to leave
- */
 
+/**
+ * @brief Adds a new request of type Remove to the pendent requests list
+ * @details Time complexity: O(1)
+ * @param studentCode The first parameter: Code of the student whose schedule changes
+ * @param ucCode The second parameter: The code of the uc the student wants to leave
+ */
 void Data::createRemoveRequest(const string &studentCode, const string &ucCode) {
     if(!isNumeric(studentCode)) throw invalid_argument("The Student Code should be numeric.");
     int intStudentCode = stoi(studentCode);
@@ -236,17 +348,14 @@ void Data::createRemoveRequest(const string &studentCode, const string &ucCode) 
     this->pendentRequests.push(newRequest);
 }
 
-/*
- *@brief Adds a new request of type Switch to the pendent requests list
- *@details Time complexity: O(1)
- *@param studentCode The first parameter: Code of the student whose schedule
- *changes
- *@param originClassCode The second parameter: The code of the class the student
- *wants to leave
- *@param destinyClassCode The third parameter: The code of the class the student
- *wants to join
- */
 
+/**
+ * @brief Adds a new request of type Switch to the pendent requests list
+ * @details Time complexity: O(1)
+ * @param studentCode The first parameter: Code of the student whose schedule changes
+ * @param ucCode The second parameter: The code of the uc the student wants to change classes
+ * @param destinyClassCode The third parameter: The code of the class the student wants to join
+ */
 void Data::createSwitchRequest(const string &studentCode, const string &ucCode,const string &destinyClassCode) {
     if(!isNumeric(studentCode)) throw invalid_argument("The Student Code should be numeric.");
     int intStudentCode = stoi(studentCode);

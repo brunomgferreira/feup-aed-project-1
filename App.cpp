@@ -3,6 +3,11 @@
 #include <ios>
 #include <iostream>
 
+
+/**
+ * @brief Standard constructor of the class App.
+ * @details Time complexity: O(1)
+ */
 App::App() {}
 
 void App::run() {
@@ -17,12 +22,23 @@ void App::run() {
 }
 
 void App::close() {
-    this->data.saveData(); }
+    this->data.saveData();
+}
 
+
+/**
+ * @brief Calls a method of User Interface to print the error message.
+ * @details
+ * @param error String with the error message
+ */
 void App::handleErrors(const string& error) {
     UserInterface::printError(error);
 }
 
+
+/**
+ * @brief Method responsible for control the main menu
+ */
 void App::mainMenu() {
     UserInterface::printMainMenu();
     bool shouldExit = false;
@@ -50,6 +66,10 @@ void App::mainMenu() {
     } while (inputError || !shouldExit);
 }
 
+
+/**
+ * Method responsible for control the consult menu
+ */
 void App::consultMenu() {
     UserInterface::printConsultMenu();
     bool shouldExit = false;
@@ -74,9 +94,18 @@ void App::consultMenu() {
                 consultStudentsYear();
                 break;
             case '6':
-                consultNumStudentsUcs();
+                consultOccupationClass();
                 break;
             case '7':
+                consultOccupationCourse();
+                break;
+            case '8':
+                consultOccupationYear();
+                break;
+            case '9':
+                consultNumStudentsUcs();
+                break;
+            case '0':
                 consultBiggestUc();
                 break;
             case 'q':
@@ -92,6 +121,11 @@ void App::consultMenu() {
     UserInterface::printMainMenu();
 }
 
+
+/**
+ * @brief Method responsible for control the try again menu
+ * @return Boolean value, according to the continuity of the menu that have called this method
+ */
 bool App::tryAgainMenu() {
     bool shouldExit = false;
     bool inputError;
@@ -114,6 +148,10 @@ bool App::tryAgainMenu() {
     return shouldExit;
 }
 
+
+/**
+ * @brief Method responsible for control the consult of a student schedule
+ */
 void App::consultStudentSchedule() {
     bool shouldExit = false;
 
@@ -138,6 +176,10 @@ void App::consultStudentSchedule() {
     UserInterface::printConsultMenu();
 }
 
+
+/**
+ * @brief Method responsible for control the consult of a class schedule
+ */
 void App::consultClassSchedule() { //fazer aassimm ou mensagem com textos
     bool shouldExit = false;
 
@@ -181,6 +223,9 @@ void App::consultClassSchedule() { //fazer aassimm ou mensagem com textos
 }
 
 
+/**
+ * @brief Method responsible for control the consult of the students within a given class
+ */
 void App::consultStudentsClass() { //ordenar
     bool shouldExit = false;
 
@@ -202,6 +247,10 @@ void App::consultStudentsClass() { //ordenar
     UserInterface::printConsultMenu();
 }
 
+
+/**
+ * @brief Method responsible for control the consult of the students within a given course
+ */
 void App::consultStudentsCourse() { //ordenar
     bool shouldExit = false;
 
@@ -223,7 +272,10 @@ void App::consultStudentsCourse() { //ordenar
 }
 
 
-void App::consultStudentsYear() { //errors stoi
+/**
+ * @brief Method responsible for control the consult of the students within a given year
+ */
+void App::consultStudentsYear() { //ordenar
     bool shouldExit = false;
 
     while(!shouldExit) {
@@ -243,8 +295,72 @@ void App::consultStudentsYear() { //errors stoi
 }
 
 
+void App::consultOccupationClass(){
+    bool shouldExit = false;
+
+    while (!shouldExit) {
+        try {
+            string ucCode = UserInterface::readCode("Insert the UC code (i.e.: L.EIC001): ");
+            string classCode = UserInterface::readCode("Insert the Class Code (i.e.: 1LEIC01): ");
+            string msg = data.consultOccupationClass(ucCode,classCode);
+            UserInterface::printMessage(msg);
+            UserInterface::pressEnterToContinue();
+            break;
+        }
+        catch (const invalid_argument& e) {
+            handleErrors(e.what());
+
+            shouldExit = tryAgainMenu();
+        }
+    }
+    UserInterface::printConsultMenu();
+}
 
 
+void App::consultOccupationCourse(){
+    bool shouldExit = false;
+
+    while (!shouldExit) {
+        try {
+            string ucCode = UserInterface::readCode("Insert the UC code (i.e.: L.EIC001): ");
+            string msg = data.consultOccupationCourse(ucCode);
+            UserInterface::printMessage(msg);
+            UserInterface::pressEnterToContinue();
+            break;
+        }
+        catch (const invalid_argument& e) {
+            handleErrors(e.what());
+
+            shouldExit = tryAgainMenu();
+        }
+    }
+    UserInterface::printConsultMenu();
+}
+
+
+void App::consultOccupationYear(){
+    bool shouldExit = false;
+
+    while(!shouldExit) {
+        try {
+            string year = UserInterface::readCode("Year: ");
+            string msg = data.consultOccupationYear(year);
+            UserInterface::printMessage(msg);
+            UserInterface::pressEnterToContinue();
+            break;
+        }
+        catch (const invalid_argument& e) {
+            handleErrors(e.what());
+            shouldExit = tryAgainMenu();
+        }
+    }
+    UserInterface::printConsultMenu();
+}
+
+
+/**
+ * @brief Method responsible for control the consult of the number of students with at least n ucs
+ */
 void App::consultNumStudentsUcs() {
     bool shouldExit = false;
 
@@ -264,6 +380,10 @@ void App::consultNumStudentsUcs() {
     UserInterface::printConsultMenu();
 }
 
+
+/**
+ * @brief Method responsible for control the consult of the number of students by uc
+ */
 void App::consultBiggestUc() { //falta ordenar
 
     string msg = data.consultBiggestUc();
@@ -273,6 +393,10 @@ void App::consultBiggestUc() { //falta ordenar
     UserInterface::printConsultMenu();
 }
 
+
+/**
+ * @brief Method responsible for control the new request menu
+ */
 void App::newRequestMenu() {
     UserInterface::printNewRequestMenu();
     bool shouldExit = false;
@@ -302,6 +426,10 @@ void App::newRequestMenu() {
     UserInterface::printMainMenu();
 }
 
+
+/**
+ * @brief Method responsible for control a new add request
+ */
 void App::newRequestAdd() {
 
     bool shouldExit = false;
@@ -324,6 +452,10 @@ void App::newRequestAdd() {
     UserInterface::printNewRequestMenu();
 }
 
+
+/**
+ * @brief Method responsible for control a new remove request
+ */
 void App::newRequestRemove() {
     bool shouldExit = false;
 
@@ -344,6 +476,10 @@ void App::newRequestRemove() {
     UserInterface::printNewRequestMenu();
 }
 
+
+/**
+ * @brief Method responsible for control a new switch request
+ */
 void App::newRequestSwitch() {
     bool shouldExit = false;
 
@@ -366,6 +502,9 @@ void App::newRequestSwitch() {
 }
 
 
+/**
+ * @brief Method responsible for control the process request menu
+ */
 void App::processRequestMenu() {
     UserInterface::printProcessRequestMenu();
     bool shouldExit;
@@ -396,6 +535,9 @@ void App::processRequestMenu() {
 }
 
 
+/**
+ * @brief Method responsible for control the process of pending requests
+ */
 void App::processPendingRequests() { //??
 
     data.processRequests();
@@ -404,6 +546,10 @@ void App::processPendingRequests() { //??
     UserInterface::printProcessRequestMenu();
 }
 
+
+/**
+ * @brief Method responsible for control the recent actions
+ */
 void App::recentActions() { //??
     /*
     data.getRequestHistory();
@@ -412,6 +558,9 @@ void App::recentActions() { //??
      */
 }
 
+/**
+ * @brief Method responsible for control the process of undo earlier actions
+ */
 void App::undoRecentActions() { //??
     //falta implementat ligar edu
 }

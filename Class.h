@@ -43,6 +43,7 @@ class Class {
     int numberStudents() const;
 
     bool hasVacancies() const;
+    int numberVacancies() const;
 };
 
 #endif

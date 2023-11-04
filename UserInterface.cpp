@@ -19,7 +19,6 @@ char UserInterface::readOption(const string& msg) {
     cin.clear();
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     return input;
-    //saltar linha depois cin
 }
 
 string UserInterface::readCode(const string& msg) {
@@ -27,7 +26,6 @@ string UserInterface::readCode(const string& msg) {
     cout << endl << msg;
     cin >> input;
     return input;
-    //saltar linha depois cin
 }
 
 int UserInterface::readNumber(const string& msg) { //sem uso usei readcode
@@ -35,7 +33,6 @@ int UserInterface::readNumber(const string& msg) { //sem uso usei readcode
     cout << endl << msg;
     cin >> input;
     return input;
-    //saltar linha depois cin
 }
 
 void UserInterface::printMainMenu() {
@@ -58,8 +55,11 @@ void UserInterface::printConsultMenu() {
             "3 Consult the students within a given class\n" //ordencaoa
             "4 Consult the students within a given course\n" //ordencaoa
             "5 Consult the students within a given year\n" //ordencaoa
-            "6 Consult the number of students registered in at least n UCs\n"
-            "7 Consult the UCs with the greatest number of students\n"
+            "6 Consult the occupation within a given class\n"
+            "7 Consult the occupation within a given course\n"
+            "8 Consult the occupation within a given year\n"
+            "9 Consult the number of students registered in at least n UCs\n"
+            "0 Consult the UCs with the greatest number of students\n" //mudar texto? aparece tudo ordencado
             "q Back to Main Menu\n";
 }
 

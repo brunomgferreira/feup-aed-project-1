@@ -18,10 +18,10 @@
 #include "Student.h"
 #include "Uc.h"
 #include "filesystem"
+
 /**
  * @brief Class that saves all the program data.
  */
-
 class Data {
    private:
     const string CLASSES_FILENAME = "classes.csv";
@@ -40,7 +40,7 @@ class Data {
     forward_list<Request> requestHistory;
 
     private:
-    bool isNumeric(const string& str);
+    static bool isNumeric(const string& str);
 
    public:
     // Data constructor
@@ -53,6 +53,9 @@ class Data {
     string consultStudentsClass(const string &ucCode, const string &classCode);
     string consultStudentsCourse(const string &ucCode);
     string consultStudentsYear(const string &year);
+    string consultOccupationClass(const string &ucCode, const string &classCode);
+    string consultOccupationCourse(const string &ucCode);
+    string consultOccupationYear(const string &year);
     string consultNumStudentsUcs(const string &nUcs);
     string consultBiggestUc();
 

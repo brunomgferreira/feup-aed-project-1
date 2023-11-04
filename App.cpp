@@ -400,12 +400,11 @@ void App::processPendingRequests() {  //??
     UserInterface::printProcessRequestMenu();
 }
 
-void App::recentActions() {  //??
-    /*
-    data.getRequestHistory();
+void App::recentActions() {
+    const string& message = data.getRequestHistory();
+    UserInterface::printMessage(message);
     UserInterface::pressEnterToContinue();
     UserInterface::printProcessRequestMenu();
-     */
 }
 
 void App::undoRecentActions() {  //??

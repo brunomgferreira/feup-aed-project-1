@@ -80,7 +80,7 @@ class Data {
     void applyRequest(const Request &request);
 
     queue<Request> &getPendentRequests();
-     string getRequestHistory()const;
+    string getRequestHistory() const;
 
     // Read and Write data
     void loadData();

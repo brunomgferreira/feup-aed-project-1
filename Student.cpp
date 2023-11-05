@@ -33,10 +33,10 @@ void Student::removeClass(const string& ucCode) {
 }
 
 
-string Student::findConflictClass(const std::string& ucCode, const std::string& originClassCode, const Class& destinyClass) const {
+string Student::findConflictClass(const std::string& ucCode, const Class& destinyClass) const {
     for (const auto& [classUcCode, c] : classes) {
-        if (ucCode == classUcCode && destinyClass.invalidOverlaps(c)) {
-            return c.getClassCode();
+        if (ucCode != classUcCode && destinyClass.invalidOverlaps(c)) {
+            return classUcCode + "-"+ c.getClassCode();
         }
     }
     return "";

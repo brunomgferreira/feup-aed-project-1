@@ -390,6 +390,7 @@ string Data::processRequests() {
         return "No requests to process.\n";
     }
     stringstream log;
+    log << "\n    Processes log: \n";
     int sucessfulRequests = 0;
     int requestNumber = 1;
     while (!this->pendentRequests.empty()) {
@@ -397,7 +398,7 @@ string Data::processRequests() {
         string validationResult = validRequest(request);
 
         log << '\n' << requestNumber++ << "-  " << request.stringInfo();
-        log << ">>>" << validationResult;
+        log << "Status: " << validationResult << '\n';
 
         if (validationResult == "Successful") {
             applyRequest(request);
@@ -415,47 +416,65 @@ string Data::processRequests() {
 
 string Data::undoRequest(int requestNumber) {
     if (requestNumber > requestHistory.size() || requestNumber <= 0)
-        throw invalid_argument("Not a valid request number");
+        throw invalid_argument("Not a valid request number.");
+
+    stringstream output;
+    output << "Processing undo request...\nStatus: ";
+
     auto requestIterator = requestHistory.begin();
     for (size_t i = 1; i < requestNumber; i++) {
         requestIterator++;
     }
     const Request &request = *requestIterator;
+
     int studentCode = request.studentCode;
     const string &ucCode = request.ucCode;
+    const Student& student = this->students.at(studentCode);
+
     string destinyClassCode, originClassCode;
     char type;
 
     switch (request.type) {
         case 'A':
+            if (!student.hasUc(ucCode)){
+                output << "Undoing request has no effect. \nInfo: Student is already not enrolled in that UC.";
+                return output.str();
+            }
             type = 'R';
-            originClassCode = request.destinyClassCode;
+            originClassCode = student.getUcClassCode(ucCode);
             break;
         case 'R':
+            if (student.hasUc(ucCode)){
+                output << "Undoing request has no effect. \nInfo: Student is already enrolled in that Uc.";
+                return output.str();
+            }
             type = 'A';
             destinyClassCode = request.originClassCode;
             break;
         case 'S':
+            if (!student.hasUc(ucCode)){
+                output << "Impossible to undo request. \nInfo: Student is no longer enrolled in that Uc.";
+                return output.str();
+            }
+            type = 'S';
             destinyClassCode = request.originClassCode;
             originClassCode = request.destinyClassCode;
             break;
     }
-
     Request oppositeRequest(studentCode, type, ucCode, originClassCode,
                             destinyClassCode);
-    stringstream output;
-    output << "Creating undo Request: \n";
+
+
     string validationResult = validRequest(oppositeRequest);
     output << validationResult;
     if (validationResult == "Successful") {
         applyRequest(oppositeRequest);
-    } else {
-        throw runtime_error("Impossible to undo Request. ");
     }
+    return output.str();
 }
 
 string Data::validRequest(const Request &request) const {
-    string log = "NOT ACCEPTED >> ";
+    string log = "Not accepted.\nInfo: ";
     const Student &student = students.at(request.studentCode);
     Uc uc = ucs.at(request.ucCode);
 
@@ -476,8 +495,7 @@ string Data::validRequest(const Request &request) const {
             log += "Student is already enrolled in the maximum number of Ucs possible";
             return log;
         };
-        string conflictClass = student.findConflictClass(request.ucCode, request.originClassCode,
-                                                  uc.getClass(request.destinyClassCode));
+        string conflictClass = student.findConflictClass(request.ucCode,uc.getClass(request.destinyClassCode));
         if (!conflictClass.empty()){
            log += "Class to enter conflicts with student's current schedule. There is an overlap with the class " + conflictClass;
            return log;
@@ -490,16 +508,22 @@ void Data::applyRequest(const Request &request) {
     requestHistory.push_front(request);
     Student &student = students.at(request.studentCode);
     if (request.type != 'A') {
+        Class& oldClass = ucs.at(request.ucCode).getClass(request.originClassCode);
         student.removeClass(request.ucCode);
+        oldClass.removeStudent(student.getStudentCode());
     }
     if (request.type != 'R') {
-        const Class &newClass =
+        Class &newClass =
             ucs.at(request.ucCode).getClass(request.destinyClassCode);
         student.addClass(newClass);
+        newClass.addStudent(student.getStudentCode());
     }
 }
 
 string Data::getRequestHistory() const {
+    if (this->requestHistory.empty()){
+        return "Request history is empty.\n";
+    }
     stringstream history;
     int requestNumber = 1;
     for (const auto &request : this->requestHistory) {

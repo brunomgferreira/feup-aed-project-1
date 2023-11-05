@@ -1,0 +1,38 @@
+\doxysection{Class\+Session.\+h}
+\hypertarget{_class_session_8h_source}{}\label{_class_session_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CLASSSCHEDULE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CLASSSCHEDULE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}TimeInterval.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_class_session}{ClassSession}}\ \{}
+\DoxyCodeLine{00014\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{string}\ weekday;}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{struct_time_interval}{TimeInterval}}\ timeInterval;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{string}\ type;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ Constructor}}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_class_session}{ClassSession}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&weekday,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_time_interval}{TimeInterval}}\ \&time,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&type);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ Getters}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&\mbox{\hyperlink{class_class_session_a71e25f5766185aa732d67a5679214ec8}{getWeekday}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{struct_time_interval}{TimeInterval}}\ \mbox{\hyperlink{class_class_session_a80d9a05393fcedda060dac9b795f276f}{getTimeInterval}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_class_session_a433f7cd2415a18f8ecef14ffd7f5ba3a}{getStartHour}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_class_session_abe0435429aa59300a31862aeef7e65d1}{getDuration}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_class_session_a80609a73b2518a2bdce454deff165841}{getType}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{//\ Comparation}}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_class_session_a980dda5045dabad91f65191d0ff22b43}{overlaps}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_class_session}{ClassSession}}\ \&schedule)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_class_session_a699d4044d17fced74271d6a7feaf7bfa}{invalidOverlaps}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_class_session}{ClassSession}}\ \&schedule)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_class_session_a5ca25df0679941b244a68baf660c493d}{operator<}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_class_session}{ClassSession}}\ \&other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00118\ \};}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

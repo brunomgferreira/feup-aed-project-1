@@ -1,0 +1,5 @@
+<map id="App" name="App">
+<area shape="rect" id="Node000001" title="Class that controls all the program menus and information." alt="" coords="8,98,55,126"/>
+<area shape="rect" id="Node000002" href="$class_data.html" title="Class that saves all the program data." alt="" coords="5,5,58,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="34,48,34,98,29,98,29,48"/>
+</map>

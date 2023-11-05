@@ -1,0 +1,235 @@
+\doxysection{Class\+Session Class Reference}
+\hypertarget{class_class_session}{}\label{class_class_session}\index{ClassSession@{ClassSession}}
+
+
+\doxylink{class_class}{Class} that stores a class schedule for a given class.  
+
+
+
+
+{\ttfamily \#include $<$Class\+Session.\+h$>$}
+
+
+
+Collaboration diagram for Class\+Session\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{class_class_session__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_class_session_a3ef025a036ce1eb5db9f762e018d05d0}{Class\+Session}} (const string \&weekday, const \mbox{\hyperlink{struct_time_interval}{Time\+Interval}} \&time, const string \&type)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_class_session}{Class\+Session} object with the specified attributes. \end{DoxyCompactList}\item 
+const string \& \mbox{\hyperlink{class_class_session_a71e25f5766185aa732d67a5679214ec8}{get\+Weekday}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the weekday of the class session. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_time_interval}{Time\+Interval}} \mbox{\hyperlink{class_class_session_a80d9a05393fcedda060dac9b795f276f}{get\+Time\+Interval}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the time interval of the class session. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_class_session_a433f7cd2415a18f8ecef14ffd7f5ba3a}{get\+Start\+Hour}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the start hour of the class session. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_class_session_abe0435429aa59300a31862aeef7e65d1}{get\+Duration}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the duration of the class session in hours. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_class_session_a80609a73b2518a2bdce454deff165841}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the type of the class session. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_class_session_a980dda5045dabad91f65191d0ff22b43}{overlaps}} (const \mbox{\hyperlink{class_class_session}{Class\+Session}} \&schedule) const
+\begin{DoxyCompactList}\small\item\em Checks if the current class session overlaps with another class session. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_class_session_a699d4044d17fced74271d6a7feaf7bfa}{invalid\+Overlaps}} (const \mbox{\hyperlink{class_class_session}{Class\+Session}} \&schedule) const
+\begin{DoxyCompactList}\small\item\em Checks if the current class session has an invalid overlap with another class session. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_class_session_a5ca25df0679941b244a68baf660c493d}{operator$<$}} (const \mbox{\hyperlink{class_class_session}{Class\+Session}} \&other) const
+\begin{DoxyCompactList}\small\item\em Determines the order of class sessions based on weekdays and start times. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_class_session_ae56586d66cee57d1017b7c2dd82ed7ec}\label{class_class_session_ae56586d66cee57d1017b7c2dd82ed7ec} 
+string {\bfseries weekday}
+\item 
+\Hypertarget{class_class_session_abc1e4a7b2fbfd7aa84331022202879ba}\label{class_class_session_abc1e4a7b2fbfd7aa84331022202879ba} 
+\mbox{\hyperlink{struct_time_interval}{Time\+Interval}} {\bfseries time\+Interval}
+\item 
+\Hypertarget{class_class_session_ad6b853e298ba8db59542cb5fb6785bbf}\label{class_class_session_ad6b853e298ba8db59542cb5fb6785bbf} 
+string {\bfseries type}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_class}{Class} that stores a class schedule for a given class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_class_session_a3ef025a036ce1eb5db9f762e018d05d0}\label{class_class_session_a3ef025a036ce1eb5db9f762e018d05d0} 
+\index{ClassSession@{ClassSession}!ClassSession@{ClassSession}}
+\index{ClassSession@{ClassSession}!ClassSession@{ClassSession}}
+\doxysubsubsection{\texorpdfstring{ClassSession()}{ClassSession()}}
+{\footnotesize\ttfamily Class\+Session\+::\+Class\+Session (\begin{DoxyParamCaption}\item[{const string \&}]{weekday,  }\item[{const \mbox{\hyperlink{struct_time_interval}{Time\+Interval}} \&}]{time,  }\item[{const string \&}]{type }\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_class_session}{Class\+Session} object with the specified attributes. 
+
+Initializes a \doxylink{class_class_session}{Class\+Session} object with the provided weekday, time interval, and session type.
+
+Time complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em weekday} & The weekday on which the class session occurs (e.\+g., "{}\+Monday"{}). \\
+\hline
+{\em time\+Interval} & The time interval during which the class session takes place. \\
+\hline
+{\em type} & The type of the class session (e.\+g., "{}\+Lecture"{} or "{}\+Lab"{}). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_class_session_abe0435429aa59300a31862aeef7e65d1}\label{class_class_session_abe0435429aa59300a31862aeef7e65d1} 
+\index{ClassSession@{ClassSession}!getDuration@{getDuration}}
+\index{getDuration@{getDuration}!ClassSession@{ClassSession}}
+\doxysubsubsection{\texorpdfstring{getDuration()}{getDuration()}}
+{\footnotesize\ttfamily double Class\+Session\+::get\+Duration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the duration of the class session in hours. 
+
+This method calculates and returns the duration of the class session in hours, taking into account both the start and end times, including minutes.
+
+Time complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The duration of the class session in hours. 
+\end{DoxyReturn}
+\Hypertarget{class_class_session_a433f7cd2415a18f8ecef14ffd7f5ba3a}\label{class_class_session_a433f7cd2415a18f8ecef14ffd7f5ba3a} 
+\index{ClassSession@{ClassSession}!getStartHour@{getStartHour}}
+\index{getStartHour@{getStartHour}!ClassSession@{ClassSession}}
+\doxysubsubsection{\texorpdfstring{getStartHour()}{getStartHour()}}
+{\footnotesize\ttfamily double Class\+Session\+::get\+Start\+Hour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the start hour of the class session. 
+
+This method returns the start hour of the class session as a double value, including the minutes in fractional part.
+
+Time complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The start hour of the class session. 
+\end{DoxyReturn}
+\Hypertarget{class_class_session_a80d9a05393fcedda060dac9b795f276f}\label{class_class_session_a80d9a05393fcedda060dac9b795f276f} 
+\index{ClassSession@{ClassSession}!getTimeInterval@{getTimeInterval}}
+\index{getTimeInterval@{getTimeInterval}!ClassSession@{ClassSession}}
+\doxysubsubsection{\texorpdfstring{getTimeInterval()}{getTimeInterval()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_time_interval}{Time\+Interval}} Class\+Session\+::get\+Time\+Interval (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the time interval of the class session. 
+
+This method returns the time interval during which the class session occurs.
+
+Time complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+The time interval of the class session. 
+\end{DoxyReturn}
+\Hypertarget{class_class_session_a80609a73b2518a2bdce454deff165841}\label{class_class_session_a80609a73b2518a2bdce454deff165841} 
+\index{ClassSession@{ClassSession}!getType@{getType}}
+\index{getType@{getType}!ClassSession@{ClassSession}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily string Class\+Session\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the type of the class session. 
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+The type of the class session, such as "{}\+T"{}, "{}\+TP"{} or "{}\+P"{}. 
+\end{DoxyReturn}
+\Hypertarget{class_class_session_a71e25f5766185aa732d67a5679214ec8}\label{class_class_session_a71e25f5766185aa732d67a5679214ec8} 
+\index{ClassSession@{ClassSession}!getWeekday@{getWeekday}}
+\index{getWeekday@{getWeekday}!ClassSession@{ClassSession}}
+\doxysubsubsection{\texorpdfstring{getWeekday()}{getWeekday()}}
+{\footnotesize\ttfamily const string \& Class\+Session\+::get\+Weekday (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the weekday of the class session. 
+
+This method returns a constant reference to the weekday on which the class session occurs.
+
+Time complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the weekday of the class session. 
+\end{DoxyReturn}
+\Hypertarget{class_class_session_a699d4044d17fced74271d6a7feaf7bfa}\label{class_class_session_a699d4044d17fced74271d6a7feaf7bfa} 
+\index{ClassSession@{ClassSession}!invalidOverlaps@{invalidOverlaps}}
+\index{invalidOverlaps@{invalidOverlaps}!ClassSession@{ClassSession}}
+\doxysubsubsection{\texorpdfstring{invalidOverlaps()}{invalidOverlaps()}}
+{\footnotesize\ttfamily bool Class\+Session\+::invalid\+Overlaps (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_class_session}{Class\+Session}} \&}]{schedule }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the current class session has an invalid overlap with another class session. 
+
+This method determines whether the current class session has an invalid overlap with another class session on the same day (weekday) and time interval. An overlap is considered invalid when both class sessions are not of type "{}\+T"{} (tutorial) and there is a time overlap.
+
+Time complexity\+: O(1) 
+\begin{DoxyParams}{Parameters}
+{\em schedule} & The other class session to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if there is an invalid overlap, otherwise false. 
+\end{DoxyReturn}
+\Hypertarget{class_class_session_a5ca25df0679941b244a68baf660c493d}\label{class_class_session_a5ca25df0679941b244a68baf660c493d} 
+\index{ClassSession@{ClassSession}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!ClassSession@{ClassSession}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Class\+Session\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_class_session}{Class\+Session}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Determines the order of class sessions based on weekdays and start times. 
+
+This method is used to compare two class sessions and establish their order. \doxylink{class_class}{Class} sessions are compared first by weekdays (Monday to Friday) and then by their start times. If this class session is scheduled to occur earlier in the week or at an earlier time of day than the other class session, it is considered to be less than the other class session.
+
+Time complexity\+: O(1) 
+\begin{DoxyParams}{Parameters}
+{\em other} & The other class session to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if this class session is less than the other, otherwise false. 
+\end{DoxyReturn}
+\Hypertarget{class_class_session_a980dda5045dabad91f65191d0ff22b43}\label{class_class_session_a980dda5045dabad91f65191d0ff22b43} 
+\index{ClassSession@{ClassSession}!overlaps@{overlaps}}
+\index{overlaps@{overlaps}!ClassSession@{ClassSession}}
+\doxysubsubsection{\texorpdfstring{overlaps()}{overlaps()}}
+{\footnotesize\ttfamily bool Class\+Session\+::overlaps (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_class_session}{Class\+Session}} \&}]{schedule }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the current class session overlaps with another class session. 
+
+This method determines whether the current class session\textquotesingle{}s time interval overlaps with the time interval of another class session on the same day (weekday).
+
+Time complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em schedule} & The other class session to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if there is an overlap in time and the same weekday, otherwise false. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Class\+Session.\+h\item 
+Class\+Session.\+cpp\end{DoxyCompactItemize}

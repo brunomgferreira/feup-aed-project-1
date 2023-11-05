@@ -1,0 +1,45 @@
+\doxysection{Student.\+h}
+\hypertarget{_student_8h_source}{}\label{_student_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ STUDENT\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ STUDENT\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Class.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_student}{Student}}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ studentCode;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{string}\ studentName;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ ucCode\ -\/>\ class}}
+\DoxyCodeLine{00019\ \ \ \ \ map<string,\ Class>\ classes;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ CONSTRUCTORS}}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}{Student}}();}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}{Student}}(\textcolor{keywordtype}{int}\ studentCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&studentName);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ GETTERS}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_student_aed820901f4c0ccba519b5cf4e0007cfc}{getStudentCode}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_student_af2fdac1ce7d10b271cf7103f675d9c17}{getStudentName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00071\ \ \ \ \ map<string,\ Class>\ \mbox{\hyperlink{class_student_a9fd4681ca9127fad8b59e61109b0a319}{getAllClasses}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{//\ Class\ related\ methods}}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_student_aef488a47e45e45b7f1a74bf5d939b297}{addClass}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_class}{Class}}\ \&newClass);}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_student_a5774e7fde0a45bff94598fd84cf5e1e5}{removeClass}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&ucCode);}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_student_aa573ed0413646e26d16c0e978f78f1c3}{findConflictClass}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ucCode,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_class}{Class}}\&\ destinyClass)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_student_a1bf8cc2fc7f94abb69c364ca3a042648}{getUcClassCode}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&ucCode)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{//\ Ucs\ related\ methods}}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_student_a6f6fed7ff626fb59ee8ff95791076fc4}{numberOfUcs}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_student_a23b01d513bc2fb895a512f2a7cbc3bf6}{hasUc}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&ucCode)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_student_aa622c32b579ee16991118a1782045798}{getStudentAsString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00158\ \};}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

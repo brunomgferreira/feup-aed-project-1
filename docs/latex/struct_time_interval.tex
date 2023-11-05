@@ -1,5 +1,5 @@
-\hypertarget{struct_time_interval}{}\doxysection{Time\+Interval Struct Reference}
-\label{struct_time_interval}\index{TimeInterval@{TimeInterval}}
+\doxysection{Time\+Interval Struct Reference}
+\hypertarget{struct_time_interval}{}\label{struct_time_interval}\index{TimeInterval@{TimeInterval}}
 
 
 Struct that represents a time interval.  
@@ -9,27 +9,26 @@ Struct that represents a time interval.
 
 {\ttfamily \#include $<$Time\+Interval.\+h$>$}
 
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{struct_time_interval_a01e86e9e40cb9e2b13e3711cd2c917af}{Time\+Interval}} (double start\+Time, double duration)
-\begin{DoxyCompactList}\small\item\em Constructor of the struct \mbox{\hyperlink{struct_time_interval}{Time\+Interval}}. start\+Hour, start\+Minute, end\+Hour, and end\+Minute are set to the given values. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_time_interval_aa7b621222a3ecf1dfacf3c104dc547d6}\label{struct_time_interval_aa7b621222a3ecf1dfacf3c104dc547d6}} 
-string {\bfseries get\+Time\+Interval\+As\+String} () const
-\end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{struct_time_interval}{Time\+Interval} class. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{struct_time_interval_aa7b621222a3ecf1dfacf3c104dc547d6}{get\+Time\+Interval\+As\+String}} () const
+\begin{DoxyCompactList}\small\item\em Get the string representation of the \doxylink{struct_time_interval}{Time\+Interval}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{struct_time_interval_a91783a05240a426dd016347a893a181b}\label{struct_time_interval_a91783a05240a426dd016347a893a181b}} 
+\Hypertarget{struct_time_interval_a91783a05240a426dd016347a893a181b}\label{struct_time_interval_a91783a05240a426dd016347a893a181b} 
 int {\bfseries start\+Hour}
 \item 
-\mbox{\Hypertarget{struct_time_interval_a08e7829f1dbca5dae4de77640f43c2a9}\label{struct_time_interval_a08e7829f1dbca5dae4de77640f43c2a9}} 
+\Hypertarget{struct_time_interval_a08e7829f1dbca5dae4de77640f43c2a9}\label{struct_time_interval_a08e7829f1dbca5dae4de77640f43c2a9} 
 int {\bfseries start\+Minute}
 \item 
-\mbox{\Hypertarget{struct_time_interval_ac1e44623bdb69c4460a746e960203bcf}\label{struct_time_interval_ac1e44623bdb69c4460a746e960203bcf}} 
+\Hypertarget{struct_time_interval_ac1e44623bdb69c4460a746e960203bcf}\label{struct_time_interval_ac1e44623bdb69c4460a746e960203bcf} 
 int {\bfseries end\+Hour}
 \item 
-\mbox{\Hypertarget{struct_time_interval_a11fe9ed8dd5308af5e3d7c4240694719}\label{struct_time_interval_a11fe9ed8dd5308af5e3d7c4240694719}} 
+\Hypertarget{struct_time_interval_a11fe9ed8dd5308af5e3d7c4240694719}\label{struct_time_interval_a11fe9ed8dd5308af5e3d7c4240694719} 
 int {\bfseries end\+Minute}
 \end{DoxyCompactItemize}
 
@@ -38,7 +37,7 @@ int {\bfseries end\+Minute}
 Struct that represents a time interval. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{struct_time_interval_a01e86e9e40cb9e2b13e3711cd2c917af}\label{struct_time_interval_a01e86e9e40cb9e2b13e3711cd2c917af}} 
+\Hypertarget{struct_time_interval_a01e86e9e40cb9e2b13e3711cd2c917af}\label{struct_time_interval_a01e86e9e40cb9e2b13e3711cd2c917af} 
 \index{TimeInterval@{TimeInterval}!TimeInterval@{TimeInterval}}
 \index{TimeInterval@{TimeInterval}!TimeInterval@{TimeInterval}}
 \doxysubsubsection{\texorpdfstring{TimeInterval()}{TimeInterval()}}
@@ -46,15 +45,35 @@ Struct that represents a time interval.
 
 
 
-Constructor of the struct \mbox{\hyperlink{struct_time_interval}{Time\+Interval}}. start\+Hour, start\+Minute, end\+Hour, and end\+Minute are set to the given values. 
+Constructor for the \doxylink{struct_time_interval}{Time\+Interval} class. 
+
+Initializes a \doxylink{struct_time_interval}{Time\+Interval} object based on the provided start time and duration. The \doxylink{struct_time_interval}{Time\+Interval} represents a time interval with start and end times in hours and minutes.
 
 Time complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
-{\em start\+Time} & start time of the time interval \\
+{\em start\+Time} & The start time of the time interval as a floating-\/point number. \\
 \hline
-{\em duration} & duration of the time interval \\
+{\em duration} & The duration of the time interval as a floating-\/point number. \\
 \hline
 \end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_time_interval_aa7b621222a3ecf1dfacf3c104dc547d6}\label{struct_time_interval_aa7b621222a3ecf1dfacf3c104dc547d6} 
+\index{TimeInterval@{TimeInterval}!getTimeIntervalAsString@{getTimeIntervalAsString}}
+\index{getTimeIntervalAsString@{getTimeIntervalAsString}!TimeInterval@{TimeInterval}}
+\doxysubsubsection{\texorpdfstring{getTimeIntervalAsString()}{getTimeIntervalAsString()}}
+{\footnotesize\ttfamily string Time\+Interval\+::get\+Time\+Interval\+As\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the string representation of the \doxylink{struct_time_interval}{Time\+Interval}. 
+
+Returns a string representation of the \doxylink{struct_time_interval}{Time\+Interval} in the format "{}\mbox{[}hh\+:mm-\/hh\+:mm\mbox{]}"{}.
+
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
+A string representing the \doxylink{struct_time_interval}{Time\+Interval}. 
+\end{DoxyReturn}
 
 
 The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}

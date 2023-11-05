@@ -1,0 +1,38 @@
+\doxysection{Uc.\+h}
+\hypertarget{_uc_8h_source}{}\label{_uc_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ UC\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ UC\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Class.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_uc}{Uc}}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{string}\ ucCode;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ classCode\ -\/>\ class}}
+\DoxyCodeLine{00020\ \ \ \ \ map<string,\ Class>\ classes;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ Constructors}}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_uc_a80ef0956e158a516d36be2a27e0d1281}{Uc}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_uc_a80ef0956e158a516d36be2a27e0d1281}{Uc}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&ucCode);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ Class\ related\ methods}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_uc_a45992776875a61d4cbf99ac6d2184e16}{addClass}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_class}{Class}}\ \&newClass);}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{class_class}{Class}}\ \&\mbox{\hyperlink{class_uc_ae9f6f99f663b78fc0803bffca03ccd88}{getClass}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&classCode);}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{const}\ map<string,\ Class>\ \&\mbox{\hyperlink{class_uc_a73aea08ba8b537316bd65988663edf69}{getAllClasses}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_uc_a8faa32e89d932b18382cc6c2056e7df7}{hasClass}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&classCode)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_uc_ab157d9419d56d2184ec31245fac0ca20}{balancedClasses}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&originClassCode,}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&destinyClassCode)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00091\ \};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

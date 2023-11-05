@@ -1,0 +1,49 @@
+\doxysection{Class.\+h}
+\hypertarget{_class_8h_source}{}\label{_class_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ CLASS\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ CLASS\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}ClassSession.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_class}{Class}}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{string}\ ucCode;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{string}\ classCode;}
+\DoxyCodeLine{00019\ \ \ \ \ vector<ClassSession>\ schedule;}
+\DoxyCodeLine{00020\ \ \ \ \ set<int>\ students;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ MAX\_STUDENTS\ =\ 30;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ CLASS\ CONSTRUCTORS}}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_class_a5b97d41527df822c6b1211931f79ca15}{Class}}();}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{class_class_a5b97d41527df822c6b1211931f79ca15}{Class}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ucCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ classCode);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ GETTERS}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_class_a75673197177e612baf4d6041f0489539}{getUcCode}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_class_aa68718414a5cad02b1afdba4ad450971}{getClassCode}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ ClassSession\ related\ methods}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_class_aa5ccd3c694b8f7f01050232bbb20a160}{addClassSchedule}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_class_session}{ClassSession}}\&\ newClassSchedule);}
+\DoxyCodeLine{00086\ \ \ \ \ vector<ClassSession>\ \mbox{\hyperlink{class_class_a8b879102a4f2ef5d008f5d09ad91c021}{getAllClassSchedules}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_class_a6a1f7e8dc24ce1e7fc8416faf96f2e8f}{invalidOverlaps}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_class}{Class}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//\ Students\ related\ methods}}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_class_a66d3694d02a7dda4bae647e64e76b230}{addStudent}}(\textcolor{keywordtype}{int}\ newStudentCode);}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_class_acfc00993e4a7e708adc60a7fdae36431}{removeStudent}}(\textcolor{keywordtype}{int}\ studentCode);}
+\DoxyCodeLine{00133\ \ \ \ \ set<int>\ \mbox{\hyperlink{class_class_a0d91c887ff56e3213aecfe9cc47b8c55}{getAllStudents}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_class_a1251eae597bb867e9114f121120c83c0}{numberStudents}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{comment}{//\ Vacancy\ related\ methods}}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_class_a002f5ecea08e93d4d52615e5ebaf522f}{hasVacancies}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_class_a11206ac174c8b473a65d1e6cd3ff9409}{numberVacancies}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00166\ \};}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

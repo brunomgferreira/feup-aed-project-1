@@ -1,0 +1,36 @@
+\doxysection{User\+Interface.\+h}
+\hypertarget{_user_interface_8h_source}{}\label{_user_interface_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PROJETO\_USERINTERFACE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PROJETO\_USERINTERFACE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Student.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_user_interface}{UserInterface}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ printMainMenu();}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}\ readOption(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ msg);\ \textcolor{comment}{//\ Returns\ the\ char\ that\ corresponds\ to\ the\ selected\ menu\ option}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ readCode(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ msg);}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ readNumber(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ msg);\ \textcolor{comment}{//apagar?}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ printError(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ error);}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ printMessage(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ msg);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ printStudentSchedule(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_student}{Student}}\&\ student);}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ printClassSchedule(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ classCode,\ \textcolor{keyword}{const}\ set<string>\&\ ucs,\ \textcolor{keyword}{const}\ map<\textcolor{keywordtype}{int},set<string>>\&\ schedulesByDay);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ pressEnterToContinue();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ printConsultMenu();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ printTryAgainMenu();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ printNewRequestMenu();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ printProcessRequestMenu();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

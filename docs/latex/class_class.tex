@@ -1,57 +1,71 @@
-\hypertarget{class_class}{}\doxysection{Class Class Reference}
-\label{class_class}\index{Class@{Class}}
+\doxysection{Class Class Reference}
+\hypertarget{class_class}{}\label{class_class}\index{Class@{Class}}
 
 
-\mbox{\hyperlink{class_class}{Class}} that represents a class for a given UC.  
+\doxylink{class_class}{Class} that represents a class for a given UC.  
 
 
 
 
 {\ttfamily \#include $<$Class.\+h$>$}
 
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_class_a5b97d41527df822c6b1211931f79ca15}{Class}} ()
-\begin{DoxyCompactList}\small\item\em Standard constructor of the class \mbox{\hyperlink{class_class}{Class}}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{class_class}{Class}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_class_a79cb04b485b77f838d92dd5cd2857e24}{Class}} (const string \&uc\+Code, const string \&class\+Code)
-\begin{DoxyCompactList}\small\item\em Constructor of the class \mbox{\hyperlink{class_class}{Class}}. uc\+Code and class\+Code are set to the given values. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{class_class}{Class} constructor with UC code and class code. \end{DoxyCompactList}\item 
 string \mbox{\hyperlink{class_class_a75673197177e612baf4d6041f0489539}{get\+Uc\+Code}} () const
-\begin{DoxyCompactList}\small\item\em Returns the uc\+Code of the class. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Getter method to retrieve the UC code of the \doxylink{class_class}{Class}. \end{DoxyCompactList}\item 
 string \mbox{\hyperlink{class_class_aa68718414a5cad02b1afdba4ad450971}{get\+Class\+Code}} () const
-\begin{DoxyCompactList}\small\item\em Returns the class\+Code of the class. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_class_a5122c7518096a896320d1be977d0c4bd}{add\+Class\+Schedule}} (const \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} \&new\+Class\+Schedule)
-\begin{DoxyCompactList}\small\item\em Adds a new class schedule to the class\+Schedules. \end{DoxyCompactList}\item 
-vector$<$ \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} $>$ \mbox{\hyperlink{class_class_ab9d9682bac1fec71f75cbc10a721ac96}{get\+All\+Class\+Schedules}} () const
-\begin{DoxyCompactList}\small\item\em Returns all the class\textquotesingle{}s class schedules. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Getter method to retrieve the \doxylink{class_class}{Class} code of the \doxylink{class_class}{Class}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_class_aa5ccd3c694b8f7f01050232bbb20a160}{add\+Class\+Schedule}} (const \mbox{\hyperlink{class_class_session}{Class\+Session}} \&new\+Class\+Schedule)
+\begin{DoxyCompactList}\small\item\em Adds a new class schedule to the \doxylink{class_class}{Class}. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_class_session}{Class\+Session}} $>$ \mbox{\hyperlink{class_class_a8b879102a4f2ef5d008f5d09ad91c021}{get\+All\+Class\+Schedules}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves all class schedules associated with the \doxylink{class_class}{Class}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_class_a6a1f7e8dc24ce1e7fc8416faf96f2e8f}{invalid\+Overlaps}} (const \mbox{\hyperlink{class_class}{Class}} \&other) const
+\begin{DoxyCompactList}\small\item\em Checks for invalid overlaps between two classes\textquotesingle{} schedules. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_class_a66d3694d02a7dda4bae647e64e76b230}{add\+Student}} (int new\+Student\+Code)
-\begin{DoxyCompactList}\small\item\em Adds a new student code to the students in the class. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Adds a new student (by student code) to the \doxylink{class_class}{Class}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_class_acfc00993e4a7e708adc60a7fdae36431}{remove\+Student}} (int student\+Code)
-\begin{DoxyCompactList}\small\item\em Removes a student code from the students in the class. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Removes a student from the \doxylink{class_class}{Class} by student code. \end{DoxyCompactList}\item 
 set$<$ int $>$ \mbox{\hyperlink{class_class_a0d91c887ff56e3213aecfe9cc47b8c55}{get\+All\+Students}} () const
-\begin{DoxyCompactList}\small\item\em Returns all the class students. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Private Attributes}
+\begin{DoxyCompactList}\small\item\em Retrieves all students\textquotesingle{} codes associated with the \doxylink{class_class}{Class}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_class_a1251eae597bb867e9114f121120c83c0}{number\+Students}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the number of students enrolled in the \doxylink{class_class}{Class}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_class_a002f5ecea08e93d4d52615e5ebaf522f}{has\+Vacancies}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the \doxylink{class_class}{Class} has available vacancies for students. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_class_a11206ac174c8b473a65d1e6cd3ff9409}{number\+Vacancies}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the number of available vacancies in the \doxylink{class_class}{Class}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_class_ab23ea3201c4427eb309547b8278f44b7}\label{class_class_ab23ea3201c4427eb309547b8278f44b7}} 
+\Hypertarget{class_class_ab23ea3201c4427eb309547b8278f44b7}\label{class_class_ab23ea3201c4427eb309547b8278f44b7} 
 string {\bfseries uc\+Code}
 \item 
-\mbox{\Hypertarget{class_class_a8eccba7658243c9b9ec6baf199f36688}\label{class_class_a8eccba7658243c9b9ec6baf199f36688}} 
+\Hypertarget{class_class_a8eccba7658243c9b9ec6baf199f36688}\label{class_class_a8eccba7658243c9b9ec6baf199f36688} 
 string {\bfseries class\+Code}
 \item 
-\mbox{\Hypertarget{class_class_ace0218e3be391fd827190894bfaf9415}\label{class_class_ace0218e3be391fd827190894bfaf9415}} 
-vector$<$ \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} $>$ {\bfseries class\+Schedules}
+\Hypertarget{class_class_a08b2c2f06cc422fd1fac462d47f71804}\label{class_class_a08b2c2f06cc422fd1fac462d47f71804} 
+vector$<$ \mbox{\hyperlink{class_class_session}{Class\+Session}} $>$ {\bfseries schedule}
 \item 
-\mbox{\Hypertarget{class_class_a74caf092a8b1912e757b542a10b8673a}\label{class_class_a74caf092a8b1912e757b542a10b8673a}} 
+\Hypertarget{class_class_a74caf092a8b1912e757b542a10b8673a}\label{class_class_a74caf092a8b1912e757b542a10b8673a} 
 set$<$ int $>$ {\bfseries students}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_class_a21ed2af2e706da34d0f632b3e8931512}\label{class_class_a21ed2af2e706da34d0f632b3e8931512} 
+static const int {\bfseries MAX\+\_\+\+STUDENTS} = 30
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\mbox{\hyperlink{class_class}{Class}} that represents a class for a given UC. 
+\doxylink{class_class}{Class} that represents a class for a given UC. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_class_a5b97d41527df822c6b1211931f79ca15}\label{class_class_a5b97d41527df822c6b1211931f79ca15}} 
+\Hypertarget{class_class_a5b97d41527df822c6b1211931f79ca15}\label{class_class_a5b97d41527df822c6b1211931f79ca15} 
 \index{Class@{Class}!Class@{Class}}
 \index{Class@{Class}!Class@{Class}}
 \doxysubsubsection{\texorpdfstring{Class()}{Class()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
@@ -59,9 +73,11 @@ set$<$ int $>$ {\bfseries students}
 
 
 
-Standard constructor of the class \mbox{\hyperlink{class_class}{Class}}. 
+Default constructor for the \doxylink{class_class}{Class}. 
 
-Time complexity\+: O(1) \mbox{\Hypertarget{class_class_a79cb04b485b77f838d92dd5cd2857e24}\label{class_class_a79cb04b485b77f838d92dd5cd2857e24}} 
+This default constructor creates a new instance of the \doxylink{class_class}{Class} with no specific UC code or class code. It can be used to initialize an empty \doxylink{class_class}{Class}.
+
+Time complexity\+: O(1) \Hypertarget{class_class_a79cb04b485b77f838d92dd5cd2857e24}\label{class_class_a79cb04b485b77f838d92dd5cd2857e24} 
 \index{Class@{Class}!Class@{Class}}
 \index{Class@{Class}!Class@{Class}}
 \doxysubsubsection{\texorpdfstring{Class()}{Class()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
@@ -69,34 +85,42 @@ Time complexity\+: O(1) \mbox{\Hypertarget{class_class_a79cb04b485b77f838d92dd5c
 
 
 
-Constructor of the class \mbox{\hyperlink{class_class}{Class}}. uc\+Code and class\+Code are set to the given values. 
+\doxylink{class_class}{Class} constructor with UC code and class code. 
 
-Time complexity\+: O(1) 
+Initializes a new instance of the \doxylink{class_class}{Class} with the provided UC code and class code.
+
+Time complexity\+: O(1)
+
+
 \begin{DoxyParams}{Parameters}
-{\em uc\+Code} & code of the UC \\
+{\em uc\+Code} & A string representing the UC (Unit Course) code associated with the \doxylink{class_class}{Class}. \\
 \hline
-{\em class\+Code} & code of the class \\
+{\em class\+Code} & A string representing the unique code of the \doxylink{class_class}{Class}. \\
 \hline
 \end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_class_a5122c7518096a896320d1be977d0c4bd}\label{class_class_a5122c7518096a896320d1be977d0c4bd}} 
+\Hypertarget{class_class_aa5ccd3c694b8f7f01050232bbb20a160}\label{class_class_aa5ccd3c694b8f7f01050232bbb20a160} 
 \index{Class@{Class}!addClassSchedule@{addClassSchedule}}
 \index{addClassSchedule@{addClassSchedule}!Class@{Class}}
 \doxysubsubsection{\texorpdfstring{addClassSchedule()}{addClassSchedule()}}
-{\footnotesize\ttfamily void Class\+::add\+Class\+Schedule (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} \&}]{new\+Class\+Schedule }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Class\+::add\+Class\+Schedule (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_class_session}{Class\+Session}} \&}]{new\+Class\+Schedule }\end{DoxyParamCaption})}
 
 
 
-Adds a new class schedule to the class\+Schedules. 
+Adds a new class schedule to the \doxylink{class_class}{Class}. 
 
-Time complexity\+: O(1) 
+This method appends a new class schedule, represented by \textquotesingle{}new\+Class\+Schedule\textquotesingle{}, to the list of schedules associated with the \doxylink{class_class}{Class}.
+
+Time complexity\+: O(1)
+
+
 \begin{DoxyParams}{Parameters}
-{\em new\+Class\+Schedule} & new schedule of a class of the class \\
+{\em new\+Class\+Schedule} & The \doxylink{class_class_session}{Class\+Session} to add to the \doxylink{class_class}{Class}. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_class_a66d3694d02a7dda4bae647e64e76b230}\label{class_class_a66d3694d02a7dda4bae647e64e76b230}} 
+\Hypertarget{class_class_a66d3694d02a7dda4bae647e64e76b230}\label{class_class_a66d3694d02a7dda4bae647e64e76b230} 
 \index{Class@{Class}!addStudent@{addStudent}}
 \index{addStudent@{addStudent}!Class@{Class}}
 \doxysubsubsection{\texorpdfstring{addStudent()}{addStudent()}}
@@ -104,27 +128,35 @@ Time complexity\+: O(1)
 
 
 
-Adds a new student code to the students in the class. 
+Adds a new student (by student code) to the \doxylink{class_class}{Class}. 
 
-Time complexity\+: O(log n) 
+This method adds a new student to the \doxylink{class_class}{Class} by including the student\textquotesingle{}s code in the list of students associated with the \doxylink{class_class}{Class}.
+
+Time complexity\+: O(log n)
+
+
 \begin{DoxyParams}{Parameters}
-{\em new\+Student\+Code} & student code of a new student enrolled in the class \\
+{\em new\+Student\+Code} & An integer representing the code of the new student. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_class_ab9d9682bac1fec71f75cbc10a721ac96}\label{class_class_ab9d9682bac1fec71f75cbc10a721ac96}} 
+\Hypertarget{class_class_a8b879102a4f2ef5d008f5d09ad91c021}\label{class_class_a8b879102a4f2ef5d008f5d09ad91c021} 
 \index{Class@{Class}!getAllClassSchedules@{getAllClassSchedules}}
 \index{getAllClassSchedules@{getAllClassSchedules}!Class@{Class}}
 \doxysubsubsection{\texorpdfstring{getAllClassSchedules()}{getAllClassSchedules()}}
-{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} $>$ Class\+::get\+All\+Class\+Schedules (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_class_session}{Class\+Session}} $>$ Class\+::get\+All\+Class\+Schedules (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
-Returns all the class\textquotesingle{}s class schedules. 
+Retrieves all class schedules associated with the \doxylink{class_class}{Class}. 
 
-Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
-class\+Schedules all the classes schedules of the class 
+This method returns a vector containing all the class schedules associated with the \doxylink{class_class}{Class}, providing access to the complete list of schedules.
+
+Time complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+A vector of \doxylink{class_class_session}{Class\+Session} objects representing the class schedules. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_class_a0d91c887ff56e3213aecfe9cc47b8c55}\label{class_class_a0d91c887ff56e3213aecfe9cc47b8c55}} 
+\Hypertarget{class_class_a0d91c887ff56e3213aecfe9cc47b8c55}\label{class_class_a0d91c887ff56e3213aecfe9cc47b8c55} 
 \index{Class@{Class}!getAllStudents@{getAllStudents}}
 \index{getAllStudents@{getAllStudents}!Class@{Class}}
 \doxysubsubsection{\texorpdfstring{getAllStudents()}{getAllStudents()}}
@@ -132,12 +164,16 @@ class\+Schedules all the classes schedules of the class
 
 
 
-Returns all the class students. 
+Retrieves all students\textquotesingle{} codes associated with the \doxylink{class_class}{Class}. 
 
-Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
-students all the codes of the students enrolled in the class 
+This method returns a set containing the student codes of all students associated with the \doxylink{class_class}{Class}, allowing access to the complete list of students.
+
+Time complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+A set of integers representing the student codes. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_class_aa68718414a5cad02b1afdba4ad450971}\label{class_class_aa68718414a5cad02b1afdba4ad450971}} 
+\Hypertarget{class_class_aa68718414a5cad02b1afdba4ad450971}\label{class_class_aa68718414a5cad02b1afdba4ad450971} 
 \index{Class@{Class}!getClassCode@{getClassCode}}
 \index{getClassCode@{getClassCode}!Class@{Class}}
 \doxysubsubsection{\texorpdfstring{getClassCode()}{getClassCode()}}
@@ -145,12 +181,16 @@ students all the codes of the students enrolled in the class
 
 
 
-Returns the class\+Code of the class. 
+Getter method to retrieve the \doxylink{class_class}{Class} code of the \doxylink{class_class}{Class}. 
 
-Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
-class\+Code code of the class 
+This method returns the \doxylink{class_class}{Class} code associated with the \doxylink{class_class}{Class}.
+
+Time complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+A string containing the \doxylink{class_class}{Class} code of the \doxylink{class_class}{Class}. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_class_a75673197177e612baf4d6041f0489539}\label{class_class_a75673197177e612baf4d6041f0489539}} 
+\Hypertarget{class_class_a75673197177e612baf4d6041f0489539}\label{class_class_a75673197177e612baf4d6041f0489539} 
 \index{Class@{Class}!getUcCode@{getUcCode}}
 \index{getUcCode@{getUcCode}!Class@{Class}}
 \doxysubsubsection{\texorpdfstring{getUcCode()}{getUcCode()}}
@@ -158,12 +198,89 @@ class\+Code code of the class
 
 
 
-Returns the uc\+Code of the class. 
+Getter method to retrieve the UC code of the \doxylink{class_class}{Class}. 
 
-Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
-uc\+Code code of the UC of the class 
+This method returns the UC code associated with the \doxylink{class_class}{Class}.
+
+Time complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+A string containing the UC code of the \doxylink{class_class}{Class}. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_class_acfc00993e4a7e708adc60a7fdae36431}\label{class_class_acfc00993e4a7e708adc60a7fdae36431}} 
+\Hypertarget{class_class_a002f5ecea08e93d4d52615e5ebaf522f}\label{class_class_a002f5ecea08e93d4d52615e5ebaf522f} 
+\index{Class@{Class}!hasVacancies@{hasVacancies}}
+\index{hasVacancies@{hasVacancies}!Class@{Class}}
+\doxysubsubsection{\texorpdfstring{hasVacancies()}{hasVacancies()}}
+{\footnotesize\ttfamily bool Class\+::has\+Vacancies (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the \doxylink{class_class}{Class} has available vacancies for students. 
+
+This method checks whether the \doxylink{class_class}{Class} has available vacancies for students by comparing the number of enrolled students with the maximum allowed capacity.
+
+Time complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+true if there are vacancies in the \doxylink{class_class}{Class}; false if the maximum capacity has been reached. 
+\end{DoxyReturn}
+\Hypertarget{class_class_a6a1f7e8dc24ce1e7fc8416faf96f2e8f}\label{class_class_a6a1f7e8dc24ce1e7fc8416faf96f2e8f} 
+\index{Class@{Class}!invalidOverlaps@{invalidOverlaps}}
+\index{invalidOverlaps@{invalidOverlaps}!Class@{Class}}
+\doxysubsubsection{\texorpdfstring{invalidOverlaps()}{invalidOverlaps()}}
+{\footnotesize\ttfamily bool Class\+::invalid\+Overlaps (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_class}{Class}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Checks for invalid overlaps between two classes\textquotesingle{} schedules. 
+
+This method iterates through the schedules of the current class and the provided \textquotesingle{}destiny\+Class\textquotesingle{}, comparing each pair of schedules to check if they have invalid overlaps. An overlap is considered invalid if it conflicts with the timing of another schedule.
+
+Time complexity\+: Sem complexity
+
+
+\begin{DoxyParams}{Parameters}
+{\em destiny\+Class} & The \doxylink{class_class}{Class} to compare schedules with.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there are invalid overlaps between the schedules of the current class and the \textquotesingle{}destiny\+Class\textquotesingle{}; otherwise, false. 
+\end{DoxyReturn}
+\Hypertarget{class_class_a1251eae597bb867e9114f121120c83c0}\label{class_class_a1251eae597bb867e9114f121120c83c0} 
+\index{Class@{Class}!numberStudents@{numberStudents}}
+\index{numberStudents@{numberStudents}!Class@{Class}}
+\doxysubsubsection{\texorpdfstring{numberStudents()}{numberStudents()}}
+{\footnotesize\ttfamily int Class\+::number\+Students (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the number of students enrolled in the \doxylink{class_class}{Class}. 
+
+This method returns the count of students currently associated with the \doxylink{class_class}{Class}, providing the total number of students.
+
+Time complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+An integer representing the number of students. 
+\end{DoxyReturn}
+\Hypertarget{class_class_a11206ac174c8b473a65d1e6cd3ff9409}\label{class_class_a11206ac174c8b473a65d1e6cd3ff9409} 
+\index{Class@{Class}!numberVacancies@{numberVacancies}}
+\index{numberVacancies@{numberVacancies}!Class@{Class}}
+\doxysubsubsection{\texorpdfstring{numberVacancies()}{numberVacancies()}}
+{\footnotesize\ttfamily int Class\+::number\+Vacancies (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the number of available vacancies in the \doxylink{class_class}{Class}. 
+
+This method calculates and returns the number of available vacancies in the \doxylink{class_class}{Class} by subtracting the current number of enrolled students from the maximum allowed capacity.
+
+Time complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+An integer representing the number of available vacancies in the \doxylink{class_class}{Class}. 
+\end{DoxyReturn}
+\Hypertarget{class_class_acfc00993e4a7e708adc60a7fdae36431}\label{class_class_acfc00993e4a7e708adc60a7fdae36431} 
 \index{Class@{Class}!removeStudent@{removeStudent}}
 \index{removeStudent@{removeStudent}!Class@{Class}}
 \doxysubsubsection{\texorpdfstring{removeStudent()}{removeStudent()}}
@@ -171,11 +288,15 @@ uc\+Code code of the UC of the class
 
 
 
-Removes a student code from the students in the class. 
+Removes a student from the \doxylink{class_class}{Class} by student code. 
 
-Time complexity\+: TODO 
+This method removes a student from the \doxylink{class_class}{Class} based on the provided student code. If a student with the given code is found in the \doxylink{class_class}{Class}, they will be removed.
+
+Time complexity\+: O(log n)
+
+
 \begin{DoxyParams}{Parameters}
-{\em student\+Code} & student code of the student to be removed \\
+{\em student\+Code} & An integer representing the code of the student to be removed. \\
 \hline
 \end{DoxyParams}
 

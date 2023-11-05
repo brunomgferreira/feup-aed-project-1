@@ -1,55 +1,139 @@
-\hypertarget{class_data}{}\doxysection{Data Class Reference}
-\label{class_data}\index{Data@{Data}}
+\doxysection{Data Class Reference}
+\hypertarget{class_data}{}\label{class_data}\index{Data@{Data}}
 
 
-\mbox{\hyperlink{class_class}{Class}} that saves all the program data.  
+\doxylink{class_class}{Class} that saves all the program data.  
 
 
 
 
 {\ttfamily \#include $<$Data.\+h$>$}
 
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_data_af11f741cb7f587e2e495452a8905a22a}{Data}} ()
-\begin{DoxyCompactList}\small\item\em Standard constructor of the class \mbox{\hyperlink{class_data}{Data}}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{class_data}{Data} class. \end{DoxyCompactList}\item 
 map$<$ string, \mbox{\hyperlink{class_uc}{Uc}} $>$ \mbox{\hyperlink{class_data_a4e96b6224747b93dc4f4857acf9e1677}{get\+All\+Ucs}} () const
-\begin{DoxyCompactList}\small\item\em Returns all the UCs. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Retrieves all Unit Courses (UCs) in the \doxylink{class_data}{Data} (const version). \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_uc}{Uc}} \& \mbox{\hyperlink{class_data_a72d2cc9af55922c5a8b1d2a3f54d6943}{get\+Uc}} (const string \&uc\+Code)
-\begin{DoxyCompactList}\small\item\em Returns a UC given a UC code. \end{DoxyCompactList}\item 
-map$<$ int, \mbox{\hyperlink{class_student}{Student}} $>$ \mbox{\hyperlink{class_data_a31b84fe22dc6bb3424952c3f458c867c}{get\+All\+Students}} () const
-\begin{DoxyCompactList}\small\item\em Returns all the students. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Retrieves a Unit Course (UC) by its UC code. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_data_a4572646d5c7a37cc48ed6b79009db27e}{uc\+Exists}} (const string \&uc\+Code)
+\begin{DoxyCompactList}\small\item\em Checks if a Unit Course (UC) exists in the \doxylink{class_data}{Data}. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_data_a25d50ff7898a85b735ef6e4eb09f8305}{consult\+Students\+Class}} (const string \&uc\+Code, const string \&class\+Code)
+\begin{DoxyCompactList}\small\item\em Consults and retrieves information about students in a specific \doxylink{class_class}{Class}. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_data_a9ee8f4f03a63b084c90b8e40727f3dd8}{consult\+Students\+Course}} (const string \&uc\+Code)
+\begin{DoxyCompactList}\small\item\em Consults and retrieves information about students in all Classes of a specific Unit Course (UC). \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_data_a357e56f924d0c102c81ee4cc6b88983c}{consult\+Students\+Year}} (const string \&year)
+\begin{DoxyCompactList}\small\item\em Consults and retrieves information about students in a specific academic year. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_data_ac620568993cdebdb7ec5c4cebc373a42}{consult\+Occupation\+Class}} (const string \&uc\+Code, const string \&class\+Code)
+\begin{DoxyCompactList}\small\item\em Consults and retrieves information about the occupation of a specific \doxylink{class_class}{Class}. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_data_a2829e4698e685784d6b3d960e469f932}{consult\+Occupation\+Course}} (const string \&uc\+Code)
+\begin{DoxyCompactList}\small\item\em Consults and retrieves information about the occupation of all Classes within a specific Unit Course (UC). \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_data_a8096d9aa4a21b70c947163635cc1de43}{consult\+Occupation\+Year}} (const string \&year)
+\begin{DoxyCompactList}\small\item\em Consults and retrieves information about the occupation of students in a specific academic year. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_data_af9162b35c4c224faf065a5beae10d5ca}{consult\+Num\+Students\+Ucs}} (const string \&n\+Ucs)
+\begin{DoxyCompactList}\small\item\em Consults and retrieves information about students registered in at least a specified number of Unit Courses (UCs). \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_data_a4098e252ceb0a47efdae10365292a0d1}{consult\+Biggest\+Uc}} (bool ascending\+Order)
+\begin{DoxyCompactList}\small\item\em Consults and retrieves information about the Unit Courses (UCs) with the most or least students. \end{DoxyCompactList}\item 
+set$<$ string $>$ \mbox{\hyperlink{class_data_ac069b9059f243f93bf3e9a20b010be01}{get\+Ucs\+By\+Class\+Code}} (const string \&class\+Code) const
+\begin{DoxyCompactList}\small\item\em Retrieves a set of Unit Course (UC) codes associated with a specific class code. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_data_a6a877be09bd4b887dcb82574ede71907}{class\+Exists}} (const string \&uc\+Code, const string \&class\+Code)
+\begin{DoxyCompactList}\small\item\em Checks if a class with a specific code exists within a Unit Course (UC). \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_student}{Student}} \& \mbox{\hyperlink{class_data_a300bb01bf9a11e829afced5bf39f95b3}{get\+Student}} (int student\+Code)
-\begin{DoxyCompactList}\small\item\em Returns a student given a student code. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_data_a728261d109d627482d80cfdb6fade54f}{read\+Classes\+Per\+Uc\+File}} (ifstream \&file)
-\begin{DoxyCompactList}\small\item\em Reads the classes\+\_\+per\+\_\+uc.\+csv file. ucs is set to the read values. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_data_a13b1e8b719d4f89178bd651bdc796f54}{write\+Classes\+Per\+Uc\+File}} (ofstream \&file)
-\begin{DoxyCompactList}\small\item\em Updates the classes\+\_\+per\+\_\+uc.\+csv file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_data_a6b426a4a5736e1b447dc5f4df9b47a49}{read\+Classes\+File}} (ifstream \&file)
-\begin{DoxyCompactList}\small\item\em Reads the classes.\+csv file. the class\+Schedules inside their corresponding class and uc are set to the read values. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_data_a6e34aefc8f65bae28f606e680b1307af}{write\+Classes\+File}} (ofstream \&file)
-\begin{DoxyCompactList}\small\item\em Updates the classes.\+csv file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_data_a078d66476ac6ae25ee59e6c05411cc27}{read\+Students\+Classes\+File}} (ifstream \&file)
-\begin{DoxyCompactList}\small\item\em Reads the students\+\_\+classes.\+csv file. the students is set to the read values. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_data_a4a4473628691df3943e1fff0b46d5eff}{write\+Students\+Classes\+File}} (ofstream \&file)
-\begin{DoxyCompactList}\small\item\em Updates the students\+\_\+classes.\+csv file. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Private Attributes}
+\begin{DoxyCompactList}\small\item\em Retrieves a reference to a specific student by their unique student code. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_data_abf2ce9c1f61e1d4805370033dbd9f29c}{student\+Exists}} (int student\+Code)
+\begin{DoxyCompactList}\small\item\em Checks if a student with a specific student code exists in the database. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_ac5fe9f3737ec49cfd3fe9db40f2b7049}{create\+Add\+Request}} (const string \&student\+Code, const string \&uc\+Code, const string \&destinyclass\+Code)
+\begin{DoxyCompactList}\small\item\em Creates an "{}\+Add"{} request for a student to join a specific Unit Course class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_ae037c4289ffafc7a3383cd928a782858}{create\+Remove\+Request}} (const string \&student\+Code, const string \&uc\+Code)
+\begin{DoxyCompactList}\small\item\em Creates a "{}\+Remove"{} request for a student to exit a specific Unit Course class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_afb314a0e6482a2dd2334c3a6bf86fd22}{create\+Switch\+Request}} (const string \&student\+Code, const string \&uc\+Code, const string \&destiny\+Class\+Code)
+\begin{DoxyCompactList}\small\item\em Creates a "{}\+Switch"{} request for a student to change classes within a Unit Course. \end{DoxyCompactList}\item 
+\Hypertarget{class_data_ac28e8f5caeaf9452778f95934a052705}\label{class_data_ac28e8f5caeaf9452778f95934a052705} 
+string {\bfseries process\+Individual\+Request} ()
+\item 
+string \mbox{\hyperlink{class_data_a407c4123261156c31835ca49a54d2a95}{process\+Requests}} ()
+\begin{DoxyCompactList}\small\item\em Processes pending requests and provides a summary of the results. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_data_a4246ab50182247fd6b48b898f68f6ec4}{undo\+Request}} (const string \&request\+Number)
+\begin{DoxyCompactList}\small\item\em Undoes a previous request and provides a summary of the undo operation. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_data_a9e70a090f8e69a808fce44d1792f3c8a}{valid\+Request}} (const \mbox{\hyperlink{struct_request}{Request}} \&request) const
+\begin{DoxyCompactList}\small\item\em Validates a request for schedule changes and provides a status message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_ad45dba15f2d7e795e7f1033bef0f92e0}{apply\+Request}} (const \mbox{\hyperlink{struct_request}{Request}} \&request, bool undo)
+\begin{DoxyCompactList}\small\item\em Applies a schedule change request, including undoing requests if specified. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_data_ac2f7f1bfdae6b84dad4db938e9e30018}{get\+Request\+History}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the request history, providing a summary of past requests. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_ab607a0fdbc656419e9e81a0119268238}{load\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Loads data from external files to populate the database. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_ab564b449efa1ad6bd6f47a5475f68065}{save\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Saves the current database data to external files. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a358f328e3e987219cc9c68872710abf0}{read\+Pendent\+Requests\+File}} ()
+\begin{DoxyCompactList}\small\item\em Reads and populates the list of pending requests from an external file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a7d9c036393c7f6f2d5d86d52f807f4ad}{write\+Pendent\+Requests\+File}} ()
+\begin{DoxyCompactList}\small\item\em Writes the list of pending requests to an external file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a3189a6e8b4708afc27b78d533aaed646}{read\+Request\+History\+File}} ()
+\begin{DoxyCompactList}\small\item\em Reads the request history from an external file and populates the request history list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a1cdbf1e4efc12a524016f5b098dff3b3}{write\+Request\+History\+File}} ()
+\begin{DoxyCompactList}\small\item\em Writes the request history to an external file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_ad655c6b1cf478340b864b52333ce5dd7}{read\+Classes\+Per\+Uc\+File}} ()
+\begin{DoxyCompactList}\small\item\em Reads class assignments per Unit Course from an external file and populates the data structures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a7cb10e158247088c736d18f9421d4342}{write\+Classes\+Per\+Uc\+File}} ()
+\begin{DoxyCompactList}\small\item\em Writes class assignments per Unit Course to an external file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_aefa8769c23f61e1e821ac55224de2da7}{read\+Classes\+File}} ()
+\begin{DoxyCompactList}\small\item\em Reads class information from an external file and populates the data structures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a623c8a01d878d01c1c9f8e5bd8861a04}{write\+Classes\+File}} ()
+\begin{DoxyCompactList}\small\item\em Writes class information to an external file based on the data structures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_ad865219a7b38fbb6bb3f3100fad49d52}{read\+Students\+Classes\+File}} ()
+\begin{DoxyCompactList}\small\item\em Reads student and class information from an external file and updates the data structures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_afdea407fab0f965cdaaa4edbc8c9b607}{write\+Students\+Classes\+File}} ()
+\begin{DoxyCompactList}\small\item\em Writes student and class information to an external file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_data_a9f229820566c00d553c47ece64323c82}\label{class_data_a9f229820566c00d553c47ece64323c82}} 
+static bool \mbox{\hyperlink{class_data_a821ef405f0de8a0b32784de0c5983854}{is\+Numeric}} (const string \&str)
+\begin{DoxyCompactList}\small\item\em Checks if a string consists of only numeric characters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_data_a69044b39b413a2e83718b2a7d87ced41}\label{class_data_a69044b39b413a2e83718b2a7d87ced41} 
+const string {\bfseries CLASSES\+\_\+\+FILENAME} = "{}classes.\+csv"{}
+\item 
+\Hypertarget{class_data_a16ac46f0683b96f5a4c2d1dbfe50a2b5}\label{class_data_a16ac46f0683b96f5a4c2d1dbfe50a2b5} 
+const string {\bfseries CLASSES\+\_\+\+PER\+\_\+\+UC\+\_\+\+FILENAME} = "{}classes\+\_\+per\+\_\+uc.\+csv"{}
+\item 
+\Hypertarget{class_data_a97a00fe30430f6f3b8c571dcc98fd91d}\label{class_data_a97a00fe30430f6f3b8c571dcc98fd91d} 
+const string {\bfseries REQUESTS\+\_\+\+HISTORY\+\_\+\+FILENAME} = "{}request\+\_\+history.\+csv"{}
+\item 
+\Hypertarget{class_data_a8486e1b265543fea01e6c4c66e87d50b}\label{class_data_a8486e1b265543fea01e6c4c66e87d50b} 
+const string {\bfseries PENDENT\+\_\+\+REQUESTS\+\_\+\+FILENAME} = "{}pendent\+\_\+requests.\+csv"{}
+\item 
+\Hypertarget{class_data_a94ef272225e7027086ba93e159f94717}\label{class_data_a94ef272225e7027086ba93e159f94717} 
+const string {\bfseries STUDENTS\+\_\+\+CLASS\+\_\+\+FILENAME} = "{}students\+\_\+classes.\+csv"{}
+\item 
+const string \mbox{\hyperlink{class_data_afdf17b113d652116fa0498a77b38f526}{DIRECTORY\+\_\+\+PATH}}
+\item 
+\Hypertarget{class_data_a9f229820566c00d553c47ece64323c82}\label{class_data_a9f229820566c00d553c47ece64323c82} 
 map$<$ string, \mbox{\hyperlink{class_uc}{Uc}} $>$ {\bfseries ucs}
 \item 
-\mbox{\Hypertarget{class_data_a4e56774fda4e5f41b62859c1e9445f51}\label{class_data_a4e56774fda4e5f41b62859c1e9445f51}} 
+\Hypertarget{class_data_a5695d68a1eee897ee541802c9ec90db4}\label{class_data_a5695d68a1eee897ee541802c9ec90db4} 
+unordered\+\_\+map$<$ string, set$<$ string $>$ $>$ {\bfseries ucs\+Codes\+By\+Class\+Code}
+\item 
+\Hypertarget{class_data_a4e56774fda4e5f41b62859c1e9445f51}\label{class_data_a4e56774fda4e5f41b62859c1e9445f51} 
 map$<$ int, \mbox{\hyperlink{class_student}{Student}} $>$ {\bfseries students}
+\item 
+\Hypertarget{class_data_a3e8d05b3d8321b8b9507d39dc360daf5}\label{class_data_a3e8d05b3d8321b8b9507d39dc360daf5} 
+queue$<$ \mbox{\hyperlink{struct_request}{Request}} $>$ {\bfseries pendent\+Requests}
+\item 
+\Hypertarget{class_data_a5ea6220eb652a13fb0fb72fbb34b0e21}\label{class_data_a5ea6220eb652a13fb0fb72fbb34b0e21} 
+list$<$ \mbox{\hyperlink{struct_request}{Request}} $>$ {\bfseries request\+History}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\mbox{\hyperlink{class_class}{Class}} that saves all the program data. 
+\doxylink{class_class}{Class} that saves all the program data. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_data_af11f741cb7f587e2e495452a8905a22a}\label{class_data_af11f741cb7f587e2e495452a8905a22a}} 
+\Hypertarget{class_data_af11f741cb7f587e2e495452a8905a22a}\label{class_data_af11f741cb7f587e2e495452a8905a22a} 
 \index{Data@{Data}!Data@{Data}}
 \index{Data@{Data}!Data@{Data}}
 \doxysubsubsection{\texorpdfstring{Data()}{Data()}}
@@ -57,25 +141,351 @@ map$<$ int, \mbox{\hyperlink{class_student}{Student}} $>$ {\bfseries students}
 
 
 
-Standard constructor of the class \mbox{\hyperlink{class_data}{Data}}. 
+Default constructor for the \doxylink{class_data}{Data} class. 
+
+This default constructor creates a new instance of the \doxylink{class_data}{Data} class without specifying any initial values. It initializes the \doxylink{class_data}{Data} object with default values.
 
 Time complexity\+: O(1) 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_data_a31b84fe22dc6bb3424952c3f458c867c}\label{class_data_a31b84fe22dc6bb3424952c3f458c867c}} 
-\index{Data@{Data}!getAllStudents@{getAllStudents}}
-\index{getAllStudents@{getAllStudents}!Data@{Data}}
-\doxysubsubsection{\texorpdfstring{getAllStudents()}{getAllStudents()}}
-{\footnotesize\ttfamily map$<$ int, \mbox{\hyperlink{class_student}{Student}} $>$ Data\+::get\+All\+Students (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\Hypertarget{class_data_ad45dba15f2d7e795e7f1033bef0f92e0}\label{class_data_ad45dba15f2d7e795e7f1033bef0f92e0} 
+\index{Data@{Data}!applyRequest@{applyRequest}}
+\index{applyRequest@{applyRequest}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{applyRequest()}{applyRequest()}}
+{\footnotesize\ttfamily void Data\+::apply\+Request (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_request}{Request}} \&}]{request,  }\item[{bool}]{undo }\end{DoxyParamCaption})}
 
 
 
-Returns all the students. 
+Applies a schedule change request, including undoing requests if specified. 
 
-Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
-students of data 
+This method applies a schedule change request, adding it to the request history if its not an undo request. It handles operations related to adding, removing, and switching classes for a student.
+
+Time complexity\+: O(log S + log N \texorpdfstring{$\ast$}{*} log M), where S is the total number of students, N is the total number of UCs and M the average number of classes per UC .
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & A reference to the \doxylink{struct_request}{Request} object representing the schedule change request. \\
+\hline
+{\em undo} & A boolean flag indicating whether to undo the request if set to true. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_data_a6a877be09bd4b887dcb82574ede71907}\label{class_data_a6a877be09bd4b887dcb82574ede71907} 
+\index{Data@{Data}!classExists@{classExists}}
+\index{classExists@{classExists}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{classExists()}{classExists()}}
+{\footnotesize\ttfamily bool Data\+::class\+Exists (\begin{DoxyParamCaption}\item[{const string \&}]{uc\+Code,  }\item[{const string \&}]{class\+Code }\end{DoxyParamCaption})}
+
+
+
+Checks if a class with a specific code exists within a Unit Course (UC). 
+
+This method checks if a class with a specific code exists within a Unit Course (UC) by performing an efficient lookup operation. It ensures that the class code is present within the UC, making it an efficient operation with a time complexity of O(log N) for data structures that support efficient searching.
+
+Time complexity\+: O(log N), where N is the number of classes in the specified UC.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & A string representing the UC (Unit Course) code. \\
+\hline
+{\em class\+Code} & A string representing the class code.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the class exists in the specified UC, false otherwise. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_data_a4e96b6224747b93dc4f4857acf9e1677}\label{class_data_a4e96b6224747b93dc4f4857acf9e1677}} 
+\Hypertarget{class_data_a4098e252ceb0a47efdae10365292a0d1}\label{class_data_a4098e252ceb0a47efdae10365292a0d1} 
+\index{Data@{Data}!consultBiggestUc@{consultBiggestUc}}
+\index{consultBiggestUc@{consultBiggestUc}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{consultBiggestUc()}{consultBiggestUc()}}
+{\footnotesize\ttfamily string Data\+::consult\+Biggest\+Uc (\begin{DoxyParamCaption}\item[{bool}]{ascending\+Order }\end{DoxyParamCaption})}
+
+
+
+Consults and retrieves information about the Unit Courses (UCs) with the most or least students. 
+
+This method consults and retrieves information about the Unit Courses (UCs) based on the total number of students in each UC. It can sort the UCs in ascending or descending order of student count. It first collects data about the total number of students in each UC, then sorts the UCs based on the total student count using a custom sorting function, and finally formats the results.
+
+Time complexity\+: O(\+M \texorpdfstring{$\ast$}{*} N), where M is the number of UCs, and N is the average number of classes in each UC.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ascending\+Order} & A boolean flag indicating whether to sort the UCs in ascending (true) or descending (false) order.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A formatted string with information about the UCs and their student counts. 
+\end{DoxyReturn}
+\Hypertarget{class_data_af9162b35c4c224faf065a5beae10d5ca}\label{class_data_af9162b35c4c224faf065a5beae10d5ca} 
+\index{Data@{Data}!consultNumStudentsUcs@{consultNumStudentsUcs}}
+\index{consultNumStudentsUcs@{consultNumStudentsUcs}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{consultNumStudentsUcs()}{consultNumStudentsUcs()}}
+{\footnotesize\ttfamily string Data\+::consult\+Num\+Students\+Ucs (\begin{DoxyParamCaption}\item[{const string \&}]{n\+Ucs }\end{DoxyParamCaption})}
+
+
+
+Consults and retrieves information about students registered in at least a specified number of Unit Courses (UCs). 
+
+This method consults and retrieves information about students who are registered in at least a specified number of Unit Courses (UCs). It checks if the input value is numeric and within the valid range, and then compiles information about the number of students meeting the criteria.
+
+Time complexity\+: O(\+N), where N is the number of students in the database
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Ucs} & A string representing the minimum number of UCs a student should be registered in.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A formatted string with information about the number of students registered in at least the specified number of UCs. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & if the input value is not numeric or is out of range. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_data_ac620568993cdebdb7ec5c4cebc373a42}\label{class_data_ac620568993cdebdb7ec5c4cebc373a42} 
+\index{Data@{Data}!consultOccupationClass@{consultOccupationClass}}
+\index{consultOccupationClass@{consultOccupationClass}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{consultOccupationClass()}{consultOccupationClass()}}
+{\footnotesize\ttfamily string Data\+::consult\+Occupation\+Class (\begin{DoxyParamCaption}\item[{const string \&}]{uc\+Code,  }\item[{const string \&}]{class\+Code }\end{DoxyParamCaption})}
+
+
+
+Consults and retrieves information about the occupation of a specific \doxylink{class_class}{Class}. 
+
+This method consults and retrieves information about the occupation of a specific \doxylink{class_class}{Class} within a Unit Course (UC). It checks if the UC and \doxylink{class_class}{Class} exist in the \doxylink{class_data}{Data} and then compiles information about the number of students and the number of vacancies in the \doxylink{class_class}{Class}.
+
+Time complexity\+: O(log n).
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & A string representing the UC (Unit Course) code. \\
+\hline
+{\em class\+Code} & A string representing the \doxylink{class_class}{Class} code.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A formatted string with information about the occupation of the specified \doxylink{class_class}{Class}. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & if the UC or \doxylink{class_class}{Class} does not exist in the database. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_data_a2829e4698e685784d6b3d960e469f932}\label{class_data_a2829e4698e685784d6b3d960e469f932} 
+\index{Data@{Data}!consultOccupationCourse@{consultOccupationCourse}}
+\index{consultOccupationCourse@{consultOccupationCourse}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{consultOccupationCourse()}{consultOccupationCourse()}}
+{\footnotesize\ttfamily string Data\+::consult\+Occupation\+Course (\begin{DoxyParamCaption}\item[{const string \&}]{uc\+Code }\end{DoxyParamCaption})}
+
+
+
+Consults and retrieves information about the occupation of all Classes within a specific Unit Course (UC). 
+
+This method consults and retrieves information about the occupation of all Classes within a specific Unit Course (UC). It checks if the UC exists in the \doxylink{class_data}{Data} and then compiles information about the total number of students and total number of vacancies across all Classes in the UC.
+
+Time complexity\+: O(\+N), where N is the total number of classes in the specified UC.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & A string representing the UC (Unit Course) code.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A formatted string with information about the occupation of all Classes in the specified UC. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & if the UC does not exist in the database. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_data_a8096d9aa4a21b70c947163635cc1de43}\label{class_data_a8096d9aa4a21b70c947163635cc1de43} 
+\index{Data@{Data}!consultOccupationYear@{consultOccupationYear}}
+\index{consultOccupationYear@{consultOccupationYear}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{consultOccupationYear()}{consultOccupationYear()}}
+{\footnotesize\ttfamily string Data\+::consult\+Occupation\+Year (\begin{DoxyParamCaption}\item[{const string \&}]{year }\end{DoxyParamCaption})}
+
+
+
+Consults and retrieves information about the occupation of students in a specific academic year. 
+
+This method consults and retrieves information about the occupation of students who belong to Unit Courses and Classes corresponding to a specific academic year. It checks if the academic year is numeric and within the valid range, and then compiles information about the total number of students in that year.
+
+Time complexity\+: O(\+M \texorpdfstring{$\ast$}{*} N \texorpdfstring{$\ast$}{*} S), where M is the number of Unit Courses (UCs), N is the average number of classes in each UC for the specified academic year, and S is the average number of students in each \doxylink{class_class}{Class}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em year} & A string representing the academic year (e.\+g., "{}1"{}, "{}2"{}, "{}3"{}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A formatted string with information about the occupation of students in the specified academic year. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & if the year is not numeric or is out of range. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_data_a25d50ff7898a85b735ef6e4eb09f8305}\label{class_data_a25d50ff7898a85b735ef6e4eb09f8305} 
+\index{Data@{Data}!consultStudentsClass@{consultStudentsClass}}
+\index{consultStudentsClass@{consultStudentsClass}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{consultStudentsClass()}{consultStudentsClass()}}
+{\footnotesize\ttfamily string Data\+::consult\+Students\+Class (\begin{DoxyParamCaption}\item[{const string \&}]{uc\+Code,  }\item[{const string \&}]{class\+Code }\end{DoxyParamCaption})}
+
+
+
+Consults and retrieves information about students in a specific \doxylink{class_class}{Class}. 
+
+This method consults and retrieves information about students who are enrolled in a specific \doxylink{class_class}{Class} within a Unit Course (UC). It checks if the UC and \doxylink{class_class}{Class} exist in the \doxylink{class_data}{Data} and then compiles information about the students, including student code, name, and enrolled UCs.
+
+Time complexity\+: O(\+N), where N is the number of students in the specified class.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & A string representing the UC (Unit Course) code. \\
+\hline
+{\em class\+Code} & A string representing the \doxylink{class_class}{Class} code.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A formatted string with information about the students in the specified \doxylink{class_class}{Class}. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & if the UC or \doxylink{class_class}{Class} does not exist in the database. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_data_a9ee8f4f03a63b084c90b8e40727f3dd8}\label{class_data_a9ee8f4f03a63b084c90b8e40727f3dd8} 
+\index{Data@{Data}!consultStudentsCourse@{consultStudentsCourse}}
+\index{consultStudentsCourse@{consultStudentsCourse}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{consultStudentsCourse()}{consultStudentsCourse()}}
+{\footnotesize\ttfamily string Data\+::consult\+Students\+Course (\begin{DoxyParamCaption}\item[{const string \&}]{uc\+Code }\end{DoxyParamCaption})}
+
+
+
+Consults and retrieves information about students in all Classes of a specific Unit Course (UC). 
+
+This method consults and retrieves information about students who are enrolled in all Classes of a specific Unit Course (UC). It checks if the UC exists in the \doxylink{class_data}{Data} and then compiles information about the students in each \doxylink{class_class}{Class}, including student code, name, and enrolled UCs.
+
+Time complexity\+: O(\+M \texorpdfstring{$\ast$}{*} N) where M is the number of classes and N is the average number of students in each class.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & A string representing the UC (Unit Course) code.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A formatted string with information about the students in all Classes of the specified UC. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & if the UC does not exist in the database. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_data_a357e56f924d0c102c81ee4cc6b88983c}\label{class_data_a357e56f924d0c102c81ee4cc6b88983c} 
+\index{Data@{Data}!consultStudentsYear@{consultStudentsYear}}
+\index{consultStudentsYear@{consultStudentsYear}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{consultStudentsYear()}{consultStudentsYear()}}
+{\footnotesize\ttfamily string Data\+::consult\+Students\+Year (\begin{DoxyParamCaption}\item[{const string \&}]{year }\end{DoxyParamCaption})}
+
+
+
+Consults and retrieves information about students in a specific academic year. 
+
+This method consults and retrieves information about students who are enrolled in Unit Courses and Classes corresponding to a specific academic year. It checks if the academic year is numeric and within the valid range. Then, it compiles information about the students, including student code, name, and enrolled UCs.
+
+Time complexity\+: O(\+M \texorpdfstring{$\ast$}{*} N \texorpdfstring{$\ast$}{*} S), where M is the number of Unit Courses (UCs), N is the average number of classes in each UC for the specified academic year, and S is the average number of students in each \doxylink{class_class}{Class}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em year} & A string representing the academic year (e.\+g., "{}1"{}, "{}2"{}, "{}3"{}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A formatted string with information about the students in the specified academic year. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & if the year is not numeric or is out of range. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_data_ac5fe9f3737ec49cfd3fe9db40f2b7049}\label{class_data_ac5fe9f3737ec49cfd3fe9db40f2b7049} 
+\index{Data@{Data}!createAddRequest@{createAddRequest}}
+\index{createAddRequest@{createAddRequest}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{createAddRequest()}{createAddRequest()}}
+{\footnotesize\ttfamily void Data\+::create\+Add\+Request (\begin{DoxyParamCaption}\item[{const string \&}]{student\+Code,  }\item[{const string \&}]{uc\+Code,  }\item[{const string \&}]{destinyclass\+Code }\end{DoxyParamCaption})}
+
+
+
+Creates an "{}\+Add"{} request for a student to join a specific Unit Course class. 
+
+This method creates an "{}\+Add"{} request for a student to join a specific Unit Course (UC) class. It performs several validation checks to ensure that the request is valid, including checking if the student code is numeric, if the UC and class exist, and if the student is not already enrolled in the UC. After passing the checks, a new request is created and added to the list of pending requests.
+
+Time complexity\+: O(N + log M + log S) where N is the size of student\+Code, M the total number of UCs and S the total number of students.
+
+
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & A string representing the student\textquotesingle{}s code. \\
+\hline
+{\em uc\+Code} & A string representing the Unit Course code. \\
+\hline
+{\em destiny\+Class\+Code} & A string representing the code of the class the student wants to join.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & if any of the validation checks fail. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_data_ae037c4289ffafc7a3383cd928a782858}\label{class_data_ae037c4289ffafc7a3383cd928a782858} 
+\index{Data@{Data}!createRemoveRequest@{createRemoveRequest}}
+\index{createRemoveRequest@{createRemoveRequest}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{createRemoveRequest()}{createRemoveRequest()}}
+{\footnotesize\ttfamily void Data\+::create\+Remove\+Request (\begin{DoxyParamCaption}\item[{const string \&}]{student\+Code,  }\item[{const string \&}]{uc\+Code }\end{DoxyParamCaption})}
+
+
+
+Creates a "{}\+Remove"{} request for a student to exit a specific Unit Course class. 
+
+This method creates a "{}\+Remove"{} request for a student to exit a specific Unit Course (UC) class. It performs several validation checks to ensure that the request is valid, including checking if the student code is numeric, if the student and UC exist, and if the student is enrolled in the UC. After passing the checks, a new request is created and added to the list of pending requests.
+
+Time complexity\+: O(N + log S \texorpdfstring{$\ast$}{*} log M) where N is the size of student\+Code, M is the total UCs the student is enrolled in, and S is the total number of students.
+
+
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & A string representing the student\textquotesingle{}s code. \\
+\hline
+{\em uc\+Code} & A string representing the Unit Course code.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & if any of the validation checks fail. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_data_afb314a0e6482a2dd2334c3a6bf86fd22}\label{class_data_afb314a0e6482a2dd2334c3a6bf86fd22} 
+\index{Data@{Data}!createSwitchRequest@{createSwitchRequest}}
+\index{createSwitchRequest@{createSwitchRequest}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{createSwitchRequest()}{createSwitchRequest()}}
+{\footnotesize\ttfamily void Data\+::create\+Switch\+Request (\begin{DoxyParamCaption}\item[{const string \&}]{student\+Code,  }\item[{const string \&}]{uc\+Code,  }\item[{const string \&}]{destiny\+Class\+Code }\end{DoxyParamCaption})}
+
+
+
+Creates a "{}\+Switch"{} request for a student to change classes within a Unit Course. 
+
+This method creates a "{}\+Switch"{} request for a student to change classes within a specific Unit Course (UC). It performs validation checks to ensure the request is valid, including checking if the student code is numeric, if the student exists, if the UC exists, and if the destination class exists. After passing the checks, a new request is created and added to the list of pending requests, specifying the student\textquotesingle{}s current class and the class they want to switch to.
+
+Time complexity\+: O(N + log S \texorpdfstring{$\ast$}{*} log M) where N is the size of student\+Code, M is the total UCs the student is enrolled in, and S is the total number of students.
+
+
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & A string representing the student\textquotesingle{}s code. \\
+\hline
+{\em uc\+Code} & A string representing the Unit Course code. \\
+\hline
+{\em destiny\+Class\+Code} & A string representing the code of the class the student wants to switch to. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_data_a4e96b6224747b93dc4f4857acf9e1677}\label{class_data_a4e96b6224747b93dc4f4857acf9e1677} 
 \index{Data@{Data}!getAllUcs@{getAllUcs}}
 \index{getAllUcs@{getAllUcs}!Data@{Data}}
 \doxysubsubsection{\texorpdfstring{getAllUcs()}{getAllUcs()}}
@@ -83,12 +493,33 @@ students of data
 
 
 
-Returns all the UCs. 
+Retrieves all Unit Courses (UCs) in the \doxylink{class_data}{Data} (const version). 
 
-Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
-ucs of data 
+This const method returns a reference to the map containing all the Unit Courses (UCs) present in the \doxylink{class_data}{Data}. The map is keyed by the UC code and contains \doxylink{class_uc}{Uc} objects. This const version allows read-\/only access to the UC data.
+
+Time complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+A const reference to the map where the keys are UC codes, and the values are \doxylink{class_uc}{Uc} objects. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_data_a300bb01bf9a11e829afced5bf39f95b3}\label{class_data_a300bb01bf9a11e829afced5bf39f95b3}} 
+\Hypertarget{class_data_ac2f7f1bfdae6b84dad4db938e9e30018}\label{class_data_ac2f7f1bfdae6b84dad4db938e9e30018} 
+\index{Data@{Data}!getRequestHistory@{getRequestHistory}}
+\index{getRequestHistory@{getRequestHistory}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{getRequestHistory()}{getRequestHistory()}}
+{\footnotesize\ttfamily string Data\+::get\+Request\+History (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the request history, providing a summary of past requests. 
+
+This method retrieves the request history, which contains a summary of past schedule change requests. It provides information about the type of request and relevant details for each request in the history.
+
+Time complexity\+: O(\+N), where N is the number of requests in the request history.
+
+\begin{DoxyReturn}{Returns}
+A string containing the request history summary, or a message indicating an empty request history if there are no past requests. 
+\end{DoxyReturn}
+\Hypertarget{class_data_a300bb01bf9a11e829afced5bf39f95b3}\label{class_data_a300bb01bf9a11e829afced5bf39f95b3} 
 \index{Data@{Data}!getStudent@{getStudent}}
 \index{getStudent@{getStudent}!Data@{Data}}
 \doxysubsubsection{\texorpdfstring{getStudent()}{getStudent()}}
@@ -96,17 +527,21 @@ ucs of data
 
 
 
-Returns a student given a student code. 
+Retrieves a reference to a specific student by their unique student code. 
 
-Time complexity\+: O(log(n)) 
+This method retrieves a reference to a specific student in the database by their unique student code. It performs a constant-\/time lookup in the data structure, making it an efficient operation.
+
+Time complexity\+: O(log N) where N is the total number of students.
+
+
 \begin{DoxyParams}{Parameters}
-{\em student\+Code} & student code of the student to be returned \\
+{\em student\+Code} & An integer representing the unique student code.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-student with code == student\+Code 
+A reference to the specified student. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_data_a72d2cc9af55922c5a8b1d2a3f54d6943}\label{class_data_a72d2cc9af55922c5a8b1d2a3f54d6943}} 
+\Hypertarget{class_data_a72d2cc9af55922c5a8b1d2a3f54d6943}\label{class_data_a72d2cc9af55922c5a8b1d2a3f54d6943} 
 \index{Data@{Data}!getUc@{getUc}}
 \index{getUc@{getUc}!Data@{Data}}
 \doxysubsubsection{\texorpdfstring{getUc()}{getUc()}}
@@ -114,106 +549,328 @@ student with code == student\+Code
 
 
 
-Returns a UC given a UC code. 
+Retrieves a Unit Course (UC) by its UC code. 
 
-Time complexity\+: O(log(n)) 
+This method retrieves a specific Unit Course (UC) from the \doxylink{class_data}{Data} by its UC code. If a matching UC with the provided code is found, a reference to that UC is returned.
+
+Time complexity\+: O(log n)
+
+
 \begin{DoxyParams}{Parameters}
-{\em uc\+Code} & UC code of the UC to be returned \\
+{\em uc\+Code} & A string representing the UC code of the UC to retrieve.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-UC with code == uc\+Code 
+A reference to the Unit Course (UC) with the specified UC code. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_data_a6b426a4a5736e1b447dc5f4df9b47a49}\label{class_data_a6b426a4a5736e1b447dc5f4df9b47a49}} 
+\Hypertarget{class_data_ac069b9059f243f93bf3e9a20b010be01}\label{class_data_ac069b9059f243f93bf3e9a20b010be01} 
+\index{Data@{Data}!getUcsByClassCode@{getUcsByClassCode}}
+\index{getUcsByClassCode@{getUcsByClassCode}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{getUcsByClassCode()}{getUcsByClassCode()}}
+{\footnotesize\ttfamily set$<$ string $>$ Data\+::get\+Ucs\+By\+Class\+Code (\begin{DoxyParamCaption}\item[{const string \&}]{class\+Code }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves a set of Unit Course (UC) codes associated with a specific class code. 
+
+This method retrieves a set of Unit Course (UC) codes associated with a specific class code. It performs a constant-\/time lookup in the data structure, making it an efficient operation.
+
+Time complexity\+: O(log N) where N is the number of different classes that exist.
+
+
+\begin{DoxyParams}{Parameters}
+{\em class\+Code} & A string representing the class code.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A set of UC codes associated with the specified class code. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & if the class code does not exist in the database. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_data_a821ef405f0de8a0b32784de0c5983854}\label{class_data_a821ef405f0de8a0b32784de0c5983854} 
+\index{Data@{Data}!isNumeric@{isNumeric}}
+\index{isNumeric@{isNumeric}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{isNumeric()}{isNumeric()}}
+{\footnotesize\ttfamily bool Data\+::is\+Numeric (\begin{DoxyParamCaption}\item[{const string \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Checks if a string consists of only numeric characters. 
+
+This function iterates through each character in the provided string \textquotesingle{}str\textquotesingle{} and checks if every character is a numeric digit (0-\/9). It returns true if all characters in the string are numeric, indicating that the string is numeric.
+
+Time complexity\+: O(n)
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & A string to check for numeric content.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the string consists of numeric characters only; otherwise, false. 
+\end{DoxyReturn}
+\Hypertarget{class_data_ab607a0fdbc656419e9e81a0119268238}\label{class_data_ab607a0fdbc656419e9e81a0119268238} 
+\index{Data@{Data}!loadData@{loadData}}
+\index{loadData@{loadData}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{loadData()}{loadData()}}
+{\footnotesize\ttfamily void Data\+::load\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads data from external files to populate the database. 
+
+This method loads data from external files to populate the database. It reads data related to unit courses, classes, student enrollments, request history, and pending requests. \Hypertarget{class_data_a407c4123261156c31835ca49a54d2a95}\label{class_data_a407c4123261156c31835ca49a54d2a95} 
+\index{Data@{Data}!processRequests@{processRequests}}
+\index{processRequests@{processRequests}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{processRequests()}{processRequests()}}
+{\footnotesize\ttfamily string Data\+::process\+Requests (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Processes pending requests and provides a summary of the results. 
+
+This method processes pending requests and provides a summary of the results. It iterates through the pending requests queue, validates each request, and applies successful requests to make schedule changes. The method logs each request and its validation result.
+
+\begin{DoxyReturn}{Returns}
+A string summarizing the processing results, including the total number of requests processed and the number of successfully accepted requests. 
+\end{DoxyReturn}
+\Hypertarget{class_data_aefa8769c23f61e1e821ac55224de2da7}\label{class_data_aefa8769c23f61e1e821ac55224de2da7} 
 \index{Data@{Data}!readClassesFile@{readClassesFile}}
 \index{readClassesFile@{readClassesFile}!Data@{Data}}
 \doxysubsubsection{\texorpdfstring{readClassesFile()}{readClassesFile()}}
-{\footnotesize\ttfamily void Data\+::read\+Classes\+File (\begin{DoxyParamCaption}\item[{ifstream \&}]{file }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Data\+::read\+Classes\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Reads the classes.\+csv file. the class\+Schedules inside their corresponding class and uc are set to the read values. 
+Reads class information from an external file and populates the data structures. 
 
-Time complexity\+: O(n ( 2m + log(k) + log(v) ) where n is the number of lines in the file, m is the length of the line, k is the number of UCs, and v is the number of classes of a given UC 
-\begin{DoxyParams}{Parameters}
-{\em file} & classes.\+csv file as ifstream \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{class_data_a728261d109d627482d80cfdb6fade54f}\label{class_data_a728261d109d627482d80cfdb6fade54f}} 
+This method reads class information from an external file, parses the data, and populates the data structures. It iterates through each line in the file, parsing class information, and adding class schedules to the corresponding UC and class.
+
+Time complexity\+: O(n \texorpdfstring{$\ast$}{*} (log(k) + log(v))), where n is the number of classes, k is the number of Unit Courses (UCs), and v is the number of classes per UC on average. \Hypertarget{class_data_ad655c6b1cf478340b864b52333ce5dd7}\label{class_data_ad655c6b1cf478340b864b52333ce5dd7} 
 \index{Data@{Data}!readClassesPerUcFile@{readClassesPerUcFile}}
 \index{readClassesPerUcFile@{readClassesPerUcFile}!Data@{Data}}
 \doxysubsubsection{\texorpdfstring{readClassesPerUcFile()}{readClassesPerUcFile()}}
-{\footnotesize\ttfamily void Data\+::read\+Classes\+Per\+Uc\+File (\begin{DoxyParamCaption}\item[{ifstream \&}]{file }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Data\+::read\+Classes\+Per\+Uc\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Reads the classes\+\_\+per\+\_\+uc.\+csv file. ucs is set to the read values. 
+Reads class assignments per Unit Course from an external file and populates the data structures. 
 
-Time complexity\+: O(n ( log(m) + log(k) ) where n is the number of lines in the file, m is the number of UCs, and k is the number of classes of a given UC 
-\begin{DoxyParams}{Parameters}
-{\em file} & classes\+\_\+per\+\_\+uc.\+csv file as ifstream \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{class_data_a078d66476ac6ae25ee59e6c05411cc27}\label{class_data_a078d66476ac6ae25ee59e6c05411cc27}} 
+This method reads class assignments per Unit Course from an external file and populates the relevant data structures. Each line in the file represents an assignment of a class to a Unit Course. It first parses the data from the file and then assigns classes to the appropriate UCs.
+
+Time complexity\+: O(n \texorpdfstring{$\ast$}{*} (log(m) + log(k))), where n is the number of lines in the file, m is the number of Unit Courses (UCs), and k is the average number of classes per UC. \Hypertarget{class_data_a358f328e3e987219cc9c68872710abf0}\label{class_data_a358f328e3e987219cc9c68872710abf0} 
+\index{Data@{Data}!readPendentRequestsFile@{readPendentRequestsFile}}
+\index{readPendentRequestsFile@{readPendentRequestsFile}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{readPendentRequestsFile()}{readPendentRequestsFile()}}
+{\footnotesize\ttfamily void Data\+::read\+Pendent\+Requests\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads and populates the list of pending requests from an external file. 
+
+This method reads data from an external file containing pending requests and populates the list of pending requests in the database. Each pending request represents a potential change in a student\textquotesingle{}s class enrollment.
+
+Time complexity\+: O(\+N), where N is the number of pending requests read from the file. \Hypertarget{class_data_a3189a6e8b4708afc27b78d533aaed646}\label{class_data_a3189a6e8b4708afc27b78d533aaed646} 
+\index{Data@{Data}!readRequestHistoryFile@{readRequestHistoryFile}}
+\index{readRequestHistoryFile@{readRequestHistoryFile}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{readRequestHistoryFile()}{readRequestHistoryFile()}}
+{\footnotesize\ttfamily void Data\+::read\+Request\+History\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads the request history from an external file and populates the request history list. 
+
+This method reads the request history from an external file and populates the request history list. Each line in the file represents a past request or operation that has been successfully processed.
+
+Time complexity\+: O(\+N), where N is the number of requests in the history file. \Hypertarget{class_data_ad865219a7b38fbb6bb3f3100fad49d52}\label{class_data_ad865219a7b38fbb6bb3f3100fad49d52} 
 \index{Data@{Data}!readStudentsClassesFile@{readStudentsClassesFile}}
 \index{readStudentsClassesFile@{readStudentsClassesFile}!Data@{Data}}
 \doxysubsubsection{\texorpdfstring{readStudentsClassesFile()}{readStudentsClassesFile()}}
-{\footnotesize\ttfamily void Data\+::read\+Students\+Classes\+File (\begin{DoxyParamCaption}\item[{ifstream \&}]{file }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Data\+::read\+Students\+Classes\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Reads the students\+\_\+classes.\+csv file. the students is set to the read values. 
+Reads student and class information from an external file and updates the data structures. 
 
-Time complexity\+: O(n ( 3m + r + log(k) + log(v) + log(s) + 2log(u) + log(p) ) where n is the number of lines in the file, m is the length of the line, r is ts the length of the name, k is the number of UCs, v is the number of classes of a given UC, s is the number of students in a given class, u is the total number of students, and p is the number of UCs of a given student 
+This method reads student and class information from an external file, updates the data structures with the extracted data, and handles the associations between students and classes. It iterates through the file entries and processes each entry to populate the data structures.
+
+Time complexity\+: O(n \texorpdfstring{$\ast$}{*} m \texorpdfstring{$\ast$}{*} p \texorpdfstring{$\ast$}{*} k \texorpdfstring{$\ast$}{*} log(s) \texorpdfstring{$\ast$}{*} log(u) \texorpdfstring{$\ast$}{*} r), where n is the number of entries in the file, m is the average number of characters per entry, p is the number of classes per student, k is the average number of classes per UC, s is the number of students, u is the number of UCs, and r is the length of the student names. \Hypertarget{class_data_ab564b449efa1ad6bd6f47a5475f68065}\label{class_data_ab564b449efa1ad6bd6f47a5475f68065} 
+\index{Data@{Data}!saveData@{saveData}}
+\index{saveData@{saveData}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{saveData()}{saveData()}}
+{\footnotesize\ttfamily void Data\+::save\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Saves the current database data to external files. 
+
+This method saves the current database data to external files, ensuring that the most up-\/to-\/date information is preserved. It writes data related to unit courses, classes, student enrollments, request history, and pending requests. \Hypertarget{class_data_abf2ce9c1f61e1d4805370033dbd9f29c}\label{class_data_abf2ce9c1f61e1d4805370033dbd9f29c} 
+\index{Data@{Data}!studentExists@{studentExists}}
+\index{studentExists@{studentExists}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{studentExists()}{studentExists()}}
+{\footnotesize\ttfamily bool Data\+::student\+Exists (\begin{DoxyParamCaption}\item[{int}]{student\+Code }\end{DoxyParamCaption})}
+
+
+
+Checks if a student with a specific student code exists in the database. 
+
+This method checks if a student with a specific student code exists in the database. It performs a constant-\/time lookup using the {\ttfamily std\+::unordered\+\_\+map} data structure, making it an efficient operation.
+
+Time complexity\+: O(log N) where N is the total number of students.
+
+
 \begin{DoxyParams}{Parameters}
-{\em file} & classes.\+csv file as ifstream \\
+{\em student\+Code} & An integer representing the unique student code.\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_data_a6e34aefc8f65bae28f606e680b1307af}\label{class_data_a6e34aefc8f65bae28f606e680b1307af}} 
+\begin{DoxyReturn}{Returns}
+true if the student with the specified code exists in the database, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_data_a4572646d5c7a37cc48ed6b79009db27e}\label{class_data_a4572646d5c7a37cc48ed6b79009db27e} 
+\index{Data@{Data}!ucExists@{ucExists}}
+\index{ucExists@{ucExists}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{ucExists()}{ucExists()}}
+{\footnotesize\ttfamily bool Data\+::uc\+Exists (\begin{DoxyParamCaption}\item[{const string \&}]{uc\+Code }\end{DoxyParamCaption})}
+
+
+
+Checks if a Unit Course (UC) exists in the \doxylink{class_data}{Data}. 
+
+This method checks if a Unit Course (UC) with the specified UC code exists in the \doxylink{class_data}{Data}. It iterates through the existing UCs and returns true if a matching UC is found.
+
+Time complexity\+: O(n)
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & A string representing the UC code to check for existence.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a Unit Course with the specified UC code exists in the \doxylink{class_data}{Data}; otherwise, false. 
+\end{DoxyReturn}
+\Hypertarget{class_data_a4246ab50182247fd6b48b898f68f6ec4}\label{class_data_a4246ab50182247fd6b48b898f68f6ec4} 
+\index{Data@{Data}!undoRequest@{undoRequest}}
+\index{undoRequest@{undoRequest}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{undoRequest()}{undoRequest()}}
+{\footnotesize\ttfamily string Data\+::undo\+Request (\begin{DoxyParamCaption}\item[{const string \&}]{request\+Number }\end{DoxyParamCaption})}
+
+
+
+Undoes a previous request and provides a summary of the undo operation. 
+
+This method undoes a previous request and provides a summary of the undo operation. It requires specifying the request number to undo. The method validates the undo operation and, if successful, applies the undo action.
+
+
+\begin{DoxyParams}{Parameters}
+{\em request\+Number} & A string representing the request number to undo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string summarizing the undo operation\textquotesingle{}s status and result.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & if the request number is not numeric or is not a valid request number. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_data_a9e70a090f8e69a808fce44d1792f3c8a}\label{class_data_a9e70a090f8e69a808fce44d1792f3c8a} 
+\index{Data@{Data}!validRequest@{validRequest}}
+\index{validRequest@{validRequest}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{validRequest()}{validRequest()}}
+{\footnotesize\ttfamily string Data\+::valid\+Request (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_request}{Request}} \&}]{request }\end{DoxyParamCaption}) const}
+
+
+
+Validates a request for schedule changes and provides a status message. 
+
+This method validates a request for schedule changes and provides a status message indicating whether the request is accepted or not. It performs various checks, including ensuring the operation doesn\textquotesingle{}t affect class balance, verifying class vacancies, student enrollment limits, and schedule conflicts.
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & A reference to the \doxylink{struct_request}{Request} object representing the schedule change request. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string message indicating whether the request is "{}\+Successful"{} or contains information about why the request is not accepted. 
+\end{DoxyReturn}
+\Hypertarget{class_data_a623c8a01d878d01c1c9f8e5bd8861a04}\label{class_data_a623c8a01d878d01c1c9f8e5bd8861a04} 
 \index{Data@{Data}!writeClassesFile@{writeClassesFile}}
 \index{writeClassesFile@{writeClassesFile}!Data@{Data}}
 \doxysubsubsection{\texorpdfstring{writeClassesFile()}{writeClassesFile()}}
-{\footnotesize\ttfamily void Data\+::write\+Classes\+File (\begin{DoxyParamCaption}\item[{ofstream \&}]{file }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Data\+::write\+Classes\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Updates the classes.\+csv file. 
+Writes class information to an external file based on the data structures. 
 
-Time complexity\+: O(n $\ast$ m $\ast$ k) where n is the number of UCs, m is the number of classes of a given UC, and k is the number of classes of a given class 
-\begin{DoxyParams}{Parameters}
-{\em file} & classes.\+csv file as ofstream \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{class_data_a13b1e8b719d4f89178bd651bdc796f54}\label{class_data_a13b1e8b719d4f89178bd651bdc796f54}} 
+This method writes class information to an external file, including class codes, UC codes, weekdays, start hours, durations, and types for each class schedule. It iterates through the UCs, classes, and class schedules in the data structures to create the output file.
+
+Time complexity\+: O(n \texorpdfstring{$\ast$}{*} m \texorpdfstring{$\ast$}{*} k), where n is the number of classes, m is the average number of classes per UC, and k is the average number of class schedules per class. \Hypertarget{class_data_a7cb10e158247088c736d18f9421d4342}\label{class_data_a7cb10e158247088c736d18f9421d4342} 
 \index{Data@{Data}!writeClassesPerUcFile@{writeClassesPerUcFile}}
 \index{writeClassesPerUcFile@{writeClassesPerUcFile}!Data@{Data}}
 \doxysubsubsection{\texorpdfstring{writeClassesPerUcFile()}{writeClassesPerUcFile()}}
-{\footnotesize\ttfamily void Data\+::write\+Classes\+Per\+Uc\+File (\begin{DoxyParamCaption}\item[{ofstream \&}]{file }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Data\+::write\+Classes\+Per\+Uc\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Updates the classes\+\_\+per\+\_\+uc.\+csv file. 
+Writes class assignments per Unit Course to an external file. 
 
-Time complexity\+: O(n $\ast$ m) where n is the number of UCs, and m is the number of classes of a given UC 
-\begin{DoxyParams}{Parameters}
-{\em file} & classes\+\_\+per\+\_\+uc.\+csv file as ofstream \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{class_data_a4a4473628691df3943e1fff0b46d5eff}\label{class_data_a4a4473628691df3943e1fff0b46d5eff}} 
+This method writes class assignments per Unit Course to an external file. It iterates through all the UCs and their associated classes, writing each assignment to the file in a CSV format.
+
+Time complexity\+: O(n \texorpdfstring{$\ast$}{*} m), where n is the number of Unit Courses (UCs) and m is the average number of classes per UC. \Hypertarget{class_data_a7d9c036393c7f6f2d5d86d52f807f4ad}\label{class_data_a7d9c036393c7f6f2d5d86d52f807f4ad} 
+\index{Data@{Data}!writePendentRequestsFile@{writePendentRequestsFile}}
+\index{writePendentRequestsFile@{writePendentRequestsFile}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{writePendentRequestsFile()}{writePendentRequestsFile()}}
+{\footnotesize\ttfamily void Data\+::write\+Pendent\+Requests\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Writes the list of pending requests to an external file. 
+
+This method writes the list of pending requests to an external file, allowing the preservation of these requests for future processing. Each pending request represents a potential change in a student\textquotesingle{}s class enrollment.
+
+Time complexity\+: O(\+N), where N is the number of pending requests in the list. \Hypertarget{class_data_a1cdbf1e4efc12a524016f5b098dff3b3}\label{class_data_a1cdbf1e4efc12a524016f5b098dff3b3} 
+\index{Data@{Data}!writeRequestHistoryFile@{writeRequestHistoryFile}}
+\index{writeRequestHistoryFile@{writeRequestHistoryFile}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{writeRequestHistoryFile()}{writeRequestHistoryFile()}}
+{\footnotesize\ttfamily void Data\+::write\+Request\+History\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Writes the request history to an external file. 
+
+This method writes the request history to an external file, preserving the record of past requests and changes in class enrollment. Each request in the history represents a past operation that has been successfully processed.
+
+Time complexity\+: O(\+N), where N is the number of requests in the history. \Hypertarget{class_data_afdea407fab0f965cdaaa4edbc8c9b607}\label{class_data_afdea407fab0f965cdaaa4edbc8c9b607} 
 \index{Data@{Data}!writeStudentsClassesFile@{writeStudentsClassesFile}}
 \index{writeStudentsClassesFile@{writeStudentsClassesFile}!Data@{Data}}
 \doxysubsubsection{\texorpdfstring{writeStudentsClassesFile()}{writeStudentsClassesFile()}}
-{\footnotesize\ttfamily void Data\+::write\+Students\+Classes\+File (\begin{DoxyParamCaption}\item[{ofstream \&}]{file }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Data\+::write\+Students\+Classes\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Updates the students\+\_\+classes.\+csv file. 
+Writes student and class information to an external file. 
 
-Time complexity\+: O(n $\ast$ m) where n is the number of students, and m is the number of UCs of a given student 
-\begin{DoxyParams}{Parameters}
-{\em file} & students\+\_\+classes.\+csv file as ofstream \\
-\hline
-\end{DoxyParams}
+This method writes student and class information to an external file, including student codes, names, UC codes, and class codes. It iterates through the students and their associated classes, writing the data to the file.
+
+Time complexity\+: O(n \texorpdfstring{$\ast$}{*} m \texorpdfstring{$\ast$}{*} p), where n is the number of students, m is the average number of classes per student, and p is the number of characters in student names. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_data_afdf17b113d652116fa0498a77b38f526}\label{class_data_afdf17b113d652116fa0498a77b38f526} 
+\index{Data@{Data}!DIRECTORY\_PATH@{DIRECTORY\_PATH}}
+\index{DIRECTORY\_PATH@{DIRECTORY\_PATH}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{DIRECTORY\_PATH}{DIRECTORY\_PATH}}
+{\footnotesize\ttfamily const string Data\+::\+DIRECTORY\+\_\+\+PATH\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}/home/soestilooo/Documents/Faculty/AED/project/data/"{}}}
+
+\end{DoxyCode}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

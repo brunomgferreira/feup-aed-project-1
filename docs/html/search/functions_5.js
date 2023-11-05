@@ -1,5 +1,24 @@
 var searchData=
 [
-  ['settype_67',['setType',['../class_class_schedule.html#a3b05a1fbd54558c9f731024aca28405a',1,'ClassSchedule']]],
-  ['student_68',['Student',['../class_student.html#af9168cedbfa5565cf0b20c1a9d3f5c9d',1,'Student::Student()'],['../class_student.html#a39e07abd63fdec1a29f3281afafcfa67',1,'Student::Student(int studentCode, const string &amp;studentName)']]]
+  ['getallclasses_0',['getallclasses',['../class_uc.html#a73aea08ba8b537316bd65988663edf69',1,'Uc::getAllClasses()'],['../class_student.html#a9fd4681ca9127fad8b59e61109b0a319',1,'Student::getAllClasses()']]],
+  ['getallclassschedules_1',['getAllClassSchedules',['../class_class.html#a8b879102a4f2ef5d008f5d09ad91c021',1,'Class']]],
+  ['getallstudents_2',['getAllStudents',['../class_class.html#a0d91c887ff56e3213aecfe9cc47b8c55',1,'Class']]],
+  ['getallucs_3',['getAllUcs',['../class_data.html#a4e96b6224747b93dc4f4857acf9e1677',1,'Data']]],
+  ['getclass_4',['getClass',['../class_uc.html#ae9f6f99f663b78fc0803bffca03ccd88',1,'Uc']]],
+  ['getclasscode_5',['getClassCode',['../class_class.html#aa68718414a5cad02b1afdba4ad450971',1,'Class']]],
+  ['getduration_6',['getDuration',['../class_class_session.html#abe0435429aa59300a31862aeef7e65d1',1,'ClassSession']]],
+  ['getrequesthistory_7',['getRequestHistory',['../class_data.html#ac2f7f1bfdae6b84dad4db938e9e30018',1,'Data']]],
+  ['getstarthour_8',['getStartHour',['../class_class_session.html#a433f7cd2415a18f8ecef14ffd7f5ba3a',1,'ClassSession']]],
+  ['getstudent_9',['getStudent',['../class_data.html#a300bb01bf9a11e829afced5bf39f95b3',1,'Data']]],
+  ['getstudentasstring_10',['getStudentAsString',['../class_student.html#aa622c32b579ee16991118a1782045798',1,'Student']]],
+  ['getstudentcode_11',['getStudentCode',['../class_student.html#aed820901f4c0ccba519b5cf4e0007cfc',1,'Student']]],
+  ['getstudentname_12',['getStudentName',['../class_student.html#af2fdac1ce7d10b271cf7103f675d9c17',1,'Student']]],
+  ['gettimeinterval_13',['getTimeInterval',['../class_class_session.html#a80d9a05393fcedda060dac9b795f276f',1,'ClassSession']]],
+  ['gettimeintervalasstring_14',['getTimeIntervalAsString',['../struct_time_interval.html#aa7b621222a3ecf1dfacf3c104dc547d6',1,'TimeInterval']]],
+  ['gettype_15',['getType',['../class_class_session.html#a80609a73b2518a2bdce454deff165841',1,'ClassSession']]],
+  ['getuc_16',['getUc',['../class_data.html#a72d2cc9af55922c5a8b1d2a3f54d6943',1,'Data']]],
+  ['getucclasscode_17',['getUcClassCode',['../class_student.html#a1bf8cc2fc7f94abb69c364ca3a042648',1,'Student']]],
+  ['getuccode_18',['getUcCode',['../class_class.html#a75673197177e612baf4d6041f0489539',1,'Class']]],
+  ['getucsbyclasscode_19',['getUcsByClassCode',['../class_data.html#ac069b9059f243f93bf3e9a20b010be01',1,'Data']]],
+  ['getweekday_20',['getWeekday',['../class_class_session.html#a71e25f5766185aa732d67a5679214ec8',1,'ClassSession']]]
 ];

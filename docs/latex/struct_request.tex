@@ -1,0 +1,81 @@
+\doxysection{Request Struct Reference}
+\hypertarget{struct_request}{}\label{struct_request}\index{Request@{Request}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_request_a2dae0cf52d452a51c039a567ec785cb4}{Request}} (int student\+Code, char type, string uc\+Code, string origin\+Class\+Code, string destiny\+Class\+Code)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{struct_request}{Request} object. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{struct_request_a3e4efb7174caf3c9f09bb08caeea6d99}{string\+Info}} () const
+\begin{DoxyCompactList}\small\item\em Generates a string representing information about the request. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_request_a3bd4fe5482cd4ed6b21bfe7c28462041}\label{struct_request_a3bd4fe5482cd4ed6b21bfe7c28462041} 
+char {\bfseries type}
+\item 
+\Hypertarget{struct_request_a0ab0d891bd89b32f84bd466bd57c3c4f}\label{struct_request_a0ab0d891bd89b32f84bd466bd57c3c4f} 
+string {\bfseries origin\+Class\+Code}
+\item 
+\Hypertarget{struct_request_abc955aca29632de60908ff5ca486d8f4}\label{struct_request_abc955aca29632de60908ff5ca486d8f4} 
+string {\bfseries destiny\+Class\+Code}
+\item 
+\Hypertarget{struct_request_a39a493896cf62a87c2127b3785e9b928}\label{struct_request_a39a493896cf62a87c2127b3785e9b928} 
+string {\bfseries uc\+Code}
+\item 
+\Hypertarget{struct_request_afb1dbfcc905988ecfd880fdc9d8c4f38}\label{struct_request_afb1dbfcc905988ecfd880fdc9d8c4f38} 
+int {\bfseries student\+Code}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_request_a2dae0cf52d452a51c039a567ec785cb4}\label{struct_request_a2dae0cf52d452a51c039a567ec785cb4} 
+\index{Request@{Request}!Request@{Request}}
+\index{Request@{Request}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{Request()}{Request()}}
+{\footnotesize\ttfamily Request\+::\+Request (\begin{DoxyParamCaption}\item[{int}]{student\+Code,  }\item[{char}]{type,  }\item[{string}]{uc\+Code,  }\item[{string}]{origin\+Class\+Code,  }\item[{string}]{destiny\+Class\+Code }\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{struct_request}{Request} object. 
+
+Initializes a \doxylink{struct_request}{Request} object with the provided parameters.
+
+Time complexity\+: O(1) 
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & The code of the student associated with the request. \\
+\hline
+{\em type} & The type of the request (\textquotesingle{}A\textquotesingle{} for Add, \textquotesingle{}R\textquotesingle{} for Remove, \textquotesingle{}S\textquotesingle{} for Switch). \\
+\hline
+{\em uc\+Code} & The code of the Unit Course (UC) involved in the request. \\
+\hline
+{\em origin\+Class\+Code} & The code of the class from which the student is moving (used in Remove and Switch requests). \\
+\hline
+{\em destiny\+Class\+Code} & The code of the class to which the student is moving (used in Add and Switch requests). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_request_a3e4efb7174caf3c9f09bb08caeea6d99}\label{struct_request_a3e4efb7174caf3c9f09bb08caeea6d99} 
+\index{Request@{Request}!stringInfo@{stringInfo}}
+\index{stringInfo@{stringInfo}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{stringInfo()}{stringInfo()}}
+{\footnotesize\ttfamily string Request\+::string\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Generates a string representing information about the request. 
+
+This method creates a string containing information about the request, including the request type, student code, and relevant UC and class codes.
+
+Time complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+A string with details about the request. 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Request.\+h\item 
+Request.\+cpp\end{DoxyCompactItemize}

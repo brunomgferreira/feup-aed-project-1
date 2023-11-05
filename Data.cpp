@@ -500,6 +500,9 @@ void Data::applyRequest(const Request &request) {
 }
 
 string Data::getRequestHistory() const {
+    if (this->requestHistory.empty()){
+        return "Request history is empty.\n";
+    }
     stringstream history;
     int requestNumber = 1;
     for (const auto &request : this->requestHistory) {

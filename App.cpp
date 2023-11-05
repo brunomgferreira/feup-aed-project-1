@@ -391,12 +391,38 @@ void App::consultNumStudentsUcs() {
 /**
  * @brief Method responsible for control the consult of the number of students by uc
  */
-void App::consultBiggestUc() { //falta ordenar
+void App::consultBiggestUc() {
 
-    string msg = data.consultBiggestUc();
+    bool ascendingOrder = false;
+    bool shouldExit = false;
+    bool inputError;
+    string msg = data.consultBiggestUc(ascendingOrder);
     UserInterface::printMessage(msg);
-    UserInterface::pressEnterToContinue();
-
+    UserInterface::printMessage("[1] Ascending Order    [2] Descending Order    [q] Go back");
+    do {
+        inputError = false;
+        switch (UserInterface::readOption("Select an option: ")) {
+            case '1':
+                ascendingOrder = false;
+                break;
+            case '2':
+                ascendingOrder = true;
+                break;
+            case 'q':
+                shouldExit = true;
+                break;
+            default:
+                handleErrors("Invalid Input\n");
+                UserInterface::printMessage("[1] Ascending Order    [2] Descending Order    [q] Go back");
+                inputError = true;
+                break;
+        }
+        if(!inputError) {
+            msg = data.consultBiggestUc(ascendingOrder);
+            UserInterface::printMessage(msg);
+            UserInterface::printMessage("[1] Ascending Order    [2] Descending Order    [q] Go back");
+        }
+    } while (inputError || !shouldExit);
     UserInterface::printConsultMenu();
 }
 

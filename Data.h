@@ -29,7 +29,7 @@ class Data {
     const string PENDENT_REQUESTS_FILENAME = "pendent_requests.csv";
     const string STUDENTS_CLASS_FILENAME = "students_classes.csv";
     const string DIRECTORY_PATH =
-        "/home/soestilooo/Documents/Faculty/AED/project/schedule/";
+        "/home/bruno/Documents/AED/projeto/schedule/";
 
 
    private:
@@ -57,7 +57,7 @@ class Data {
     string consultOccupationCourse(const string &ucCode);
     string consultOccupationYear(const string &year);
     string consultNumStudentsUcs(const string &nUcs);
-    string consultBiggestUc();
+    string consultBiggestUc(bool ascendingOrder);
 
     set<string> getUcsByClassCode(const string &classCode) const;
 

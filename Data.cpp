@@ -476,8 +476,7 @@ string Data::validRequest(const Request &request) const {
             log += "Student is already enrolled in the maximum number of Ucs possible";
             return log;
         };
-        string conflictClass = student.findConflictClass(request.ucCode, request.originClassCode,
-                                                  uc.getClass(request.destinyClassCode));
+        string conflictClass = student.findConflictClass(request.ucCode,uc.getClass(request.destinyClassCode));
         if (!conflictClass.empty()){
            log += "Class to enter conflicts with student's current schedule. There is an overlap with the class " + conflictClass;
            return log;

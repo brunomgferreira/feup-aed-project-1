@@ -96,19 +96,17 @@ class Student {
  *
  * @details Method searches for a conflicting Class among the Student's classes based
  * on the provided UC code and destination Class. It checks if any of the Student's
- * classes in the same UC overlap with the destination Class. If a conflict is found,
- * it returns the Class code of the conflicting Class.
+ * classes in a different UC overlap with the destination Class. If a conflict is found,
+ * it returns the Class and UC code of the conflicting Class.
  * @details Time complexity: sem complexity
  *
  * @param ucCode A string representing the UC (Unit Course) code of the destination Class.
- * @param originClassCode A string representing the code of the Class the Student wants to leave.
  * @param destinyClass The Class the Student wants to join.
  *
  * @return A string representing the Class code of the conflicting Class, or an empty string
  * if no conflict is found.
      */
-    string findConflictClass(const string& ucCode, const string &originClassCode,
-                     const Class& destinyClass) const;
+    string findConflictClass(const string& ucCode, const Class& destinyClass) const;
     /**
  * @brief Retrieves the Class code of the Student for a specific UC.
  *

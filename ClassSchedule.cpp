@@ -1,6 +1,5 @@
 #include <unordered_map>
 #include "ClassSchedule.h"
-
 /**
  * @brief Constructor of the class ClassSchedule. weekday, timeInterval and type
  * are set to the given values.
@@ -87,9 +86,9 @@ bool ClassSchedule::overlaps(const ClassSchedule &schedule) const {
                  schedule.timeInterval.startMinute;
     int end2 =
         schedule.timeInterval.endHour * 60 + schedule.timeInterval.endMinute;
-    return (weekday == schedule.weekday &&
+    return (weekday == schedule.weekday &&(
                 (start2 >= start1 && start2 <= end1) ||
-            (start1 >= start2 && start1 <= end1));
+            (start1 >= start2 && start1 <= end2)));
 }
 /*
  *

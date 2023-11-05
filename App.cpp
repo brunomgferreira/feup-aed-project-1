@@ -59,7 +59,7 @@ void App::mainMenu() {
                 shouldExit = true;
                 break;
             default:
-                handleErrors("Invalid Input");
+                handleErrors("Invalid Input.");
                 inputError = true;
                 break;
         }

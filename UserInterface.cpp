@@ -1,11 +1,11 @@
 #include <limits>
 #include <unordered_map>
 #include "UserInterface.h"
-
+#include <iomanip>
 
 
 void UserInterface::printError(const string& error) {
-    cout << error << endl;
+    cout << "ERROR: "<< error << endl;
 }
 
 void UserInterface::printMessage(const string& msg) {
@@ -37,30 +37,37 @@ int UserInterface::readNumber(const string& msg) { //sem uso usei readcode
 
 void UserInterface::printMainMenu() {
     cout << endl;
-    cout << "Main Menu" << endl;
+    cout << "======= Main Menu =======" << endl;
     cout << "\n"
-            "1 Consult\n"
-            "2 New Request\n"
-            "3 Process Request\n"
-            "q Exit\n";
+            "1 - Consult\n"
+            "2 - New Request\n"
+            "3 - Process Request\n\n"
+            "q - Exit\n"
+            "=========================";
 }
 
 
 void UserInterface::printConsultMenu() {
     cout << endl;
-    cout << "Consult Menu" << endl;
+    cout << "===== Consult Menu =====" << endl;
     cout << "\n"
-            "1 Consult the schedule of a given student\n"
-            "2 Consult the schedule of a given class\n"
-            "3 Consult the students within a given class\n" //ordencaoa
-            "4 Consult the students within a given course\n" //ordencaoa
-            "5 Consult the students within a given year\n" //ordencaoa
-            "6 Consult the occupation within a given class\n"
-            "7 Consult the occupation within a given course\n"
-            "8 Consult the occupation within a given year\n"
-            "9 Consult the number of students registered in at least n UCs\n"
-            "0 Consult the UCs with the greatest number of students\n" //mudar texto? aparece tudo ordencado
-            "q Back to Main Menu\n";
+            "Schedule:\n"
+            "1 - Of a given student\n"
+            "2 - Of a given class\n"
+            "Students:\n"
+            "3 - Within a given class\n" //ordencaoa
+            "4 - Within a given course\n" //ordencaoa
+            "5 - Within a given year\n" //ordencaoa
+            "Occupation:\n"
+            "6 - Within a given class\n"
+            "7 - Within a given course\n"
+            "8 - Within a given year\n"
+            "Extra:\n"
+            "9 - The number of students registered in at least n UCs\n"
+            "0 - The UCs with the greatest number of students\n\n" //mudar texto? aparece tudo ordencado
+
+            "q - Back to Main Menu\n"
+            "==============================";
 }
 
 void UserInterface::printStudentSchedule(const Student& student) {
@@ -142,8 +149,10 @@ void UserInterface::printClassSchedule(const string& classCode, const set<string
 
 void UserInterface::printTryAgainMenu() {
     cout << "\n"
-            "1 Try again\n"
-            "q Go back\n";
+            "---------------\n"
+            "1 - Try again\n"
+            "q - Go back\n"
+            "---------------\n";
 }
 
 void UserInterface::pressEnterToContinue() {
@@ -154,22 +163,24 @@ void UserInterface::pressEnterToContinue() {
 
 void UserInterface::printNewRequestMenu() {
     cout << endl;
-    cout << "New Request Menu" << endl;
+    cout << "====== New Request Menu =====" << endl;
     cout << "\n"
-            "1 Add Request\n" //Nome request do tipo add nao add request??
-            "2 Remove Request\n"
-            "3 Switch Request\n"
-            "q Back to Main Menu\n";
+            "1 - Add Request\n" //Nome request do tipo add nao add request??
+            "2 - Remove Request\n"
+            "3 - Switch Request\n\n"
+            "q - Back to Main Menu\n"
+            "=============================";
 }
 
 void UserInterface::printProcessRequestMenu() {
     cout << endl;
-    cout << "Process Request Menu" << endl;
+    cout << "===== Process Request Menu ====" << endl;
     cout << "\n"
-            "1 Process Pending Requests\n"
-            "2 See recent actions \n"
-            "3 Undo recent actions \n"
-            "q Back to Main Menu\n";
+            "1 - Process Pending Requests\n"
+            "2 - See recent actions \n"
+            "3 - Undo recent actions \n\n"
+            "q - Back to Main Menu\n"
+            "===============================";
 }
 
 

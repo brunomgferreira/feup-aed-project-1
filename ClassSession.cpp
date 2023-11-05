@@ -1,54 +1,28 @@
 #include "ClassSession.h"
 
 #include <unordered_map>
-/**
- * @brief Constructor of the class ClassSession. weekday, timeInterval and type
- * are set to the given values.
- * @details Time complexity: O(1)
- * @param weekday weekday of the class
- * @param timeInterval start time and end time of the class
- * @param type type of the class
- */
 
 ClassSession::ClassSession(const string &weekday,
                              const TimeInterval &timeInterval,
                              const string &type)
     : weekday(weekday), timeInterval(timeInterval), type(type) {}
 
-/**
- * @brief Returns the weekday of the class.
- * @details Time complexity: O(1)
- * @return weekday of the class
- */
+
 
 const string &ClassSession::getWeekday() const { return this->weekday; }
 
-/**
- * @brief Returns the time interval of the class.
- * @details Time complexity: O(1)
- * @return timeInterval of the class
- */
 
-// Set & Getter -> timeInterval
+
 TimeInterval ClassSession::getTimeInterval() const {
     return this->timeInterval;
 }
 
-/**
- * @brief Returns the start hour of the class.
- * @details Time complexity: O(1)
- * @return start hour of the class
- */
+
 
 double ClassSession::getStartHour() const {
     return this->timeInterval.startHour + this->timeInterval.startMinute / 60.0;
 }
 
-/**
- * @brief Returns the duration of the class.
- * @details Time complexity: O(1)
- * @return duration of the class
- */
 
 double ClassSession::getDuration() const {
     return (this->timeInterval.endHour + this->timeInterval.endMinute / 60.0) -
@@ -56,29 +30,9 @@ double ClassSession::getDuration() const {
             this->timeInterval.startMinute / 60.0);
 }
 
-/**
- * @brief Returns the type of the class.
- * @details Time complexity: O(1)
- * @return startHour of the class
- */
 
 string ClassSession::getType() const { return this->type; }
 
-/**
- * @brief Returns the type of the class.
- * @details Time complexity: O(1)
- * @return type of the class
- */
-
-void ClassSession::setType(const string &newType) { this->type = newType; }
-
-/*
- *
- *
- *
- *
- *
- */
 
 bool ClassSession::overlaps(const ClassSession &schedule) const {
     int start1 = timeInterval.startHour * 60 + timeInterval.startMinute;
@@ -91,13 +45,7 @@ bool ClassSession::overlaps(const ClassSession &schedule) const {
                 (start2 >= start1 && start2 <= end1) ||
             (start1 >= start2 && start1 <= end2)));
 }
-/*
- *
- *
- *
- *
- *
- */
+
 bool ClassSession::invalidOverlaps(const ClassSession &schedule) const {
     return (type != "T" && schedule.type != "T" && overlaps(schedule));
 }

@@ -95,7 +95,7 @@ void UserInterface::printStudentSchedule(const Student& student) {
 
     for(auto [ucCode, c] : student.getAllClasses()) {
         cout << "[" << ucCode << "-" << c.getClassCode() << "]\t";
-        for(const ClassSchedule &classSchedule : c.getAllClassSchedules()) {
+        for(const ClassSession&classSchedule : c.getAllClassSchedules()) {
             string ss =  classSchedule.getTimeInterval().getTimeIntervalAsString() + " "
                             + ucCode + "-" + c.getClassCode() + " (" + classSchedule.getType() + ")";
 

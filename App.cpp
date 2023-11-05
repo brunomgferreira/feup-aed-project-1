@@ -200,7 +200,7 @@ void App::consultClassSchedule() { //fazer aassimm ou mensagem com textos
             map<int, set<string>> schedulesByDay;
             for (const string& ucCode : ucs) {
                 Class c = data.getAllUcs().at(ucCode).getClass(classCode);
-                for (const ClassSchedule& classSchedule :
+                for (const ClassSession& classSchedule :
                      c.getAllClassSchedules()) {
                     string ss = classSchedule.getTimeInterval()
                                     .getTimeIntervalAsString() +
@@ -588,7 +588,7 @@ void App::processIndividualRequest(){
 /**
  * @brief Method responsible for control the process of pending requests
  */
-void App::processPendingRequests() { //??
+void App::processPendingRequests() {
 
     const string& message = data.processRequests();
     UserInterface::printMessage(message);

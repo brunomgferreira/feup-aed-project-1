@@ -663,7 +663,7 @@ void Data::readClassesFile() {
             ucs.at(ucCode).getClass(classCode);  // log(k) + log(v)
 
         const TimeInterval time(startHour, duration);
-        ClassSchedule newSchedule(weekday, time, type);
+        ClassSession newSchedule(weekday, time, type);
 
         currentClass.addClassSchedule(newSchedule);  // 1
     }

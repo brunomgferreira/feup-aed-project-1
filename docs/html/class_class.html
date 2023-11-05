@@ -91,10 +91,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa68718414a5cad02b1afdba4ad450971"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_class.html#aa68718414a5cad02b1afdba4ad450971">getClassCode</a> () const</td></tr>
 <tr class="memdesc:aa68718414a5cad02b1afdba4ad450971"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the classCode of the class.  <a href="class_class.html#aa68718414a5cad02b1afdba4ad450971">More...</a><br /></td></tr>
 <tr class="separator:aa68718414a5cad02b1afdba4ad450971"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5122c7518096a896320d1be977d0c4bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_class.html#a5122c7518096a896320d1be977d0c4bd">addClassSchedule</a> (const <a class="el" href="class_class_schedule.html">ClassSchedule</a> &amp;newClassSchedule)</td></tr>
-<tr class="memdesc:a5122c7518096a896320d1be977d0c4bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new class schedule to the classSchedules.  <a href="class_class.html#a5122c7518096a896320d1be977d0c4bd">More...</a><br /></td></tr>
+<tr class="memitem:a5122c7518096a896320d1be977d0c4bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_class.html#a5122c7518096a896320d1be977d0c4bd">addClassSchedule</a> (const <a class="el" href="class_class_schedule.html">ClassSession</a> &amp;newClassSchedule)</td></tr>
+<tr class="memdesc:a5122c7518096a896320d1be977d0c4bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new class schedule to the schedule.  <a href="class_class.html#a5122c7518096a896320d1be977d0c4bd">More...</a><br /></td></tr>
 <tr class="separator:a5122c7518096a896320d1be977d0c4bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9d9682bac1fec71f75cbc10a721ac96"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="class_class_schedule.html">ClassSchedule</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_class.html#ab9d9682bac1fec71f75cbc10a721ac96">getAllClassSchedules</a> () const</td></tr>
+<tr class="memitem:ab9d9682bac1fec71f75cbc10a721ac96"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="class_class_schedule.html">ClassSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_class.html#ab9d9682bac1fec71f75cbc10a721ac96">getAllClassSchedules</a> () const</td></tr>
 <tr class="memdesc:ab9d9682bac1fec71f75cbc10a721ac96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns all the class's class schedules.  <a href="class_class.html#ab9d9682bac1fec71f75cbc10a721ac96">More...</a><br /></td></tr>
 <tr class="separator:ab9d9682bac1fec71f75cbc10a721ac96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66d3694d02a7dda4bae647e64e76b230"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_class.html#a66d3694d02a7dda4bae647e64e76b230">addStudent</a> (int newStudentCode)</td></tr>
@@ -116,7 +116,7 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>ucCode</b></td></tr
 string&#160;</td><td class="memItemRight" valign="bottom"><b>classCode</b></td></tr>
 <tr class="separator:a8eccba7658243c9b9ec6baf199f36688"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace0218e3be391fd827190894bfaf9415"><td class="memItemLeft" align="right" valign="top"><a id="ace0218e3be391fd827190894bfaf9415"></a>
-vector&lt; <a class="el" href="class_class_schedule.html">ClassSchedule</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>classSchedules</b></td></tr>
+vector&lt; <a class="el" href="class_class_schedule.html">ClassSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>schedule</b></td></tr>
 <tr class="separator:ace0218e3be391fd827190894bfaf9415"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74caf092a8b1912e757b542a10b8673a"><td class="memItemLeft" align="right" valign="top"><a id="a74caf092a8b1912e757b542a10b8673a"></a>
 set&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>students</b></td></tr>
@@ -192,14 +192,14 @@ set&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>students<
         <tr>
           <td class="memname">void Class::addClassSchedule </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_class_schedule.html">ClassSchedule</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="class_class_schedule.html">ClassSession</a> &amp;&#160;</td>
           <td class="paramname"><em>newClassSchedule</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Adds a new class schedule to the classSchedules. </p>
+<p>Adds a new class schedule to the schedule. </p>
 <p>Time complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">newClassSchedule</td><td>new schedule of a class of the class </td></tr>
@@ -242,7 +242,7 @@ set&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>students<
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt; <a class="el" href="class_class_schedule.html">ClassSchedule</a> &gt; Class::getAllClassSchedules </td>
+          <td class="memname">vector&lt; <a class="el" href="class_class_schedule.html">ClassSession</a> &gt; Class::getAllClassSchedules </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -251,7 +251,7 @@ set&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>students<
 </div><div class="memdoc">
 
 <p>Returns all the class's class schedules. </p>
-<p>Time complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>classSchedules all the classes schedules of the class </dd></dl>
+<p>Time complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>schedule all the classes schedules of the class </dd></dl>
 
 </div>
 </div>

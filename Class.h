@@ -6,7 +6,7 @@
 #include <set>
 #include <vector>
 
-#include "ClassSchedule.h"
+#include "ClassSession.h"
 using namespace std;
 
 /**
@@ -16,7 +16,7 @@ class Class {
    private:
     string ucCode;
     string classCode;
-    vector<ClassSchedule> classSchedules;
+    vector<ClassSession> schedule;
     set<int> students;
     const static int MAX_STUDENTS = 30;
 
@@ -63,7 +63,7 @@ class Class {
      */
     string getClassCode() const;
 
-    // ClassSchedule related methods
+    // ClassSession related methods
     /**
  * @brief Adds a new class schedule to the Class.
  *
@@ -71,9 +71,9 @@ class Class {
  * to the list of schedules associated with the Class.
  * @details Time complexity: O(1)
  *
- * @param newClassSchedule The ClassSchedule to add to the Class.
+ * @param newClassSchedule The ClassSession to add to the Class.
      */
-    void addClassSchedule(const ClassSchedule& newClassSchedule);
+    void addClassSchedule(const ClassSession& newClassSchedule);
     /**
  * @brief Retrieves all class schedules associated with the Class.
  *
@@ -81,9 +81,9 @@ class Class {
  * with the Class, providing access to the complete list of schedules.
  * @details Time complexity: O(1)
  *
- * @return A vector of ClassSchedule objects representing the class schedules.
+ * @return A vector of ClassSession objects representing the class schedules.
      */
-    vector<ClassSchedule> getAllClassSchedules() const;
+    vector<ClassSession> getAllClassSchedules() const;
     /**
  * @brief Checks for invalid overlaps between two classes' schedules.
  *

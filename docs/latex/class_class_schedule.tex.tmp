@@ -1,5 +1,5 @@
 \hypertarget{class_class_schedule}{}\doxysection{Class\+Schedule Class Reference}
-\label{class_class_schedule}\index{ClassSchedule@{ClassSchedule}}
+\label{class_class_schedule}\index{ClassSession@{ClassSession}}
 
 
 \mbox{\hyperlink{class_class}{Class}} that stores a class schedule for a given class.  
@@ -49,9 +49,9 @@ string {\bfseries type}
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_class_schedule_ae791efccb246bf2b68021eef7fe390cb}\label{class_class_schedule_ae791efccb246bf2b68021eef7fe390cb}} 
-\index{ClassSchedule@{ClassSchedule}!ClassSchedule@{ClassSchedule}}
-\index{ClassSchedule@{ClassSchedule}!ClassSchedule@{ClassSchedule}}
-\doxysubsubsection{\texorpdfstring{ClassSchedule()}{ClassSchedule()}}
+\index{ClassSession@{ClassSession}!ClassSession@{ClassSession}}
+\index{ClassSession@{ClassSession}!ClassSession@{ClassSession}}
+\doxysubsubsection{\texorpdfstring{ClassSession()}{ClassSession()}}
 {\footnotesize\ttfamily Class\+Schedule\+::\+Class\+Schedule (\begin{DoxyParamCaption}\item[{const string \&}]{weekday,  }\item[{const \mbox{\hyperlink{struct_time_interval}{Time\+Interval}} \&}]{time\+Interval,  }\item[{const string \&}]{type }\end{DoxyParamCaption})}
 
 
@@ -71,8 +71,8 @@ Time complexity\+: O(1)
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_class_schedule_a7eaf73b940856f30ba7d12591f1eeadb}\label{class_class_schedule_a7eaf73b940856f30ba7d12591f1eeadb}} 
-\index{ClassSchedule@{ClassSchedule}!getDuration@{getDuration}}
-\index{getDuration@{getDuration}!ClassSchedule@{ClassSchedule}}
+\index{ClassSession@{ClassSession}!getDuration@{getDuration}}
+\index{getDuration@{getDuration}!ClassSession@{ClassSession}}
 \doxysubsubsection{\texorpdfstring{getDuration()}{getDuration()}}
 {\footnotesize\ttfamily double Class\+Schedule\+::get\+Duration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
@@ -84,8 +84,8 @@ Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
 duration of the class 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_class_schedule_a6e1d83461f5afe5010b9719960360d76}\label{class_class_schedule_a6e1d83461f5afe5010b9719960360d76}} 
-\index{ClassSchedule@{ClassSchedule}!getStartHour@{getStartHour}}
-\index{getStartHour@{getStartHour}!ClassSchedule@{ClassSchedule}}
+\index{ClassSession@{ClassSession}!getStartHour@{getStartHour}}
+\index{getStartHour@{getStartHour}!ClassSession@{ClassSession}}
 \doxysubsubsection{\texorpdfstring{getStartHour()}{getStartHour()}}
 {\footnotesize\ttfamily double Class\+Schedule\+::get\+Start\+Hour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
@@ -97,8 +97,8 @@ Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
 start hour of the class 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_class_schedule_af5410f3bba5b8cf7835f07beba042cef}\label{class_class_schedule_af5410f3bba5b8cf7835f07beba042cef}} 
-\index{ClassSchedule@{ClassSchedule}!getTimeInterval@{getTimeInterval}}
-\index{getTimeInterval@{getTimeInterval}!ClassSchedule@{ClassSchedule}}
+\index{ClassSession@{ClassSession}!getTimeInterval@{getTimeInterval}}
+\index{getTimeInterval@{getTimeInterval}!ClassSession@{ClassSession}}
 \doxysubsubsection{\texorpdfstring{getTimeInterval()}{getTimeInterval()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{struct_time_interval}{Time\+Interval}} Class\+Schedule\+::get\+Time\+Interval (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
@@ -110,8 +110,8 @@ Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
 time\+Interval of the class 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_class_schedule_a368e1564b8a2c875471b27c21395fe5e}\label{class_class_schedule_a368e1564b8a2c875471b27c21395fe5e}} 
-\index{ClassSchedule@{ClassSchedule}!getType@{getType}}
-\index{getType@{getType}!ClassSchedule@{ClassSchedule}}
+\index{ClassSession@{ClassSession}!getType@{getType}}
+\index{getType@{getType}!ClassSession@{ClassSession}}
 \doxysubsubsection{\texorpdfstring{getType()}{getType()}}
 {\footnotesize\ttfamily string Class\+Schedule\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
@@ -123,8 +123,8 @@ Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
 start\+Hour of the class 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_class_schedule_a209d4a1affabd0a60ceb494a66054711}\label{class_class_schedule_a209d4a1affabd0a60ceb494a66054711}} 
-\index{ClassSchedule@{ClassSchedule}!getWeekday@{getWeekday}}
-\index{getWeekday@{getWeekday}!ClassSchedule@{ClassSchedule}}
+\index{ClassSession@{ClassSession}!getWeekday@{getWeekday}}
+\index{getWeekday@{getWeekday}!ClassSession@{ClassSession}}
 \doxysubsubsection{\texorpdfstring{getWeekday()}{getWeekday()}}
 {\footnotesize\ttfamily const string \& Class\+Schedule\+::get\+Weekday (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
@@ -136,8 +136,8 @@ Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
 weekday of the class 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_class_schedule_a3b05a1fbd54558c9f731024aca28405a}\label{class_class_schedule_a3b05a1fbd54558c9f731024aca28405a}} 
-\index{ClassSchedule@{ClassSchedule}!setType@{setType}}
-\index{setType@{setType}!ClassSchedule@{ClassSchedule}}
+\index{ClassSession@{ClassSession}!setType@{setType}}
+\index{setType@{setType}!ClassSession@{ClassSession}}
 \doxysubsubsection{\texorpdfstring{setType()}{setType()}}
 {\footnotesize\ttfamily void Class\+Schedule\+::set\+Type (\begin{DoxyParamCaption}\item[{const string \&}]{new\+Type }\end{DoxyParamCaption})}
 

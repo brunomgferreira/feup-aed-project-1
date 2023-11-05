@@ -10,7 +10,7 @@ using namespace std;
  * @brief Class that stores a class schedule for a given class.
  */
 
-class ClassSchedule {
+class ClassSession {
    private:
     string weekday;
     TimeInterval timeInterval;
@@ -18,7 +18,7 @@ class ClassSchedule {
 
    public:
     // Class constructor constructor
-    ClassSchedule(const string &weekday, const TimeInterval &time,
+    ClassSession(const string &weekday, const TimeInterval &time,
                   const string &type);
 
     // Set & Getter -> weekday
@@ -34,10 +34,10 @@ class ClassSchedule {
     void setType(const string &newType);
 
     // Compare Schedules
-    bool overlaps(const ClassSchedule &schedule) const;
-    bool invalidOverlaps(const ClassSchedule &schedule) const;
+    bool overlaps(const ClassSession &schedule) const;
+    bool invalidOverlaps(const ClassSession &schedule) const;
 
-    bool operator<(const ClassSchedule &other) const;
+    bool operator<(const ClassSession &other) const;
 };
 
 #endif

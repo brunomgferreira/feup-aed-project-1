@@ -1,7 +1,7 @@
 # ninja log v5
 2	1120	1698939655436941792	CMakeFiles/projeto.dir/Data.cpp.o	a19929a19f444018
 2	285	1698939654604903591	CMakeFiles/projeto.dir/TimeInterval.cpp.o	21e6b1a909976e67
-1	369	1698939654688907448	CMakeFiles/projeto.dir/ClassSchedule.cpp.o	273c41da19329854
+1	369	1698939654688907448	CMakeFiles/projeto.dir/ClassSession.cpp.o	273c41da19329854
 2	561	1698924361794398353	CMakeFiles/projeto.dir/Uc.cpp.o	7fd860cd067fca4c
 1	133	1698862119138085846	CMakeFiles/projeto.dir/Request.cpp.o	348f8ab870ab7b6b
 2	974	1698939655292935181	CMakeFiles/projeto.dir/UserInterface.cpp.o	2a52da38887872dc

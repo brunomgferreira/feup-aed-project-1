@@ -490,7 +490,7 @@ void Data::applyRequest(const Request &request) {
     requestHistory.push_front(request);
     Student &student = students.at(request.studentCode);
     if (request.type != 'A') {
-        student.removeClass(request.originClassCode);
+        student.removeClass(request.ucCode);
     }
     if (request.type != 'R') {
         const Class &newClass =

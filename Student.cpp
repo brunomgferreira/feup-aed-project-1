@@ -58,8 +58,9 @@ void Student::addClass(const Class& newClass) {
  * @param classCode class code of the class to be removed
  */
 
-void Student::removeClass(const string& classCode) {
-    // TODO
+void Student::removeClass(const string& ucCode) {
+    this->classes.at(ucCode).removeStudent(studentCode);
+    this->classes.erase(ucCode);
 }
 
 /**

@@ -32,7 +32,7 @@ class Student {
 
     // classes related methods
     void addClass(const Class &newClass);
-    void removeClass(const string &classCode);
+    void removeClass(const string &ucCode);
     map<string, Class> getAllClasses() const;
     string findConflictClass(const string& ucCode, const string &originClassCode,
                      const Class& destinyClass) const;

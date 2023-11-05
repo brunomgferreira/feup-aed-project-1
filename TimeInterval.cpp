@@ -5,12 +5,7 @@
 
 using namespace std;
 
-/**
- * @brief Constructor of the struct TimeInterval. startHour, startMinute, endHour, and endMinute are set to the given values.
- * @details Time complexity: O(1)
- * @param startTime start time of the time interval
- * @param duration duration of the time interval
- */
+
 
 
 TimeInterval::TimeInterval(double startTime, double duration)

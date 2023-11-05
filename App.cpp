@@ -253,7 +253,7 @@ void App::consultStudentsCourse() {
 
 
 
-void App::consultStudentsYear() { //ordenar
+void App::consultStudentsYear() {
     bool shouldExit = false;
 
     while (!shouldExit) {

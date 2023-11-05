@@ -589,7 +589,7 @@ void Data::readClassesPerUcFile() {
     string line;
     getline(file, line);
 
-    while (getline(file, line))  // n
+    while (getline(file, line))
     {
         replace(line.begin(), line.end(), ',', ' ');
 
@@ -598,23 +598,23 @@ void Data::readClassesPerUcFile() {
         string ucCode, classCode;
 
         ss >> ucCode >> classCode;
-        auto it = this->ucs.find(ucCode);  // log(m)
+        auto it = this->ucs.find(ucCode);
         if (it == this->ucs.end()) {
             Uc newUc(ucCode);
             Class newClass(ucCode, classCode);
 
             newUc.addClass(newClass);
-            ucs[ucCode] = {newUc};  // log(m)
+            ucs[ucCode] = {newUc};
         } else {
             Class newClass(ucCode, classCode);
-            this->ucs.at(ucCode).addClass(newClass);  // log(m) + log(k)
+            this->ucs.at(ucCode).addClass(newClass);
         }
 
-        auto it2 = this->ucsCodesByClassCode.find(classCode);  // O(1)
+        auto it2 = this->ucsCodesByClassCode.find(classCode);
         if (it2 == this->ucsCodesByClassCode.end()) {
-            ucsCodesByClassCode[classCode] = {ucCode};  // O(1)
+            ucsCodesByClassCode[classCode] = {ucCode};
         } else {
-            this->ucsCodesByClassCode.at(classCode).insert(ucCode);  // O(1)
+            this->ucsCodesByClassCode.at(classCode).insert(ucCode);
         }
     }
     file.close();
@@ -627,9 +627,9 @@ void Data::writeClassesPerUcFile() {
     file << "UcCode,ClassCode"
          << "\n";
 
-    for (const auto &[ucCode, Uc] : this->ucs)  // n
+    for (const auto &[ucCode, Uc] : this->ucs)
     {
-        for (const auto &[classCode, c] : Uc.getAllClasses())  // m
+        for (const auto &[classCode, c] : Uc.getAllClasses())
         {
             file << ucCode << "," << classCode << "\n";
         }
@@ -647,11 +647,11 @@ void Data::readClassesFile() {
     string line;
     getline(file, line);
 
-    while (getline(file, line))  // n
+    while (getline(file, line))
     {
-        replace(line.begin(), line.end(), ',', ' ');  // m
+        replace(line.begin(), line.end(), ',', ' ');
 
-        stringstream ss(line);  // m
+        stringstream ss(line);
 
         string classCode, ucCode;
         double startHour, duration;
@@ -660,12 +660,12 @@ void Data::readClassesFile() {
         ss >> classCode >> ucCode >> weekday >> startHour >> duration >> type;
 
         Class &currentClass =
-            ucs.at(ucCode).getClass(classCode);  // log(k) + log(v)
+            ucs.at(ucCode).getClass(classCode);
 
         const TimeInterval time(startHour, duration);
         ClassSession newSchedule(weekday, time, type);
 
-        currentClass.addClassSchedule(newSchedule);  // 1
+        currentClass.addClassSchedule(newSchedule);
     }
     file.close();
 }
@@ -676,11 +676,11 @@ void Data::writeClassesFile() {
     file << "ClassCode,UcCode,Weekday,StartHour,Duration,Type"
          << "\n";
 
-    for (const auto &[ucCode, Uc] : this->ucs)  // n
+    for (const auto &[ucCode, Uc] : this->ucs)
     {
-        for (const auto &[classCode, c] : Uc.getAllClasses())  // m
+        for (const auto &[classCode, c] : Uc.getAllClasses())
         {
-            for (const auto &schedule : c.getAllClassSchedules())  // k
+            for (const auto &schedule : c.getAllClassSchedules())
             {
                 file << classCode << "," << ucCode << ","
                      << schedule.getWeekday() << "," << schedule.getStartHour()
@@ -702,32 +702,32 @@ void Data::readStudentsClassesFile() {
     string line;
     getline(file, line);
 
-    while (getline(file, line))  // n
+    while (getline(file, line))
     {
-        replace(line.begin(), line.end(), ' ', '?');  // m
-        replace(line.begin(), line.end(), ',', ' ');  // m
+        replace(line.begin(), line.end(), ' ', '?');
+        replace(line.begin(), line.end(), ',', ' ');
 
-        stringstream ss(line);  // m
+        stringstream ss(line);
 
         int studentCode;
         string studentName, classCode, ucCode;
 
         ss >> studentCode >> studentName >> ucCode >> classCode;
 
-        replace(studentName.begin(), studentName.end(), '?', ' ');  // r
+        replace(studentName.begin(), studentName.end(), '?', ' ');
 
         Class &currentClass =
-            getUc(ucCode).getClass(classCode);  // log(k) + log(v)
-        currentClass.addStudent(studentCode);   // log(s)
+            getUc(ucCode).getClass(classCode);
+        currentClass.addStudent(studentCode);
 
-        auto it = students.find(studentCode);  // log(u)
+        auto it = students.find(studentCode);
         if (it == students.end()) {
             Student newStudent(studentCode, studentName);
-            newStudent.addClass(currentClass);  // log(p)
+            newStudent.addClass(currentClass);
 
-            this->students[studentCode] = {newStudent};  // log(u)
+            this->students[studentCode] = {newStudent};
         } else {
-            it->second.addClass(currentClass);  // log(p)
+            it->second.addClass(currentClass);
         }
     }
     file.close();
@@ -739,9 +739,9 @@ void Data::writeStudentsClassesFile() {
     file << "StudentCode,StudentName,UcCode,ClassCode"
          << "\n";
 
-    for (const auto &[studentCode, student] : this->students)  // n
+    for (const auto &[studentCode, student] : this->students)
     {
-        for (const auto &[ucCode, c] : student.getAllClasses())  // m
+        for (const auto &[ucCode, c] : student.getAllClasses())
         {
             file << studentCode << "," << student.getStudentName() << ","
                  << ucCode << "," << c.getClassCode() << "\n";

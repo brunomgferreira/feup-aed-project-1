@@ -63,12 +63,12 @@ bool ClassSession::operator<(const ClassSession &other) const {
     int thisWeekday = weekdayMap[this->getWeekday()];
     int otherWeekday = weekdayMap[other.getWeekday()];
 
-    // First, compare weekdays.
+
     if (thisWeekday < otherWeekday)
         return true;
     else if (thisWeekday > otherWeekday)
         return false;
 
-    // If weekdays are equal, compare start hours.
+
     return this->getStartHour() < other.getStartHour();
 }

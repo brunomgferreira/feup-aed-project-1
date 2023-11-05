@@ -34,7 +34,7 @@ class App {
  *
  * @param error String with the error message
      */
-    void handleErrors(const string& error); // prints error ( calls UserInteface::printError() ) and waits for user input to continue.
+    void handleErrors(const string& error);
 
     /**
  * @brief Method responsible for control the consult menu

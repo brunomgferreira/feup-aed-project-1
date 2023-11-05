@@ -28,7 +28,7 @@ string UserInterface::readCode(const string& msg) {
     return input;
 }
 
-int UserInterface::readNumber(const string& msg) { //sem uso usei readcode
+int UserInterface::readNumber(const string& msg) {
     int input;
     cout << endl << msg;
     cin >> input;
@@ -55,16 +55,16 @@ void UserInterface::printConsultMenu() {
             "1 - Of a given student\n"
             "2 - Of a given class\n"
             "Students:\n"
-            "3 - Within a given class\n" //ordencaoa
-            "4 - Within a given course\n" //ordencaoa
-            "5 - Within a given year\n" //ordencaoa
+            "3 - Within a given class\n"
+            "4 - Within a given course\n"
+            "5 - Within a given year\n"
             "Occupation:\n"
             "6 - Within a given class\n"
             "7 - Within a given course\n"
             "8 - Within a given year\n"
             "Extra:\n"
             "9 - The number of students registered in at least n UCs\n"
-            "0 - The UCs with the greatest number of students\n\n" //mudar texto? aparece tudo ordencado
+            "0 - The UCs with the greatest number of students\n\n"
 
             "q - Back to Main Menu\n"
             "==============================";
@@ -165,7 +165,7 @@ void UserInterface::printNewRequestMenu() {
     cout << endl;
     cout << "====== New Request Menu =====" << endl;
     cout << "\n"
-            "1 - Add Request\n" //Nome request do tipo add nao add request??
+            "1 - Add Request\n"
             "2 - Remove Request\n"
             "3 - Switch Request\n\n"
             "q - Back to Main Menu\n"

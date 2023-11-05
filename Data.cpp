@@ -521,9 +521,7 @@ void Data::saveData() {
     writeClassesPerUcFile();
     writeStudentsClassesFile();
     writeRequestHistoryFile();
-    if (!pendentRequests.empty()) {
-        writePendentRequestsFile();
-    }
+    writePendentRequestsFile();
 }
 
 void Data::readPendentRequestsFile() {
@@ -539,8 +537,9 @@ void Data::readPendentRequestsFile() {
             string originClassCode, destinyClassCode, ucCode;
             int studentCode;
             char type;
-            ss >> studentCode >> type >> originClassCode >> destinyClassCode >>
-                ucCode;
+            ss >> studentCode >> type >> ucCode >> originClassCode >> destinyClassCode;
+            originClassCode = originClassCode == "null" ? "" : originClassCode;
+            destinyClassCode = destinyClassCode == "null" ? "" : destinyClassCode;
             Request request(studentCode, type, ucCode, originClassCode,
                             destinyClassCode);
             pendentRequests.push(request);
@@ -553,13 +552,17 @@ void Data::writePendentRequestsFile() {
     ofstream file(DIRECTORY_PATH + PENDENT_REQUESTS_FILENAME);
     file << "StudentCode,Type,UcCode,OriginClassCode,DestinyClassCode"
          << "\n";
+
+
     while (!pendentRequests.empty()) {
         const Request &request = pendentRequests.front();
+        string originClassCode = request.originClassCode.empty() ? "null" : request.originClassCode;
+        string destinyClassCode = request.destinyClassCode.empty() ? "null" : request.destinyClassCode;
         file << request.studentCode << ",";
         file << request.type << ",";
         file << request.ucCode << ",";
-        file << request.originClassCode << ",";
-        file << request.destinyClassCode << "\n";
+        file << originClassCode << ",";
+        file << destinyClassCode << "\n";
         pendentRequests.pop();
     }
     file.close();
@@ -578,11 +581,12 @@ void Data::readRequestHistoryFile() {
             string originClassCode, destinyClassCode, ucCode;
             int studentCode;
             char type;
-            ss >> studentCode >> type >> originClassCode >> destinyClassCode >>
-                ucCode;
+            ss >> studentCode >> type >> ucCode >> originClassCode >> destinyClassCode;
+            originClassCode = originClassCode == "null" ? "" : originClassCode;
+            destinyClassCode = destinyClassCode == "null" ? "" : destinyClassCode;
             Request request(studentCode, type, ucCode, originClassCode,
                             destinyClassCode);
-            requestHistory.push_front(request);
+            requestHistory.push_back(request);
         }
         file.close();
     }
@@ -594,11 +598,13 @@ void Data::writeRequestHistoryFile() {
          << "\n";
     while (!requestHistory.empty()) {
         const Request &request = requestHistory.front();
+        string originClassCode = request.originClassCode.empty() ? "null" : request.originClassCode;
+        string destinyClassCode = request.destinyClassCode.empty() ? "null" : request.destinyClassCode;
         file << request.studentCode << ",";
         file << request.type << ",";
         file << request.ucCode << ",";
-        file << request.originClassCode << ",";
-        file << request.destinyClassCode << "\n";
+        file << originClassCode << ",";
+        file << destinyClassCode << "\n";
         requestHistory.pop_front();
     }
     file.close();

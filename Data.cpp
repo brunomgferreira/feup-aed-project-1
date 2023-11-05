@@ -455,16 +455,18 @@ string Data::undoRequest(int requestNumber) {
 }
 
 string Data::validRequest(const Request &request) const {
-    string log = "NOT ACCEPTED.";
+    string log = "NOT ACCEPTED >> ";
     const Student &student = students.at(request.studentCode);
     Uc uc = ucs.at(request.ucCode);
 
-    if (!uc.balancedClasses(request.originClassCode,
-                            request.destinyClassCode)) {
-        log += "Operation affects Class balance";
-        return log;
-    }
     if (request.type != 'R') {
+
+        if (!uc.balancedClasses(request.originClassCode,
+                                request.destinyClassCode)) {
+            log += "Operation affects Class balance.";
+            return log;
+        }
+
         Class &destinyClass = uc.getClass(request.destinyClassCode);
         if (!destinyClass.hasVacancies()){
             log += "Class to enter does not have vacancies";
@@ -477,7 +479,7 @@ string Data::validRequest(const Request &request) const {
         string conflictClass = student.findConflictClass(request.ucCode, request.originClassCode,
                                                   uc.getClass(request.destinyClassCode));
         if (!conflictClass.empty()){
-           log += "Class to enter conflits with student's current schedule. There is overlap with the class " + conflictClass;
+           log += "Class to enter conflicts with student's current schedule. There is an overlap with the class " + conflictClass;
            return log;
         }
     }

@@ -29,7 +29,7 @@ class Data {
     const string PENDENT_REQUESTS_FILENAME = "pendent_requests.csv";
     const string STUDENTS_CLASS_FILENAME = "students_classes.csv";
     const string DIRECTORY_PATH =
-        "/home/soestilooo/Documents/Faculty/AED/project/schedule/";
+        "/home/soestilooo/Documents/Faculty/AED/project/data/";
 
 
    private:
@@ -252,8 +252,7 @@ class Data {
      */
     bool classExists(const string &ucCode, const string &classCode);
 
-    // Students related methods
-    map<int, Student> getAllStudents() const;
+
     /**
  * @brief Retrieves a reference to a specific student by their unique student code.
  *

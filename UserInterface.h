@@ -28,4 +28,4 @@ public:
 };
 
 
-#endif //PROJETO_USERINTERFACE_H
+#endif

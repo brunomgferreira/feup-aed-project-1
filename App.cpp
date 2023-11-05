@@ -1,13 +1,10 @@
 #include "App.h"
 
 #include <ios>
-#include <iostream>
 
 
-/**
- * @brief Standard constructor of the class App.
- * @details Time complexity: O(1)
- */
+
+
 App::App() {}
 
 void App::run() {
@@ -26,19 +23,13 @@ void App::close() { this->data.saveData(); }
 
 
 
-/**
- * @brief Calls a method of User Interface to print the error message.
- * @details
- * @param error String with the error message
- */
+
 void App::handleErrors(const string& error) {
     UserInterface::printError(error);
 }
 
 
-/**
- * @brief Method responsible for control the main menu
- */
+
 void App::mainMenu() {
     UserInterface::printMainMenu();
     bool shouldExit = false;
@@ -67,9 +58,7 @@ void App::mainMenu() {
 }
 
 
-/**
- * Method responsible for control the consult menu
- */
+
 void App::consultMenu() {
     UserInterface::printConsultMenu();
     bool shouldExit = false;
@@ -122,10 +111,7 @@ void App::consultMenu() {
 }
 
 
-/**
- * @brief Method responsible for control the try again menu
- * @return Boolean value, according to the continuity of the menu that have called this method
- */
+
 bool App::tryAgainMenu() {
     bool shouldExit = false;
     bool inputError;
@@ -149,9 +135,7 @@ bool App::tryAgainMenu() {
 }
 
 
-/**
- * @brief Method responsible for control the consult of a student schedule
- */
+
 void App::consultStudentSchedule() {
     bool shouldExit = false;
 
@@ -177,10 +161,8 @@ void App::consultStudentSchedule() {
 }
 
 
-/**
- * @brief Method responsible for control the consult of a class schedule
- */
-void App::consultClassSchedule() { //fazer aassimm ou mensagem com textos
+
+void App::consultClassSchedule() {
 
     bool shouldExit = false;
 
@@ -224,10 +206,8 @@ void App::consultClassSchedule() { //fazer aassimm ou mensagem com textos
 }
 
 
-/**
- * @brief Method responsible for control the consult of the students within a given class
- */
-void App::consultStudentsClass() { //ordenar
+
+void App::consultStudentsClass() {
     bool shouldExit = false;
 
     while (!shouldExit) {
@@ -250,10 +230,8 @@ void App::consultStudentsClass() { //ordenar
 }
 
 
-/**
- * @brief Method responsible for control the consult of the students within a given course
- */
-void App::consultStudentsCourse() { //ordenar
+
+void App::consultStudentsCourse() {
     bool shouldExit = false;
 
     while (!shouldExit) {
@@ -274,9 +252,7 @@ void App::consultStudentsCourse() { //ordenar
 }
 
 
-/**
- * @brief Method responsible for control the consult of the students within a given year
- */
+
 void App::consultStudentsYear() { //ordenar
     bool shouldExit = false;
 
@@ -295,9 +271,7 @@ void App::consultStudentsYear() { //ordenar
     UserInterface::printConsultMenu();
 }
 
-/**
- * @brief Method responsible for control the consult of the occupation within a given class
- */
+
 void App::consultOccupationClass(){
     bool shouldExit = false;
 
@@ -320,9 +294,7 @@ void App::consultOccupationClass(){
 }
 
 
-/**
- * @brief Method responsible for control the consult of the occupation within a given course
- */
+
 void App::consultOccupationCourse(){
     bool shouldExit = false;
 
@@ -343,9 +315,6 @@ void App::consultOccupationCourse(){
     UserInterface::printConsultMenu();
 }
 
-/**
- * @brief Method responsible for control the consult of the occupation within a given year
- */
 void App::consultOccupationYear(){
     bool shouldExit = false;
 
@@ -366,9 +335,7 @@ void App::consultOccupationYear(){
 }
 
 
-/**
- * @brief Method responsible for control the consult of the number of students with at least n ucs
- */
+
 void App::consultNumStudentsUcs() {
     bool shouldExit = false;
 
@@ -388,9 +355,7 @@ void App::consultNumStudentsUcs() {
 }
 
 
-/**
- * @brief Method responsible for control the consult of the number of students by uc
- */
+
 void App::consultBiggestUc() {
 
     bool ascendingOrder = false;
@@ -427,9 +392,7 @@ void App::consultBiggestUc() {
 }
 
 
-/**
- * @brief Method responsible for control the new request menu
- */
+
 void App::newRequestMenu() {
     UserInterface::printNewRequestMenu();
     bool shouldExit = false;
@@ -460,9 +423,7 @@ void App::newRequestMenu() {
 }
 
 
-/**
- * @brief Method responsible for control a new add request
- */
+
 void App::newRequestAdd() {
     bool shouldExit = false;
 
@@ -488,9 +449,6 @@ void App::newRequestAdd() {
 }
 
 
-/**
- * @brief Method responsible for control a new remove request
- */
 void App::newRequestRemove() {
     bool shouldExit = false;
 
@@ -514,9 +472,7 @@ void App::newRequestRemove() {
 }
 
 
-/**
- * @brief Method responsible for control a new switch request
- */
+
 void App::newRequestSwitch() {
     bool shouldExit = false;
 
@@ -542,9 +498,6 @@ void App::newRequestSwitch() {
 }
 
 
-/**
- * @brief Method responsible for control the process request menu
- */
 void App::processRequestMenu() {
     UserInterface::printProcessRequestMenu();
     bool shouldExit;
@@ -585,9 +538,7 @@ void App::processIndividualRequest(){
 }
 
 
-/**
- * @brief Method responsible for control the process of pending requests
- */
+
 void App::processPendingRequests() {
 
     const string& message = data.processRequests();
@@ -597,9 +548,7 @@ void App::processPendingRequests() {
 }
 
 
-/**
- * @brief Method responsible for control the recent actions
- */
+
 void App::recentActions() {
     const string& message = data.getRequestHistory();
     UserInterface::printMessage(message);
@@ -608,9 +557,7 @@ void App::recentActions() {
 }
 
 
-/**
- * @brief Method responsible for control the process of undo earlier actions
- */
+
 void App::undoRecentActions() {
     bool shouldExit = false;
 

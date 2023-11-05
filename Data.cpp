@@ -355,6 +355,7 @@ void Data::createRemoveRequest(const string &studentCode, const string &ucCode) 
         throw invalid_argument("The student doesn't exist in the database.");
     if (!ucExists(ucCode))
         throw invalid_argument("This UC doesn't exist in the database.");
+    if (!this->students.at(intStudentCode).hasUc(ucCode)) throw invalid_argument("Student is not enrolled in that Unit Course");
     string originClassCode = students.at(intStudentCode).getUcClassCode(ucCode);
     Request newRequest(intStudentCode, 'R', ucCode, originClassCode, "");
     this->pendentRequests.push(newRequest);
@@ -442,7 +443,6 @@ string Data::undoRequest(int requestNumber) {
 
     Request oppositeRequest(studentCode, type, ucCode, originClassCode,
                             destinyClassCode);
-
     stringstream output;
     output << "Creating undo Request: \n";
     string validationResult = validRequest(oppositeRequest);

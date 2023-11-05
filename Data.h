@@ -336,6 +336,8 @@ class Data {
      */
     void createSwitchRequest(const string &studentCode, const string &ucCode,
                              const string &destinyClassCode);
+
+    string processIndividualRequest();
     /**
  * @brief Processes pending requests and provides a summary of the results.
  *

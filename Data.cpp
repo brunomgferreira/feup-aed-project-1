@@ -281,6 +281,24 @@ void Data::createSwitchRequest(const string &studentCode, const string &ucCode,
     this->pendentRequests.push(newRequest);
 }
 
+string Data::processIndividualRequest(){
+    if (pendentRequests.empty()){
+        return "No requests to process.\n";
+    }
+    Request& request = this->pendentRequests.front();
+    string validationResult = validRequest(request);
+
+    stringstream log;
+    log << "\n    Process log: \n";
+    log << '\n' << "-  " << request.stringInfo();
+    log << "Status: " << validationResult << '\n';
+
+    if (validationResult == "Successful") {
+        applyRequest(request, false);
+    }
+    this->pendentRequests.pop();
+    return log.str();
+}
 
 string Data::processRequests() {
     int totalRequests = this->pendentRequests.size();

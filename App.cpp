@@ -556,9 +556,12 @@ void App::processRequestMenu() {
                 processPendingRequests();
                 break;
             case '2':
-                recentActions();
+                processIndividualRequest();
                 break;
             case '3':
+                recentActions();
+                break;
+            case '4':
                 undoRecentActions();
                 break;
             case 'q':
@@ -572,6 +575,13 @@ void App::processRequestMenu() {
     } while (inputError || !shouldExit);
 
     UserInterface::printMainMenu();
+}
+
+void App::processIndividualRequest(){
+    const string& message = data.processIndividualRequest();
+    UserInterface::printMessage(message);
+    UserInterface::pressEnterToContinue();
+    UserInterface::printProcessRequestMenu();
 }
 
 

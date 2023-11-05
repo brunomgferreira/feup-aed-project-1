@@ -177,8 +177,9 @@ void UserInterface::printProcessRequestMenu() {
     cout << "===== Process Request Menu ====" << endl;
     cout << "\n"
             "1 - Process Pending Requests\n"
-            "2 - See recent actions \n"
-            "3 - Undo recent actions \n\n"
+            "2 - Process Individual Request\n"
+            "3 - See recent actions \n"
+            "4 - Undo recent actions \n\n"
             "q - Back to Main Menu\n"
             "===============================";
 }

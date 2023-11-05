@@ -39,6 +39,7 @@ class App {
     void newRequestSwitch();
 
     void processPendingRequests();
+    void processIndividualRequest();
     void recentActions();
     void undoRecentActions();
 

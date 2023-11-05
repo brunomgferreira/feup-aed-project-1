@@ -255,17 +255,27 @@ string Data::consultOccupationYear(const string &year){
  * @details
  * @return string of data
  */
-string Data::consultBiggestUc(){ //mudar por causa ordencao
-    stringstream res;
+string Data::consultBiggestUc(bool ascendingOrder) {
+    vector<pair<string, int>> ucData;
+
     for (auto [ucCode,uc] : this->ucs){
-        int n=0;
-        res << endl << "UC: " << ucCode << " -- ";
+        int totalStudents=0;
         for (auto [ucCode2, c]: uc.getAllClasses()) {
-            n+= c.numberStudents();
+            totalStudents+= c.numberStudents();
         }
-        res << n << " students" << endl;
+        ucData.emplace_back(ucCode, totalStudents);
     }
-    res << endl;
+
+    auto auxSort = [ascendingOrder](const pair<string, int>& pair1, const pair<string, int>& pair2) {
+        return ascendingOrder ? (pair1.second < pair2.second) : (pair1.second > pair2.second);
+    };
+
+    sort(ucData.begin(), ucData.end(), auxSort);
+
+    stringstream res;
+    for (const auto& ucInfo : ucData) {
+        res << ucInfo.first << " -- " << ucInfo.second << " students" << endl;
+    }
     return res.str();
 }
 

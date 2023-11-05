@@ -41,7 +41,7 @@ void Uc::addClass(const Class &newClass) {
  * @return class with code == classCode
  */
 
-Class &Uc::getClass(const string &classCode) {
+ Class &Uc::getClass(const string &classCode) {
     return this->classes.at(classCode);
 }
 

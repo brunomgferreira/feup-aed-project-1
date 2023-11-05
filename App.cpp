@@ -14,7 +14,7 @@ void App::run() {
     try {
         this->data.loadData();
         mainMenu();
-    } catch (const ios_base::failure& e) {
+    } catch (const runtime_error& e) {
         handleErrors(e.what());
     } catch (const out_of_range& e) {
         handleErrors("Error reading the saves files. Invalid Data");
@@ -601,13 +601,17 @@ void App::recentActions() {
 /**
  * @brief Method responsible for control the process of undo earlier actions
  */
-void App::undoRecentActions() {  //??
+void App::undoRecentActions() {
     bool shouldExit = false;
 
     while (!shouldExit) {
         try {
-            const string& message = data.undoRequest(UserInterface::readNumber("Select a request to undo: "));
-            UserInterface::printMessage(message);
+            const string& history = data.getRequestHistory();
+            UserInterface::printMessage(history);
+            if (history != "\nRequest history is empty.\n"){
+                const string& message = data.undoRequest(UserInterface::readCode("Select a request to undo: "));
+                UserInterface::printMessage(message);
+            }
             UserInterface::pressEnterToContinue();
             break;
         } catch (const invalid_argument& e) {
